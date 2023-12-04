@@ -411,7 +411,7 @@ master:
                   scm:
                     git:
                       credentialsId: "git_read"
-                      remote: "git@github.com:egovernments/CIOps.git"
+                      remote: "git@github.com:ddws-org/CIOps.git"
                       traits:
                       - "gitBranchDiscovery"
       system-message: | 
@@ -475,13 +475,29 @@ master:
                 definition {
                   cps {
                       script("""library 'ci-libs'
-              
-              deployer(repo:'git@github.com:egovernments/DIGIT-DevOps.git', branch: 'release', helmDir: 'config-as-code/helm', environment: '{{ $job.name }}')""")
+              {{- if (eq $job.name "central-instance") }}            
+              deployer(repo:'git@github.com:egovernments/DIGIT-DevOps.git', branch: 'central-instance', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
                       sandbox() 
                     }
                 }
                 disabled(false)
-              }     
+              }
+              {{- else if (eq $job.name "naljal-uat") }}            
+              deployer(repo:'git@github.com:ddws-org/Naljal-DevOps.git', branch: 'naljal', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+                      sandbox() 
+                    }
+                }
+                disabled(false)
+              }
+              {{- else }}
+              deployer(repo:'git@github.com:ddws-org/Naljal-DevOps.git', branch: 'master', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+                      sandbox() 
+                    }
+                }
+                disabled(false)
+              }  
+              {{- end }}
+   
           {{- end }}
 
               

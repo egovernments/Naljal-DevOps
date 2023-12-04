@@ -7,7 +7,7 @@ cluster-configs:
 
   root-ingress:
     name: root-ingress
-    namespace: naljal
+    namespace: jenkins
     cert-issuer: "letsencrypt-staging"
     appRoot: citizen
     serviceName: citizen
