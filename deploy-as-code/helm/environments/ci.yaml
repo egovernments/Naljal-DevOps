@@ -1,5 +1,5 @@
 global:
-  domain: naljal-builds.org.in ## Add your Domain Name Eg: site.mydomain.com
+  domain: naljal-builds.digit.org ## Add your Domain Name Eg: site.mydomain.com
   setup: fullsetup
   
 cluster-configs:
