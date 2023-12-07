@@ -4,7 +4,7 @@ labels:
   group: "gateway"
 
 serviceAccount: internal-gateway
-namespace: naljal  
+namespace: gujarat  
 
 # Init Containers Configs
 initContainers: 

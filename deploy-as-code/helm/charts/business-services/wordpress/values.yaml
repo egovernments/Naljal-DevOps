@@ -2,7 +2,7 @@
 labels:
   app: "wordpress"
   group: "web"
-namespace: naljal
+namespace: gujarat
 
 wordpressUsername: admin
 wordpressEmail: nikesh.umredkar@egovernments.org

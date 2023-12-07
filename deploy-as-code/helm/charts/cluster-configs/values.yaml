@@ -1,13 +1,13 @@
 cluster-configs:
   db:
-    namespace: naljal
+    namespace: gujarat
     name: db-service
     port: 5432
     targetPort: 5432
 
   root-ingress:
     name: root-ingress
-    namespace: naljal
+    namespace: gujarat
     cert-issuer: "letsencrypt-staging"
     appRoot: mgramseva
     serviceName: frontend-mgramseva
@@ -16,7 +16,7 @@ cluster-configs:
   nginx-errors:
     enabled: false
     name: nginx-errors
-    namespace: naljal
+    namespace: gujarat
     serviceName: nginx-errors
     servicePort: 80
 
@@ -40,19 +40,19 @@ cluster-configs:
       name: db
 
     egov-notification-sms:
-      namespace: naljal
+      namespace: gujarat
       name: egov-notification-sms
 
     egov-filestore: 
-      namespace: naljal
+      namespace: gujarat
       name: egov-filestore     
       
     egov-location: 
-      namespace: naljal
+      namespace: gujarat
       name: egov-location
 
     egov-pg-service: 
-      namespace: naljal
+      namespace: gujarat
       name: egov-pg-service                 
 
     pgadmin: 
@@ -60,15 +60,15 @@ cluster-configs:
       name: pgadmin       
 
     egov-enc-service: 
-      namespace: naljal
+      namespace: gujarat
       name: egov-enc-service       
 
     egov-notification-mail: 
-      namespace: naljal
+      namespace: gujarat
       name: egov-notification-mail
 
     home-isolation-notification-mail: 
-      namespace: naljal
+      namespace: gujarat
       name: home-isolation-notification-mail      
 
     git-sync: 
@@ -76,11 +76,11 @@ cluster-configs:
       name: git-creds   
 
     kibana: 
-      namespace: naljal
+      namespace: gujarat
       name: kibana-creds                       
 
     kibana-infra: 
-      namespace: naljal
+      namespace: gujarat
       name: kibana-infra-creds     
 
     pgadmin: 
@@ -88,35 +88,35 @@ cluster-configs:
       name: pgadmin
 
     egov-si-microservice:
-      namespace: naljal
+      namespace: gujarat
       name: egov-si-microservice
 
     egov-edcr-notification:
-      namespace: naljal
+      namespace: gujarat
       name: egov-edcr-notification 
 
     egov-edcr-bank-gateway:
-      namespace: naljal
+      namespace: gujarat
       name: egov-edcr-bank-gateway
 
     chatbot:
-      namespace: naljal
+      namespace: gujarat
       name: chatbot
     
     covid-chatbot:
-      namespace: naljal
+      namespace: gujarat
       name: covid-chatbot
 
     egov-user-chatbot:
-      namespace: naljal
+      namespace: gujarat
       name: egov-user-chatbot
 
     oauth2-proxy:
-      namespace: naljal
+      namespace: gujarat
       name: oauth2-proxy   
 
     case-management:
-      namespace: naljal
+      namespace: gujarat
       name: case-management   
   
     minio:
@@ -132,11 +132,11 @@ cluster-configs:
       name: jenkins 
     
     mysql:
-      namespace: naljal
+      namespace: gujarat
       name: mysql
     
     wordpress:
-      namespace: naljal
+      namespace: gujarat
       name: wordpress
 
     postgres:

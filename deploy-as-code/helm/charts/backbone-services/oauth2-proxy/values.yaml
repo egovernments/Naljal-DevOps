@@ -2,7 +2,7 @@
 labels:
   app: "oauth2-proxy"
 
-namespace: naljal
+namespace: gujarat
 replicas: 1
 
 image:

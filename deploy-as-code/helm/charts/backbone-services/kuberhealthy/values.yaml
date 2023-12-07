@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 namespace: monitoring
 
-checks_namespace: naljal
+checks_namespace: gujarat
 
 prometheus:
   enabled: true

@@ -2,7 +2,7 @@
 labels:
   app: "mysql"
   group: "web"
-namespace: naljal
+namespace: gujarat
 
 # Container Configs
 

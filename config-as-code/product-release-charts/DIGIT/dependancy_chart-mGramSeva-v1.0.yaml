@@ -12,7 +12,7 @@ modules:
       services:
         - redis
         - ingress-nginx
-        - zuul:v1.3.1-f26c4afdca-18
+        - zuul:zuul-v1.3.1-ifix-patch-d516dd643d-41
         - oauth2-proxy
     - name: core
       dependencies:

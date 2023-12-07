@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pvc-postgres
-  namespace: naljal
+  namespace: gujarat
   labels:
     type: local
 spec: 

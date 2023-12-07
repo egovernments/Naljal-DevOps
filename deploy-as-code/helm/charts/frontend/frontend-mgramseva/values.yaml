@@ -22,7 +22,7 @@ healthChecks:
   readinessProbePath: "/mgramseva/"
 dashboard-url: ""
 
-namespace: naljal 
+namespace: gujarat 
 memory_limits: "768Mi"  
 extraVolumes: |
   - name: js-injection

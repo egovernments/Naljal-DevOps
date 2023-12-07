@@ -1,4 +1,4 @@
-namespace: naljal
+namespace: gujarat
 name: s3-proxy
 
 cluster-configs:

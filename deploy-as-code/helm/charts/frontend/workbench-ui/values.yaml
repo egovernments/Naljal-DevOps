@@ -3,7 +3,7 @@ labels:
   app: "workbench-ui"
   group: "web"
 
-namespace: naljal    
+namespace: gujarat    
 
 # Ingress Configs
 ingress:
