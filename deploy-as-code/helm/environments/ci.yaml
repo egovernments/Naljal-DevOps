@@ -27,6 +27,7 @@ jenkins:
         - ddws-org*micro-service-devops # Add github team. Members of this team gets admin access on jenkins
       user:                                 # Add github team. Members of this team gets login access on jenkins
         - ddws-org*naljal-uat
+        - ddws-org*gujarat
        
 
   jobBuilder:    # Add jobBuilder repo's, add repo's ssh link
@@ -37,6 +38,8 @@ jenkins:
       acl: [ddws-org*naljal-uat] # GitHub team name, Members of the team get access to deployment job
     - name: ci
       acl: [ddws-org*micro-service-devops] 
+    - name: gujarat
+      acl: [ddws-org*gujarat]
     
        
   master:
