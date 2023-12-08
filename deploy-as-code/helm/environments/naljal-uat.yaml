@@ -756,8 +756,25 @@ es-curator:
   schedule: "45 18 * * *"
   images:
     - bobrik/curator:5.6.0
-  es-host: "elasticsearch-client-v1.es-cluster"
+  es-host: "elasticsearch-data-v1.es-cluster"
   logs-cleanup-enabled: "true"
   jaeger-cleanup-enabled: "true"
   logs-to-retain: "7"
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+oauth2-proxy:
+  config:
+    configFile: |-
+      email_domains = [ "*" ]
+      github_org = "ddws-org"
+      github_team = "naljal-uat"
+      upstreams = [ "file:///dev/null" ]
+
+grafana:
+  namespace: monitoring
+  dashboardsFolder: /work-dir/config-naljal/configs/monitoring-dashboards
+  initContainers:
+    gitSync:
+      enabled: true
+      repo: "git@github.com:ddws-org/config-naljal"
+      branch: "master"
