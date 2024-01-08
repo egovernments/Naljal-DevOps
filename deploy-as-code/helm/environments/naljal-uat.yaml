@@ -17,8 +17,7 @@ cluster-configs:
             data:
                 db-host: naljal-uat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432 ## Add db-host name eg: egov-demo.database.azure.com
                 db-name: naljaluatdb ## Add db-name
-                db-schema: "karnataka"
-                db-url: jdbc:postgresql://naljal-uat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/naljaluatdb?currentSchema=karnataka ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
+                db-url: jdbc:postgresql://naljal-uat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/naljaluatdb ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
                 domain: naljal-uat.digit.org ## Add your Domain Name    
                 egov-services-fqdn-name: https://naljal-uat.digit.org/ ## Add your Domain Name
                 state-level-tenant-id: "ka"
