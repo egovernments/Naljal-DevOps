@@ -17,7 +17,8 @@ cluster-configs:
             data:
                 db-host: gujarat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432 ## Add db-host name eg: egov-demo.database.azure.com
                 db-name: gujaratdb ## Add db-name
-                db-url: jdbc:postgresql://gujarat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/gujaratdb ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
+                db-url: jdbc:postgresql://gujarat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/gujaratdb?currentSchema=gujarat ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
+                db-schema: "gujarat"
                 domain: gujarat.digit.org ## Add your Domain Name    
                 egov-services-fqdn-name: https://gujarat.digit.org/ ## Add your Domain Name
                 state-level-tenant-id: "ka"
