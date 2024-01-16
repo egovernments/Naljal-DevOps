@@ -490,12 +490,26 @@ master:
                 disabled(false)
               }
               {{- else if (eq $job.name "gujarat") }}            
-              deployer(repo:'git@github.com:ddws-org/Naljal-DevOps.git', branch: 'gujarat', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+              deployer(repo:'git@github.com:ddws-org/Naljal-DevOps.git', branch: 'naljal', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
                       sandbox() 
                     }
                 }
                 disabled(false)
               }
+              {{- else if (eq $job.name "karnataka") }}            
+              deployer(repo:'git@github.com:ddws-org/Naljal-DevOps.git', branch: 'naljal', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+                      sandbox() 
+                    }
+                }
+                disabled(false)
+              }
+              {{- else if (eq $job.name "assam") }}            
+              deployer(repo:'git@github.com:ddws-org/Naljal-DevOps.git', branch: 'naljal', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+                      sandbox() 
+                    }
+                }
+                disabled(false)
+              }                          
               {{- else }}
               deployer(repo:'git@github.com:ddws-org/Naljal-DevOps.git', branch: 'master', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
                       sandbox() 

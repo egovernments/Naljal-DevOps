@@ -40,6 +40,10 @@ jenkins:
       acl: [ddws-org*micro-service-devops] 
     - name: gujarat
       acl: [ddws-org*gujarat]
+    - name: karnataka
+      acl: [ddws-org*karnataka]
+    - name: assam
+      acl: [ddws-org*assam]
     
        
   master:
