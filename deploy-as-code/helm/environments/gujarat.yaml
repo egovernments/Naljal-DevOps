@@ -1,29 +1,29 @@
 global:
-   domain: naljal-uat.digit.org ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
+   domain: naljalseva.jjm.gov.in ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
    setup: fullsetup
-   namespace: naljal
+   namespace: gujarat
    containerRegistry: naljal
 
 cluster-configs:
     secrets:
       db: 
-        namespace: [naljal]
+        namespace: [gujarat]
         name: db
 
       egov-notification-sms:
-        namespace: naljal
+        namespace: gujarat
         name: egov-notification-sms
 
       egov-filestore: 
-        namespace: naljal
+        namespace: gujarat
         name: egov-filestore     
         
       egov-location: 
-        namespace: naljal
+        namespace: gujarat
         name: egov-location
 
       egov-pg-service: 
-        namespace: naljal
+        namespace: gujarat
         name: egov-pg-service                 
 
       pgadmin: 
@@ -31,27 +31,27 @@ cluster-configs:
         name: pgadmin       
 
       egov-enc-service: 
-        namespace: naljal
+        namespace: gujarat
         name: egov-enc-service       
 
       egov-notification-mail: 
-        namespace: naljal
+        namespace: gujarat
         name: egov-notification-mail
 
       home-isolation-notification-mail: 
-        namespace: naljal
+        namespace: gujarat
         name: home-isolation-notification-mail      
 
       git-sync: 
-        namespace: [naljal , monitoring]
+        namespace: [gujarat , monitoring]
         name: git-creds   
 
       kibana: 
-        namespace: naljal
+        namespace: gujarat
         name: kibana-creds                       
 
       kibana-infra: 
-        namespace: naljal
+        namespace: gujarat
         name: kibana-infra-creds     
 
       pgadmin: 
@@ -59,35 +59,35 @@ cluster-configs:
         name: pgadmin
 
       egov-si-microservice:
-        namespace: naljal
+        namespace: gujarat
         name: egov-si-microservice
 
       egov-edcr-notification:
-        namespace: naljal
+        namespace: gujarat
         name: egov-edcr-notification 
 
       egov-edcr-bank-gateway:
-        namespace: naljal
+        namespace: gujarat
         name: egov-edcr-bank-gateway
 
       chatbot:
-        namespace: naljal
+        namespace: gujarat
         name: chatbot
       
       covid-chatbot:
-        namespace: naljal
+        namespace: gujarat
         name: covid-chatbot
 
       egov-user-chatbot:
-        namespace: naljal
+        namespace: gujarat
         name: egov-user-chatbot
 
       oauth2-proxy:
-        namespace: naljal
+        namespace: gujarat
         name: oauth2-proxy   
 
       case-management:
-        namespace: naljal
+        namespace: gujarat
         name: case-management
 
       alertmanager:
@@ -95,23 +95,24 @@ cluster-configs:
         name: alertmanager-main
     namespaces:  
       create: true
-      values: [ backbone, cert-manager, monitoring, playground, kafka-kraft, es-cluster, es-cluster-infra, naljal, kafka-cluster ]
+      values: [ backbone, cert-manager, monitoring, playground, kafka-kraft, es-cluster, es-cluster-infra, gujarat, kafka-cluster ]
       
     root-ingress:
       cert-issuer: letsencrypt-prod
+      namespace: gujarat
     configmaps:
         egov-config:
-            namespace: [ naljal, monitoring ]
+            namespace: [ gujarat, monitoring ]
             data:
                 db-host: naljal-uat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432 ## Add db-host name eg: egov-demo.database.azure.com
                 db-name: naljaluatdb ## Add db-name
-                db-schema: "uat"
-                db-url: jdbc:postgresql://naljal-uat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/naljaluatdb?currentSchema=uat ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
-                domain: naljal-uat.digit.org ## Add your Domain Name    
-                egov-services-fqdn-name: https://naljal-uat.digit.org/ ## Add your Domain Name
+                db-url: jdbc:postgresql://naljal-uat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/naljaluatdb?currentSchema=gujarat ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
+                db-schema: "gujarat"
+                domain: naljalseva.jjm.gov.in ## Add your Domain Name    
+                egov-services-fqdn-name: https://naljalseva.jjm.gov.in/ ## Add your Domain Name
                 state-level-tenant-id: "ka"
                 egov-state-level-tenant-id: "ka" 
-                s3-assets-bucket: "(naljal-uat-s3)"
+                s3-assets-bucket: "(gujarat-s3)"
                 es-host: "elasticsearch-data-v1.es-cluster"
                 es-indexer-host: "http://elasticsearch-data-v1.es-cluster:9200/"
                 flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
@@ -132,7 +133,7 @@ cluster-configs:
                 egov-bnd-live-citizen-tenants: "pg.testing"
 
         egov-service-host:
-            namespace: [ naljal, monitoring ]
+            namespace: [ gujarat, monitoring ]
             data:
                 asset-services: "http://asset-services:8080/"
                 asset-services-maha: "http://asset-services-maha:8080/"
@@ -142,8 +143,8 @@ cluster-configs:
                 collection-search-indexer: "http://collection-search-indexer:8080/"
                 citizen-indexer: "http://citizen-indexer:8080/"
                 citizen-services: "http://citizen-services:8080/"
-                dashboard-analytics: http://dashboard-analytics.naljal:8080/
-                dashboard-ingest: http://dashboard-ingest.naljal:8080/
+                dashboard-analytics: http://dashboard-analytics.gujarat:8080/
+                dashboard-ingest: http://dashboard-ingest.gujarat:8080/
                 demand-services: "http://demand-services:8080/"
                 data-sync-employee: "http://data-sync-employee:8080/"
                 egov-common-masters: "http://egov-common-masters:8080/"
@@ -152,11 +153,11 @@ cluster-configs:
                 egf-instrument: "http://egf-instrument:8080/"
                 egf-voucher: "http://egf-voucher:8080/"
                 egf-bill: "http://egf-bill:8080/"
-                egov-enc-service: "http://egov-enc-service.naljal:8080/"
+                egov-enc-service: "http://egov-enc-service.gujarat:8080/"
                 egf-voucher-workflow: "http://egf-voucher-workflow:8080/"
                 egov-accesscontrol: "http://egov-accesscontrol:8080/"
                 egov-user: "http://egov-user:8080/"
-                egov-user-egov: "http://egov-user.naljal:8080/"
+                egov-user-egov: "http://egov-user.gujarat:8080/"
                 egov-location: "http://egov-location:8080/"
                 egov-filestore: "http://egov-filestore:8080/"
                 egov-localization: "http://egov-localization:8080/"
@@ -181,13 +182,13 @@ cluster-configs:
                 hr-attendance: "http://hr-attendance:8080/"
                 hr-leave: "http://hr-leave:8080/"
                 hr-employee-movement: "http://hr-employee-movement:8080/"
-                ifix-reference-adapter: http://ifix-reference-adapter.naljal:8080/
+                ifix-reference-adapter: http://ifix-reference-adapter.gujarat:8080/
                 inventory-services: "http://inventory-services:8080/"
                 lams-services: "http://lams-services:8080/"
                 lcms-workflow: "http://lcms-workflow:8080/"
                 lcms-services: "http://lcms-services:8080/"
                 location: "http://location:8080/"
-                mgramseva-ifix-adapter: "http://mgramseva-ifix-adapter.naljal:8080/"
+                mgramseva-ifix-adapter: "http://mgramseva-ifix-adapter.gujarat:8080/"
                 performance-assessment: "http://performance-assessment:8080/"
                 pt-property: "http://pt-property:8080/"
                 pt-workflow: "http://pt-workflow:8080/"
@@ -195,10 +196,10 @@ cluster-configs:
                 pt-calculator: "http://pt-calculator:8080/"
                 pt-calculator-v2: "http://pt-calculator-v2:8080/"
                 pt-services-v2: "http://pt-services-v2:8080/"
-                property-services: "http://property-services.naljal:8080/"
+                property-services: "http://property-services.gujarat:8080/"
                 pgr-master: "http://pgr-master:8080/"
                 pgr-rest: "http://pgr-rest:8080/"
-                pdf-service: "http://pdf-service.naljal:8080/"
+                pdf-service: "http://pdf-service.gujarat:8080/"
                 report: "http://report:8080/"
                 swm-services: "http://swm-services:8080/"
                 tenant: "http://tenant:8080/"
@@ -211,33 +212,33 @@ cluster-configs:
                 firenoc-services: "http://firenoc-services:8080/"
                 firenoc-calculator: "http://firenoc-calculator:8080/"
                 egov-apportion-service: "http://egov-apportion-service:8080/"
-                bpa-services: "http://bpa-services.naljal:8080/"
-                bpa-calculator: "http://bpa-calculator.naljal:8080/"
+                bpa-services: "http://bpa-services.gujarat:8080/"
+                bpa-calculator: "http://bpa-calculator.gujarat:8080/"
                 rainmaker-pgr: "http://rainmaker-pgr:8080/"
-                ws-calculator: "http://ws-calculator.naljal:8080/"
-                ws-services: "http://ws-services.naljal:8080/"
-                sw-services: "http://sw-services.naljal:8080/"
-                sw-calculator: "http://sw-calculator.naljal:8080/"
-                land-services: "http://land-services.naljal:8080/"
-                noc-services: "http://noc-services.naljal:8080/"
+                ws-calculator: "http://ws-calculator.gujarat:8080/"
+                ws-services: "http://ws-services.gujarat:8080/"
+                sw-services: "http://sw-services.gujarat:8080/"
+                sw-calculator: "http://sw-calculator.gujarat:8080/"
+                land-services: "http://land-services.gujarat:8080/"
+                noc-services: "http://noc-services.gujarat:8080/"
                 minio-url: "https://minio-uat.digit.org/"
                 egov-user-chatbot: "http://egov-user-chatbot:8080/"
                 zuul: "http://zuul:8080/"
                 egov-url-shortening: "http://egov-url-shortening:8080/"
-                fsm-calculator: "http://fsm-calculator.naljal:8080/"
-                fsm: "http://fsm.naljal:8080/"
-                vehicle: "http://vehicle.naljal:8080"
-                vendor: "http://vendor.naljal:8080"
-                egov-edcr: "http://egov-edcr.naljal:8080/"
-                echallan-calculator: http://echallan-calculator.naljal:8080/
-                echallan-services: http://echallan-services.naljal:8080/
-                inbox: "http://inbox.naljal:8080/"
-                turn-io-adapter: "http://turn-io-adapter.naljal:8080/"
-                pgr-services: "http://pgr-services.naljal:8080/"
-                birth-death-services: "http://birth-death-services.naljal:8080/"
-                egov-pdf: "http://egov-pdf.naljal:8080/"
+                fsm-calculator: "http://fsm-calculator.gujarat:8080/"
+                fsm: "http://fsm.gujarat:8080/"
+                vehicle: "http://vehicle.gujarat:8080"
+                vendor: "http://vendor.gujarat:8080"
+                egov-edcr: "http://egov-edcr.gujarat:8080/"
+                echallan-calculator: http://echallan-calculator.gujarat:8080/
+                echallan-services: http://echallan-services.gujarat:8080/
+                inbox: "http://inbox.gujarat:8080/"
+                turn-io-adapter: "http://turn-io-adapter.gujarat:8080/"
+                pgr-services: "http://pgr-services.gujarat:8080/"
+                birth-death-services: "http://birth-death-services.gujarat:8080/"
+                egov-pdf: "http://egov-pdf.gujarat:8080/"
 employee:
-  dashboard-url: "https://dashboard-pbuat.naljalernments.org/s/w---s/app/kibana#/dashboard/4e687470-f3c7-11e8-8d09-b151e2b1cf8e?embed=true&_g=(refreshInterval%3A(pause%3A!f%2Cvalue%3A300000)%2Ctime%3A(from%3Anow-15m%2Cmode%3Aquick%2Cto%3Anow))"
+  dashboard-url: "https://dashboard-pbuat.egovernments.org/s/w---s/app/kibana#/dashboard/4e687470-f3c7-11e8-8d09-b151e2b1cf8e?embed=true&_g=(refreshInterval%3A(pause%3A!f%2Cvalue%3A300000)%2Ctime%3A(from%3Anow-15m%2Cmode%3Aquick%2Cto%3Anow))"
   custom-js-injection: |
     sub_filter.conf: "
       sub_filter  '<head>' '<head>
@@ -266,12 +267,6 @@ frontend-mgramseva:
       <script src=https://s3.ap-south-1.amazonaws.com/mgramseva-dev-assets/firebaseConfigs.js type=text/javascript></script>
       ';"
 
-mgramseva-web:
-  custom-js-injection: |
-    sub_filter.conf: "
-      sub_filter  '<head>' '<head>
-      <script src=https://egov-dev-assets.s3.ap-south-1.amazonaws.com/globalConfigNaljal.js type=text/javascript></script>
-      ';"  
 property-services:
  replicas: 4
  memory_limits: 512Mi
@@ -289,7 +284,7 @@ egov-filestore:
   allowed-file-formats-map: "{jpg:{'image/jpg','image/jpeg'},jpeg:{'image/jpeg','image/jpg'},png:{'image/png'},pdf:{'application/pdf'},odt:{'application/vnd.oasis.opendocument.text'},ods:{'application/vnd.oasis.opendocument.spreadsheet'},docx:{'application/x-tika-msoffice','application/x-tika-ooxml','application/vnd.oasis.opendocument.text','application/msword'},doc:{'application/x-tika-msoffice','application/x-tika-ooxml','application/vnd.oasis.opendocument.text','application/msword'},dxf:{'text/plain','application/dxf','application/octet-stream','image/vnd.dxf','image/vnd.dxf; format=ascii','image/vnd.dxf; format=binary','image/vnd.dxb'},csv:{'text/plain'},txt:{'text/plain'},xlsx:{'application/x-tika-ooxml','application/x-tika-msoffice','application/vnd.ms-excel'},xls:{'application/x-tika-ooxml','application/x-tika-msoffice','application/vnd.ms-excel'}}"
   allowed-file-formats: "jpg,jpeg,png,doc,docx,pdf,odt,ods,text,dxf,xls,xlsx"
   filestore-url-validity: 3600
-  fixed-bucketname: naljal-uat-s3
+  fixed-bucketname: gujarat-s3
 
 egov-idgen:
   replicas: 3
@@ -326,7 +321,7 @@ egov-notification-sms:
   sms.debug.msggateway: "true"
   sms.enabled: "true"
   save-sms-entity-enabled: "true"
-  sms-disabled-tenants-list: "pb.abc"
+  sms-disabled-tenants-list: "pb.testing"
 
 egov-user:
   replicas: 2
@@ -369,7 +364,7 @@ chatbot:
 billing-service:
   replicas: 2
   memory_limits: 512Mi
-  demand.updateurl: '{"WS":"http://ws-calculator.naljal:8080/ws-calculator/waterCalculator/_updateDemand"}'
+  demand.updateurl: '{"WS":"http://ws-calculator.gujarat:8080/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
 
 ws-services:
@@ -459,7 +454,7 @@ egov-persister:
   memory_limits: "768Mi"
   images:
     - naljal/egov-persister
-  persist-yml-path: "file:///work-dir/config-naljal/egov-persister/billing-services-persist.yml,file:///work-dir/config-naljal/egov-persister/collection-migration-persister.yml,file:///work-dir/config-naljal/egov-persister/echallan.yml,file:///work-dir/config-naljal/egov-persister/egf-bill.yaml,file:///work-dir/config-naljal/egov-persister/egov-user-event-persister.yml,file:///work-dir/config-naljal/egov-persister/egov-workflow-v2-persister.yml,file:///work-dir/config-naljal/egov-persister/pdf-filestoreid-update.yml,file:///work-dir/config-naljal/egov-persister/pdf-generator.yml,file:///work-dir/config-naljal/egov-persister/pg-service-persister.yml,file:///work-dir/config-naljal/egov-persister/property-services.yml,file:///work-dir/config-naljal/egov-persister/pt-persist.yml,file:///work-dir/config-naljal/egov-persister/water-persist.yml,file:///work-dir/config-naljal/egov-persister/water-meter.yml,file:///work-dir/config-naljal/egov-persister/vendor-persister.yaml,file:///work-dir/config-naljal/egov-persister/apportion-persister.yml,file:///work-dir/config-naljal/egov-persister/property-services-registry.yml,file:///work-dir/config-naljal/egov-persister/department-entity-persister.yml,file:///work-dir/config-naljal/egov-persister/department-entity-migration-progress.yml,file:///work-dir/config-naljal/egov-persister/adapter-master-data-service.yml,file:///work-dir/config-naljal/egov-persister/sms-persister.yml,file:///work-dir/config-naljal/egov-persister/mdms-persister.yml,file:///work-dir/config-naljal/egov-persister/hrms-employee-persister.yml"
+  persist-yml-path: "file:///work-dir/config-naljal/egov-persister/billing-services-persist.yml,file:///work-dir/config-naljal/egov-persister/collection-migration-persister.yml,file:///work-dir/config-naljal/egov-persister/echallan.yml,file:///work-dir/config-naljal/egov-persister/egf-bill.yaml,file:///work-dir/config-naljal/egov-persister/egov-user-event-persister.yml,file:///work-dir/config-naljal/egov-persister/egov-workflow-v2-persister.yml,file:///work-dir/config-naljal/egov-persister/pdf-filestoreid-update.yml,file:///work-dir/config-naljal/egov-persister/pdf-generator.yml,file:///work-dir/config-naljal/egov-persister/pg-service-persister.yml,file:///work-dir/config-naljal/egov-persister/property-services.yml,file:///work-dir/config-naljal/egov-persister/pt-persist.yml,file:///work-dir/config-naljal/egov-persister/water-persist.yml,file:///work-dir/config-naljal/egov-persister/water-meter.yml,file:///work-dir/config-naljal/egov-persister/vendor-persister.yaml,file:///work-dir/config-naljal/egov-persister/apportion-persister.yml,file:///work-dir/config-naljal/egov-persister/property-services-registry.yml,file:///work-dir/config-naljal/egov-persister/department-entity-persister.yml,file:///work-dir/config-naljal/egov-persister/department-entity-migration-progress.yml,file:///work-dir/config-naljal/egov-persister/adapter-master-data-service.yml,file:///work-dir/config-naljal/egov-persister/sms-persister.yml,file:///work-dir/config-naljal/egov-persister/mdms-persister.yml"
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
@@ -522,8 +517,8 @@ pdf-service:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"     ##### Change repo url with Your fork Repo url
       branch: "master"                                   ##### Change repo branch with Your fork Repo branch
-  data-config-urls: "file:///work-dir/config-naljal/pdf-service/data-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt-nm.json"
-  format-config-urls: "file:///work-dir/config-naljal/pdf-service/format-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt-nm.json"
+  data-config-urls: "file:///work-dir/config-naljal/pdf-service/data-config/tradelicense-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/property-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/property-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/tradelicense-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/firenoc-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/pt-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/tl-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/consolidatedbill.json,file:///work-dir/config-naljal/pdf-service/data-config/consolidatedreceipt.json,file:///work-dir/config-naljal/pdf-service/data-config/tlapplication.json,file:///work-dir/config-naljal/pdf-service/data-config/passvehicle-certificate.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-naljal/pdf-service/data-config/buildingpermit.json,file:///work-dir/config-naljal/pdf-service/data-config/ptmutationcertificate.json,file:///work-dir/config-naljal/pdf-service/data-config/tlrenewalcertificate.json,file:///work-dir/config-naljal/pdf-service/data-config/bpa-revocation.json,file:///work-dir/config-naljal/pdf-service/data-config/buildingpermit-low.json,file:///work-dir/config-naljal/pdf-service/data-config/misc-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-applicationwater.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-sanctionletter.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-estimationnotice.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-applicationsewerage.json,file:///work-dir/config-naljal/pdf-service/data-config/tlcertificate.json"
+  format-config-urls: "file:///work-dir/config-naljal/pdf-service/format-config/tradelicense-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/property-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/property-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/tradelicense-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/firenoc-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/pt-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/tl-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/consolidatedbill.json,file:///work-dir/config-naljal/pdf-service/format-config/consolidatedreceipt.json,file:///work-dir/config-naljal/pdf-service/format-config/tlapplication.json,file:///work-dir/config-naljal/pdf-service/format-config/passvehicle-certificate.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-naljal/pdf-service/format-config/buildingpermit.json,file:///work-dir/config-naljal/pdf-service/format-config/ptmutationcertificate.json,file:///work-dir/config-naljal/pdf-service/format-config/tlrenewalcertificate.json,file:///work-dir/config-naljal/pdf-service/format-config/bpa-revocation.json,file:///work-dir/config-naljal/pdf-service/format-config/buildingpermit-low.json,file:///work-dir/config-naljal/pdf-service/format-config/misc-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-applicationwater.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-sanctionletter.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-estimationnotice.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-applicationsewerage.json,file:///work-dir/config-naljal/pdf-service/format-config/tlcertificate.json"
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -555,7 +550,7 @@ nginx-ingress:
     - quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.26.1
   replicas: 1
   default-backend-service: "egov/nginx"
-  namespace: naljal
+  namespace: gujarat
   cert-issuer: "letsencrypt-prod"
   ssl-protocols: "TLSv1.2 TLSv1.3"
   ssl-ciphers: "EECDH+CHACHA20:EECDH+AES"
@@ -806,11 +801,11 @@ elasticsearch-data-v1:
   persistence:
     enabled: true
     aws:
-      - volumeId: "vol-0039af57a61f24b3e" ## REPLACE: add volume id
+      - volumeId: "<elastic_search_data_v1_volume_id_1>" ## REPLACE: add volume id
         zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "vol-00443a6d468deb11e" ## REPLACE: add volume id
+      - volumeId: "<elastic_search_data_v1_volume_id_2>" ## REPLACE: add volume id
         zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "vol-0aa0eaeb4280db227" ## REPLACE: add volume id
+      - volumeId: "<elastic_search_data_v1_volume_id_3>" ## REPLACE: add volume id
         zone: ap-south-1b ## REPLACE: add zone
 
   esJavaOpts: "-Xmx1g -Xms1g"
@@ -831,11 +826,11 @@ elasticsearch-master-v1:
   persistence:
     enabled: true
     aws:
-      - volumeId: "vol-00763384980237b29" ## REPLACE: add volume id
-        zone: ap-south-1b ##REPLACE: add zone
-      - volumeId: "vol-0dcd21cb3a5158c86" ## REPLACE: add volume id
-        zone: ap-south-1b ##REPLACE: add zone
-      - volumeId: "vol-0a2e4076ed9ec4f2b" ## REPLACE: add volume id
+      - volumeId: "<elastic_search_master_v1_volume_id_1>" ## REPLACE: add volume id
+        zone: ap-south-1b ## REPLACE: add zone
+      - volumeId: "<elastic_search_master_v1_volume_id_2>" ## REPLACE: add volume id
+        zone: ap-south-1b ## REPLACE: add zone
+      - volumeId: "<elastic_search_master_v1_volume_id_3>" ## REPLACE: add volume id
         zone: ap-south-1b ## REPLACE: add zone
  
   esJavaOpts: "-Xmx448m -Xms448m"
@@ -851,7 +846,7 @@ es-curator:
   schedule: "45 18 * * *"
   images:
     - bobrik/curator:5.6.0
-  es-host: "elasticsearch-data-v1.es-cluster"
+  es-host: "elasticsearch-client-v1.es-cluster"
   logs-cleanup-enabled: "true"
   jaeger-cleanup-enabled: "true"
   logs-to-retain: "7"
@@ -862,7 +857,7 @@ oauth2-proxy:
     configFile: |-
       email_domains = [ "*" ]
       github_org = "ddws-org"
-      github_team = "naljal-uat"
+      github_team = "gujarat"
       upstreams = [ "file:///dev/null" ]
 
 grafana:
