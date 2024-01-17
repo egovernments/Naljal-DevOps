@@ -3,7 +3,25 @@ global:
    setup: fullsetup
    namespace: assam
    containerRegistry: naljal
-   context: assam/mgramseva
+   context:
+     path: assam/mgramseva
+     list:
+       - egov-localization
+       - egov-location
+       - egov-mdms-service
+       - egov-filestore
+       - egov-url-shortening
+       - pdf-service
+       - echallan-services
+       - property-services
+       - ws-services
+       - ws-calculator
+       - egov-user-event
+       - billing-service
+       - collection-services
+       - dashboard-analytics
+       - egov-user
+       - user-otp
 
 cluster-configs:
     secrets:
