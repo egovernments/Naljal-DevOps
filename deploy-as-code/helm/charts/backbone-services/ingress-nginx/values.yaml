@@ -308,7 +308,7 @@ controller:
     # -- Annotations to be added to controller pods
     ##
     podAnnotations: {}
-    replicaCount: 1
+    replicas: 1
     # -- Define either 'minAvailable' or 'maxUnavailable', never both.
     minAvailable: 1
     # -- Define either 'minAvailable' or 'maxUnavailable', never both.
@@ -414,7 +414,11 @@ controller:
         # Will be ignored for Kubernetes versions older than 1.20
         ##
         appProtocol: true
-        annotations: {}
+        externalTrafficPolicy: Local
+        annotations: 
+            service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+            service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: 'true'
+            service.beta.kubernetes.io/aws-load-balancer-type: nlb
         labels: {}
         # clusterIP: ""
 

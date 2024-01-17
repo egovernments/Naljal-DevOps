@@ -547,7 +547,7 @@ redoc:
 
 # gateway >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-nginx-ingress:
+ingress-nginx:
   images:
     - quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.26.1
   replicas: 1
@@ -563,6 +563,8 @@ cert-manager:
   
   
 zuul:
+  contextUnique: true
+  namespace: karnataka
   replicas: 3
   custom-filter-property: "false"
   tracing-enabled: "true"
@@ -718,6 +720,7 @@ jaeger:
 
 # redis >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 redis:
+  namespace: backbone
   replicas: 1
   images:
     - egovio/redis:3.2
@@ -742,13 +745,13 @@ kafka-v2:
     tag: "5.4.1"
   persistence:
     enabled: true
-    aws:
-      - volumeId: "<kafka-v2_volume_id_1>" ## REPLACE: add volume id
-        zone: ap-south-1b     ## REPLACE: add respective zone. 
-      - volumeId: "<kafka-v2_volume_id_2>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<kafka-v2_volume_id_3>"  ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
+    # aws:
+    #   - volumeId: "<kafka-v2_volume_id_1>" ## REPLACE: add volume id
+    #     zone: ap-south-1b     ## REPLACE: add respective zone. 
+    #   - volumeId: "<kafka-v2_volume_id_2>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<kafka-v2_volume_id_3>"  ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
   zookeeperHosts: "zookeeper-v2., kafka-kraft:2181/kafka-v2"
 
   heapOptions: "-Xms704M -Xmx704M"
@@ -777,13 +780,13 @@ zookeeper-v2:
     tag: "5.4.1"
   persistence:
     enabled: true
-    aws:
-      - volumeId: "<zookeeper-v2_volume_id_1>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<zookeeper-v2_volume_id_2>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<zookeeper-v2_volume_id_3>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
+    # aws:
+    #   - volumeId: "<zookeeper-v2_volume_id_1>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<zookeeper-v2_volume_id_2>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<zookeeper-v2_volume_id_3>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
 
   ## Zookeeper JVM Heap Option
   heapOptions: "-Xms256M -Xmx256M"
@@ -802,13 +805,13 @@ elasticsearch-data-v1:
     tag: 6.6.2
   persistence:
     enabled: true
-    aws:
-      - volumeId: "<elastic_search_data_v1_volume_id_1>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<elastic_search_data_v1_volume_id_2>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<elastic_search_data_v1_volume_id_3>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
+    # aws:
+    #   - volumeId: "<elastic_search_data_v1_volume_id_1>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<elastic_search_data_v1_volume_id_2>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<elastic_search_data_v1_volume_id_3>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
 
   esJavaOpts: "-Xmx1g -Xms1g"
   resources:
@@ -827,13 +830,13 @@ elasticsearch-master-v1:
     tag: 6.6.2
   persistence:
     enabled: true
-    aws:
-      - volumeId: "<elastic_search_master_v1_volume_id_1>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<elastic_search_master_v1_volume_id_2>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<elastic_search_master_v1_volume_id_3>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
+    # aws:
+    #   - volumeId: "<elastic_search_master_v1_volume_id_1>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<elastic_search_master_v1_volume_id_2>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<elastic_search_master_v1_volume_id_3>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
  
   esJavaOpts: "-Xmx448m -Xms448m"
   resources:
@@ -855,6 +858,8 @@ es-curator:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 oauth2-proxy:
+  namespace: karnataka
+  contextUnique: true
   config:
     configFile: |-
       email_domains = [ "*" ]
