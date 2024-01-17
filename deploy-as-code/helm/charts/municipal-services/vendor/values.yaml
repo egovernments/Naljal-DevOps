@@ -32,6 +32,17 @@ java-args: "-Dspring.profiles.active=monitoring"
 
 # Additional Container Envs
 env: |
+  {{- if .Values.global.context }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.global.context }}/{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.global.context }}/{{ .Values.ingress.context }}
+  {{- else }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  {{- end }}
   - name: EGOV_VEHICLE_HOST
     valueFrom:
       configMapKeyRef:

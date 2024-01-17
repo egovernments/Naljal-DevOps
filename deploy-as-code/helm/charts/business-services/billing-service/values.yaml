@@ -32,6 +32,17 @@ java-args: "-Dspring.profiles.active=monitoring"
 
 # Additional Container Envs
 env: |
+  {{- if .Values.global.context }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.global.context }}/{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.global.context }}/{{ .Values.ingress.context }}
+  {{- else }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  {{- end }}
   - name: SERVER_PORT
     value: "8080"
   - name: JAVA_OPTS
@@ -95,8 +106,6 @@ env: |
     value: seq_egbs_demand
   - name: BS_DEMANDDETAIL_SEQ_NAME
     value: seq_egbs_demanddetail
-  - name: SERVER_CONTEXT_PATH
-    value: /billing-service
   - name: KAFKA_TOPICS_RECEIPT_UPDATE_DEMAND
     value: egov.collection.receipt-create
   - name: KAFKA_TOPICS_SAVE_GLCODEMASTER

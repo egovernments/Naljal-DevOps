@@ -43,6 +43,17 @@ java-debug: "true"
 
 # Additional Container Envs
 env: |
+  {{- if .Values.global.context }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.global.context }}/{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.global.context }}/{{ .Values.ingress.context }}
+  {{- else }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  {{- end }}
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: egov-pg-service
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER

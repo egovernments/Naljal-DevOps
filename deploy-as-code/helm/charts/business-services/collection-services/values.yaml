@@ -38,6 +38,17 @@ receiptnumber-servicebased: "false"
 
 # Additional Container Envs
 env: |
+  {{- if .Values.global.context }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.global.context }}/{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.global.context }}/{{ .Values.ingress.context }}
+  {{- else }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  {{- end }}
   - name: SERVER_PORT
     value: "8080"
   - name: COLLECTION_RECEIPTS_SEARCH_PAGINATE

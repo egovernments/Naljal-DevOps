@@ -42,8 +42,12 @@ spec:
             name: {{ .Values.ingress.serviceName | default (include "common.name" .) }}
             port:
               number: {{ .Values.ingress.servicePort | default .Values.httpPort }}
-{{- end }}            
+{{- end }}
+{{- if .Values.global.context }}
+        path: /{{ .Values.global.context }}/{{ .Values.ingress.context }}
+{{- else }}
         path: /{{ .Values.ingress.context }}
+{{- end }}
         pathType: Prefix
 {{- if ne .Values.global.setup "quickstart" }}        
   tls:

@@ -3,6 +3,7 @@ global:
    setup: fullsetup
    namespace: assam
    containerRegistry: naljal
+   context: assam/mgramseva
 
 cluster-configs:
     secrets:
@@ -156,15 +157,15 @@ cluster-configs:
                 egov-enc-service: "http://egov-enc-service.assam:8080/"
                 egf-voucher-workflow: "http://egf-voucher-workflow:8080/"
                 egov-accesscontrol: "http://egov-accesscontrol:8080/"
-                egov-user: "http://egov-user:8080/"
-                egov-user-egov: "http://egov-user.assam:8080/"
-                egov-location: "http://egov-location:8080/"
-                egov-filestore: "http://egov-filestore:8080/"
-                egov-localization: "http://egov-localization:8080/"
+                egov-user: "http://egov-user:8080/assam/mgramseva/"
+                egov-user-egov: "http://egov-user.assam:8080/assam/mgramseva/"
+                egov-location: "http://egov-location:8080/assam/mgramseva/"
+                egov-filestore: "http://egov-filestore:8080/assam/mgramseva/"
+                egov-localization: "http://egov-localization:8080/assam/mgramseva/"
                 egov-idgen: "http://egov-idgen:8080/"
                 egov-otp: "http://egov-otp:8080/"
                 egov-common-workflows: "http://egov-common-workflows:8080/"
-                egov-mdms-service: "http://egov-mdms-service:8080/"
+                egov-mdms-service: "http://egov-mdms-service:8080/assam/mgramseva/"
                 egov-mdms-service-test: "http://egov-mdms-service-test:8080/"
                 egov-mdms-create: "http://egov-mdms-create:8080/"
                 egov-eis: "http://egov-eis:8080/"
@@ -174,6 +175,7 @@ cluster-configs:
                 egov-data-uploader: "http://egov-data-uploader:8080/"
                 egov-indexer: "http://egov-indexer:8080/"
                 egov-hrms: "http://egov-hrms:8080/"
+                egov-pg-service: "http://egov-pg-service:8080/assam/mgramseva/"
                 es-client: "http://elasticsearch-data-v1.es-cluster:9200"
                 hr-masters: "http://hr-masters:8080/"
                 hr-employee: "http://hr-employee:8080/"
@@ -182,7 +184,7 @@ cluster-configs:
                 hr-attendance: "http://hr-attendance:8080/"
                 hr-leave: "http://hr-leave:8080/"
                 hr-employee-movement: "http://hr-employee-movement:8080/"
-                ifix-reference-adapter: http://ifix-reference-adapter.assam:8080/
+                ifix-reference-adapter: "http://ifix-reference-adapter.assam:8080/"
                 inventory-services: "http://inventory-services:8080/"
                 lams-services: "http://lams-services:8080/"
                 lcms-workflow: "http://lcms-workflow:8080/"
@@ -196,10 +198,10 @@ cluster-configs:
                 pt-calculator: "http://pt-calculator:8080/"
                 pt-calculator-v2: "http://pt-calculator-v2:8080/"
                 pt-services-v2: "http://pt-services-v2:8080/"
-                property-services: "http://property-services.assam:8080/"
+                property-services: "http://property-services.assam:8080/assam/mgramseva/"
                 pgr-master: "http://pgr-master:8080/"
                 pgr-rest: "http://pgr-rest:8080/"
-                pdf-service: "http://pdf-service.assam:8080/"
+                pdf-service: "http://pdf-service.assam:8080/assam/mgramseva/"
                 report: "http://report:8080/"
                 swm-services: "http://swm-services:8080/"
                 tenant: "http://tenant:8080/"
@@ -208,15 +210,15 @@ cluster-configs:
                 tl-workflow: "http://tl-workflow:8080/"
                 tl-indexer: "http://tl-indexer:8080/"
                 tl-calculator: "http://tl-calculator:8080/"
-                user-otp: "http://user-otp:8080/"
+                user-otp: "http://user-otp:8080/assam/mgramseva/"
                 firenoc-services: "http://firenoc-services:8080/"
                 firenoc-calculator: "http://firenoc-calculator:8080/"
                 egov-apportion-service: "http://egov-apportion-service:8080/"
                 bpa-services: "http://bpa-services.assam:8080/"
                 bpa-calculator: "http://bpa-calculator.assam:8080/"
                 rainmaker-pgr: "http://rainmaker-pgr:8080/"
-                ws-calculator: "http://ws-calculator.assam:8080/"
-                ws-services: "http://ws-services.assam:8080/"
+                ws-calculator: "http://ws-calculator.assam:8080/assam/mgramseva/"
+                ws-services: "http://ws-services.assam:8080/assam/mgramseva/"
                 sw-services: "http://sw-services.assam:8080/"
                 sw-calculator: "http://sw-calculator.assam:8080/"
                 land-services: "http://land-services.assam:8080/"
@@ -224,14 +226,14 @@ cluster-configs:
                 minio-url: "https://minio-uat.digit.org/"
                 egov-user-chatbot: "http://egov-user-chatbot:8080/"
                 zuul: "http://zuul:8080/"
-                egov-url-shortening: "http://egov-url-shortening:8080/"
+                egov-url-shortening: "http://egov-url-shortening:8080/assam/mgramseva/"
                 fsm-calculator: "http://fsm-calculator.assam:8080/"
                 fsm: "http://fsm.assam:8080/"
                 vehicle: "http://vehicle.assam:8080"
-                vendor: "http://vendor.assam:8080"
+                vendor: "http://vendor.assam:8080/assam/mgramseva"
                 egov-edcr: "http://egov-edcr.assam:8080/"
-                echallan-calculator: http://echallan-calculator.assam:8080/
-                echallan-services: http://echallan-services.assam:8080/
+                echallan-calculator: "http://echallan-calculator.assam:8080/"
+                echallan-services: "http://echallan-services.assam:8080/assam/mgramseva/"
                 inbox: "http://inbox.assam:8080/"
                 turn-io-adapter: "http://turn-io-adapter.assam:8080/"
                 pgr-services: "http://pgr-services.assam:8080/"
@@ -284,7 +286,7 @@ egov-filestore:
   allowed-file-formats-map: "{jpg:{'image/jpg','image/jpeg'},jpeg:{'image/jpeg','image/jpg'},png:{'image/png'},pdf:{'application/pdf'},odt:{'application/vnd.oasis.opendocument.text'},ods:{'application/vnd.oasis.opendocument.spreadsheet'},docx:{'application/x-tika-msoffice','application/x-tika-ooxml','application/vnd.oasis.opendocument.text','application/msword'},doc:{'application/x-tika-msoffice','application/x-tika-ooxml','application/vnd.oasis.opendocument.text','application/msword'},dxf:{'text/plain','application/dxf','application/octet-stream','image/vnd.dxf','image/vnd.dxf; format=ascii','image/vnd.dxf; format=binary','image/vnd.dxb'},csv:{'text/plain'},txt:{'text/plain'},xlsx:{'application/x-tika-ooxml','application/x-tika-msoffice','application/vnd.ms-excel'},xls:{'application/x-tika-ooxml','application/x-tika-msoffice','application/vnd.ms-excel'}}"
   allowed-file-formats: "jpg,jpeg,png,doc,docx,pdf,odt,ods,text,dxf,xls,xlsx"
   filestore-url-validity: 3600
-  fixed-bucketname: gujarat-s3
+  fixed-bucketname: assam-s3
 
 egov-idgen:
   replicas: 3
@@ -364,7 +366,7 @@ chatbot:
 billing-service:
   replicas: 2
   memory_limits: 512Mi
-  demand.updateurl: '{"WS":"http://ws-calculator.gujarat:8080/ws-calculator/waterCalculator/_updateDemand"}'
+  demand.updateurl: '{"WS":"http://ws-calculator.assam:8080/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
 
 ws-services:
@@ -550,7 +552,7 @@ nginx-ingress:
     - quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.26.1
   replicas: 1
   default-backend-service: "egov/nginx"
-  namespace: gujarat
+  namespace: assam
   cert-issuer: "letsencrypt-prod"
   ssl-protocols: "TLSv1.2 TLSv1.3"
   ssl-ciphers: "EECDH+CHACHA20:EECDH+AES"

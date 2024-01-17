@@ -84,7 +84,11 @@ healthChecks:
     enabled: false
     livenessProbe: |
         httpGet:
+        {{- if .Values.global.context }}
+            path: "/{{ .Values.global.context }}{{ .Values.healthChecks.livenessProbePath }}"
+        {{- else }}
             path: "{{ .Values.healthChecks.livenessProbePath }}"
+        {{- end }}
             port: {{ .Values.httpPort }}
         initialDelaySeconds: 30
         timeoutSeconds: 3
@@ -93,7 +97,11 @@ healthChecks:
         failureThreshold: 5
     readinessProbe: |
         httpGet:
+        {{- if .Values.global.context }}
+            path: "/{{ .Values.global.context }}{{ .Values.healthChecks.readinessProbePath }}"
+        {{- else }}
             path: "{{ .Values.healthChecks.readinessProbePath }}"
+        {{- end }}
             port: {{ .Values.httpPort }}
         initialDelaySeconds: 30
         timeoutSeconds: 3
@@ -120,6 +128,7 @@ resources: |
 ## Allows specification of additional environment variables
 extraEnv:
   java: |
+      {{- if eq .Values.appType "java-spring" -}}
       - name: SPRING_DATASOURCE_URL
         valueFrom:
           configMapKeyRef:
