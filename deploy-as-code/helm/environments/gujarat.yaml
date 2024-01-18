@@ -6,21 +6,22 @@ global:
    context:
      path: gujarat/mgramseva
      list:
-       - egov-localization
-       - egov-location
-       - egov-mdms-service
-       - egov-filestore
-       - egov-url-shortening
-       - pdf-service
-       - echallan-services
-       - property-services
-       - ws-services
-       - ws-calculator
-       - egov-user-event
        - billing-service
        - collection-services
        - dashboard-analytics
+       - echallan-services
+       - egov-filestore
+       - egov-localization
+       - egov-location
+       - egov-mdms-service
+       - egov-pg-service
        - egov-user
+       - egov-user-event
+       - egov-url-shortening
+       - pdf-service
+       - property-services
+       - ws-services
+       - ws-calculator
        - user-otp
        - pgadmin
        - grafana
@@ -290,7 +291,7 @@ frontend-mgramseva:
       ';"
 
 property-services:
- replicas: 4
+ replicas: 2
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
 
@@ -392,7 +393,7 @@ billing-service:
 ws-services:
   wcid-format: "WS/[CITY.CODE]/[fy:yyyy-yy]/[SEQ_EGOV_COMMON]"
   is-external-workflow-enabled: "true"
-  replicas: 4
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-pending-collection-enabled: false
@@ -423,7 +424,7 @@ echallan-services:
   sms-monthy-summary-enabled: false
 
 ws-calculator:
-  replicas: 4
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-demand-enabled: true
@@ -471,7 +472,7 @@ egov-enc-service:
   state-level-tenant-id: "ka"
 
 egov-persister:
-  replicas: 4
+  replicas: 3
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   images:

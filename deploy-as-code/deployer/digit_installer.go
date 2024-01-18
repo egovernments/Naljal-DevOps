@@ -264,9 +264,11 @@ func setClusterContext() bool {
 
 	validatepath(kubeconfig)
 
-	kubeconfig = enterValue(validatepath, "Please enter the fully qualified path of your kubeconfig file")
+    kubeconfig = os.Getenv("KUBECONFIG")
 
-	if kubeconfig != "" {
+    if kubeconfig == "" {
+	    kubeconfig = enterValue(validatepath, "Please enter the fully qualified path of your kubeconfig file")
+	} else {
 		getcontextcmd := fmt.Sprintf("kubectl config get-contexts --kubeconfig=%s", kubeconfig)
 		err := execCommand(getcontextcmd)
 		if err == nil {
