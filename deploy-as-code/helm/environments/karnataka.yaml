@@ -22,6 +22,8 @@ global:
        - dashboard-analytics
        - egov-user
        - user-otp
+       - pgadmin
+       - grafana
 
 cluster-configs:
     secrets:
@@ -43,11 +45,7 @@ cluster-configs:
 
       egov-pg-service: 
         namespace: karnataka
-        name: egov-pg-service                 
-
-      pgadmin: 
-        namespace: playground
-        name: pgadmin       
+        name: egov-pg-service
 
       egov-enc-service: 
         namespace: karnataka

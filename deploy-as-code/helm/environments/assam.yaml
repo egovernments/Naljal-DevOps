@@ -22,6 +22,8 @@ global:
        - dashboard-analytics
        - egov-user
        - user-otp
+       - pgadmin
+       - grafana
 
 cluster-configs:
     secrets:
