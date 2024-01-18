@@ -6,6 +6,7 @@ global:
    context:
      path: karnataka/mgramseva
      list:
+       - adapter-master-data-service
        - billing-service
        - collection-services
        - dashboard-analytics
@@ -18,6 +19,7 @@ global:
        - egov-user
        - egov-user-event
        - egov-url-shortening
+       - ifix-department-entity-service
        - pdf-service
        - property-services
        - ws-services

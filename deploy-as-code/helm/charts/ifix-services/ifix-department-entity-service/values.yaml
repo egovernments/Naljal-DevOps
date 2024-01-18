@@ -31,9 +31,22 @@ server-context-path: "/ifix-department-entity"
 master-department-context-path: "/adapter-master-data"
 
 # Additional Container Envs
-env: |  
+env: |
+  {{- if .Values.global.context.path }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
+  - name: SERVER_CONTEXTPATH
+      value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
   - name: SERVER_SERVLET_CONTEXT_PATH
-    value: {{ index .Values "server-context-path" | quote }}
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
+  {{- else }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  - name: SERVER_CONTEXTPATH
+      value: /{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  {{- end }}
   - name: SERVER_PORT
     value: "8080"
   - name: SPRING_DATA_MONGODB_URI
