@@ -31,6 +31,13 @@ format-config-urls: "file:///work-dir/configs/pdf-service/format-config/firenoc-
 
 # Additional Container Envs
 env: |
+  {{- if .Values.global.context.path }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
+  {{- else }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  {{- end }}
   - name: NODE_ENV
     value: "production"
   - name: DEFAULT_LOCALISATION_TENANT

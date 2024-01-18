@@ -46,11 +46,11 @@ java-args: ""
 
 # Additional Container Envs
 env: |
-  {{- if .Values.global.context }}
+  {{- if .Values.global.context.path }}
   - name: SERVER_CONTEXTPATH
-    value: /{{ .Values.global.context }}/{{ .Values.ingress.context }}
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
   - name: SERVER_SERVLET_CONTEXT_PATH
-    value: /{{ .Values.global.context }}/{{ .Values.ingress.context }}
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
   {{- else }}
   - name: SERVER_CONTEXTPATH
     value: /{{ .Values.ingress.context }}

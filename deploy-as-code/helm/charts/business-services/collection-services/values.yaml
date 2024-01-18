@@ -38,11 +38,11 @@ receiptnumber-servicebased: "false"
 
 # Additional Container Envs
 env: |
-  {{- if .Values.global.context }}
+  {{- if .Values.global.context.path }}
   - name: SERVER_CONTEXT_PATH
-    value: /{{ .Values.global.context }}/{{ .Values.ingress.context }}
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
   - name: SERVER_SERVLET_CONTEXT_PATH
-    value: /{{ .Values.global.context }}/{{ .Values.ingress.context }}
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
   {{- else }}
   - name: SERVER_CONTEXT_PATH
     value: /{{ .Values.ingress.context }}
