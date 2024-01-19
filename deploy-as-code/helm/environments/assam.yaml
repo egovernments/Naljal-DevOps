@@ -48,11 +48,7 @@ cluster-configs:
 
       egov-pg-service: 
         namespace: assam
-        name: egov-pg-service                 
-
-      pgadmin: 
-        namespace: playground
-        name: pgadmin       
+        name: egov-pg-service
 
       egov-enc-service: 
         namespace: assam
@@ -570,7 +566,7 @@ redoc:
 
 # gateway >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-nginx-ingress:
+ingress-nginx:
   images:
     - quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.26.1
   replicas: 1
@@ -586,6 +582,7 @@ cert-manager:
   
   
 zuul:
+  namespace: assam
   replicas: 3
   custom-filter-property: "false"
   tracing-enabled: "true"
@@ -878,6 +875,7 @@ es-curator:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 oauth2-proxy:
+  namespace: assam
   config:
     configFile: |-
       email_domains = [ "*" ]
