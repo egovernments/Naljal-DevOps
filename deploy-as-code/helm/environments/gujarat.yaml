@@ -281,6 +281,8 @@ citizen:
       ';"
 
 frontend-mgramseva:
+  ingress:
+    context: "gujarat/mgramseva/app"
   state-level-tenant-id: ka
   custom-js-injection: |
     sub_filter.conf: "
