@@ -4,7 +4,7 @@ global:
    namespace: karnataka
    containerRegistry: naljal
    context:
-     path: karnataka/mgramseva
+     path: karnataka
      list:
        - adapter-master-data-service
        - billing-service
@@ -27,6 +27,7 @@ global:
        - user-otp
        - pgadmin
        - grafana
+       - frontend-mgramseva
 
 cluster-configs:
     secrets:
@@ -120,6 +121,8 @@ cluster-configs:
     root-ingress:
       cert-issuer: letsencrypt-prod
       namespace: karnataka
+      context: /karnataka/
+
     configmaps:
         egov-config:
             namespace: [ karnataka, monitoring ]
@@ -157,13 +160,13 @@ cluster-configs:
             data:
                 asset-services: "http://asset-services:8080/"
                 asset-services-maha: "http://asset-services-maha:8080/"
-                billing-service: "http://billing-service:8080/karnataka/mgramseva/"
-                collection-services: "http://collection-services:8080/karnataka/mgramseva/"
+                billing-service: "http://billing-service:8080/karnataka/"
+                collection-services: "http://collection-services:8080/karnataka/"
                 collection-masters: "http://collection-masters:8080/"
                 collection-search-indexer: "http://collection-search-indexer:8080/"
                 citizen-indexer: "http://citizen-indexer:8080/"
                 citizen-services: "http://citizen-services:8080/"
-                dashboard-analytics: "http://dashboard-analytics.karnataka:8080/karnataka/mgramseva/"
+                dashboard-analytics: "http://dashboard-analytics.karnataka:8080/karnataka/"
                 dashboard-ingest: "http://dashboard-ingest.karnataka:8080/"
                 demand-services: "http://demand-services:8080/"
                 data-sync-employee: "http://data-sync-employee:8080/"
@@ -176,15 +179,15 @@ cluster-configs:
                 egov-enc-service: "http://egov-enc-service.karnataka:8080/"
                 egf-voucher-workflow: "http://egf-voucher-workflow:8080/"
                 egov-accesscontrol: "http://egov-accesscontrol:8080/"
-                egov-user: "http://egov-user:8080/karnataka/mgramseva/"
-                egov-user-egov: "http://egov-user.karnataka:8080/karnataka/mgramseva/"
-                egov-location: "http://egov-location:8080/karnataka/mgramseva/"
-                egov-filestore: "http://egov-filestore:8080/karnataka/mgramseva/"
-                egov-localization: "http://egov-localization:8080/karnataka/mgramseva/"
+                egov-user: "http://egov-user:8080/karnataka/"
+                egov-user-egov: "http://egov-user.karnataka:8080/karnataka/"
+                egov-location: "http://egov-location:8080/karnataka/"
+                egov-filestore: "http://egov-filestore:8080/karnataka/"
+                egov-localization: "http://egov-localization:8080/karnataka/"
                 egov-idgen: "http://egov-idgen:8080/"
                 egov-otp: "http://egov-otp:8080/"
                 egov-common-workflows: "http://egov-common-workflows:8080/"
-                egov-mdms-service: "http://egov-mdms-service:8080/karnataka/mgramseva/"
+                egov-mdms-service: "http://egov-mdms-service:8080/karnataka/"
                 egov-mdms-service-test: "http://egov-mdms-service-test:8080/"
                 egov-mdms-create: "http://egov-mdms-create:8080/"
                 egov-eis: "http://egov-eis:8080/"
@@ -194,7 +197,7 @@ cluster-configs:
                 egov-data-uploader: "http://egov-data-uploader:8080/"
                 egov-indexer: "http://egov-indexer:8080/"
                 egov-hrms: "http://egov-hrms:8080/"
-                egov-pg-service: "http://egov-pg-service:8080/karnataka/mgramseva/"
+                egov-pg-service: "http://egov-pg-service:8080/karnataka/"
                 es-client: "http://elasticsearch-data-v1.es-cluster:9200"
                 hr-masters: "http://hr-masters:8080/"
                 hr-employee: "http://hr-employee:8080/"
@@ -217,10 +220,10 @@ cluster-configs:
                 pt-calculator: "http://pt-calculator:8080/"
                 pt-calculator-v2: "http://pt-calculator-v2:8080/"
                 pt-services-v2: "http://pt-services-v2:8080/"
-                property-services: "http://property-services.karnataka:8080/karnataka/mgramseva/"
+                property-services: "http://property-services.karnataka:8080/karnataka/"
                 pgr-master: "http://pgr-master:8080/"
                 pgr-rest: "http://pgr-rest:8080/"
-                pdf-service: "http://pdf-service.karnataka:8080/karnataka/mgramseva/"
+                pdf-service: "http://pdf-service.karnataka:8080/karnataka/"
                 report: "http://report:8080/"
                 swm-services: "http://swm-services:8080/"
                 tenant: "http://tenant:8080/"
@@ -229,15 +232,15 @@ cluster-configs:
                 tl-workflow: "http://tl-workflow:8080/"
                 tl-indexer: "http://tl-indexer:8080/"
                 tl-calculator: "http://tl-calculator:8080/"
-                user-otp: "http://user-otp:8080/karnataka/mgramseva/"
+                user-otp: "http://user-otp:8080/karnataka/"
                 firenoc-services: "http://firenoc-services:8080/"
                 firenoc-calculator: "http://firenoc-calculator:8080/"
                 egov-apportion-service: "http://egov-apportion-service:8080/"
                 bpa-services: "http://bpa-services.karnataka:8080/"
                 bpa-calculator: "http://bpa-calculator.karnataka:8080/"
                 rainmaker-pgr: "http://rainmaker-pgr:8080/"
-                ws-calculator: "http://ws-calculator.karnataka:8080/karnataka/mgramseva/"
-                ws-services: "http://ws-services.karnataka:8080/karnataka/mgramseva/"
+                ws-calculator: "http://ws-calculator.karnataka:8080/karnataka/"
+                ws-services: "http://ws-services.karnataka:8080/karnataka/"
                 sw-services: "http://sw-services.karnataka:8080/"
                 sw-calculator: "http://sw-calculator.karnataka:8080/"
                 land-services: "http://land-services.karnataka:8080/"
@@ -245,14 +248,14 @@ cluster-configs:
                 minio-url: "https://minio-uat.digit.org/"
                 egov-user-chatbot: "http://egov-user-chatbot:8080/"
                 zuul: "http://zuul:8080/"
-                egov-url-shortening: "http://egov-url-shortening:8080/karnataka/mgramseva/"
+                egov-url-shortening: "http://egov-url-shortening:8080/karnataka/"
                 fsm-calculator: "http://fsm-calculator.karnataka:8080/"
                 fsm: "http://fsm.karnataka:8080/"
                 vehicle: "http://vehicle.karnataka:8080"
-                vendor: "http://vendor.karnataka:8080/karnataka/mgramseva"
+                vendor: "http://vendor.karnataka:8080/karnataka"
                 egov-edcr: "http://egov-edcr.karnataka:8080/"
                 echallan-calculator: "http://echallan-calculator.karnataka:8080/"
-                echallan-services: "http://echallan-services.karnataka:8080/karnataka/mgramseva/"
+                echallan-services: "http://echallan-services.karnataka:8080/karnataka/"
                 inbox: "http://inbox.karnataka:8080/"
                 turn-io-adapter: "http://turn-io-adapter.karnataka:8080/"
                 pgr-services: "http://pgr-services.karnataka:8080/"
@@ -282,7 +285,7 @@ citizen:
 
 frontend-mgramseva:
   ingress:
-    context: "karnataka/mgramseva/app"
+    context: "mgramseva"
   state-level-tenant-id: ka
   custom-js-injection: |
     sub_filter.conf: "

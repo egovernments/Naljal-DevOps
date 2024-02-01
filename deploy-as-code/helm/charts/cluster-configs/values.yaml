@@ -12,6 +12,7 @@ cluster-configs:
     appRoot: mgramseva
     serviceName: frontend-mgramseva
     servicePort: 80
+    context: /
  
   nginx-errors:
     enabled: false

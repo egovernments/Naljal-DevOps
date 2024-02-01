@@ -23,7 +23,7 @@ spec:
             name: {{ .serviceName }}
             port: 
               number: {{ .servicePort }}
-        path: /
+        path: {{ .context }}
         pathType: Prefix
 {{- if ne $.Values.global.setup "quickstart" }}        
   tls:

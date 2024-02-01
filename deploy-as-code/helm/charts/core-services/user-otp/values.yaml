@@ -27,7 +27,7 @@ java-args: ""
 
 # Additional Container Envs
 env: |
-  {{- if .Values.global.context.path }}
+  {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
   - name: SERVER_CONTEXTPATH
     value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
   - name: SERVER_SERVLET_CONTEXT_PATH
