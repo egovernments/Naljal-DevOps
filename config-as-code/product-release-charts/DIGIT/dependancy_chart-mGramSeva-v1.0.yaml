@@ -20,7 +20,7 @@ modules:
         - "authn-authz" 
       services:
         - naljal/egov-accesscontrol:v2.5-log4j-12a9331b-2
-        - naljal/egov-enc-service:v2.5-log4j-12a9331b-2
+        - naljal/egov-enc-service:schema_fix-a7d2e57c1e-2
         - naljal/egov-filestore:v2.5-log4j-12a9331b-4
         - naljal/egov-idgen:v1.2.4-92880bb4-5
         - naljal/egov-indexer:v2.5-log4j-12a9331b-2
@@ -44,8 +44,8 @@ modules:
       dependencies:
         - "core"
       services:
-        - naljal/collection-services:v2.5-log4j-f0f010a-19
-        - naljal/billing-service-db:naljal-master-7fa6bc51-24
+        - naljal/collection-services:schema_fix-a7d2e57c1e-8
+        - naljal/billing-service-db:schema_fix-a7d2e57c1e-8
         - naljal/egf-instrument:v2.5-log4j-f0f010a-3
         - naljal/egf-master:v2.5-log4j-f0f010a-3
         - naljal/egov-apportion-service:advance-changes-snehal-4109a7cb7b-4
@@ -56,7 +56,7 @@ modules:
       dependencies:
         - "business"
       services:
-        - naljal/frontend-mgramseva:naljal-master-08ced587-187   
+        - naljal/frontend-mgramseva:v1.2.20-d3c2e0371b-18   
     - name: m_water-service   #Water
       dependencies:
           - "frontend"

@@ -7,7 +7,15 @@ metadata:
     nginx.ingress.kubernetes.io/upstream-vhost: {{ .Values.externalName }}
     nginx.ingress.kubernetes.io/use-regex: "true"
   name: {{ .Values.name }} 
-  namespace: {{ .Values.namespace }}  
+  {{- if .Values.global.namespace }}
+  {{- if or (eq .Values.namespace "backbone") (eq .Values.namespace "cert-manager") (eq .Values.namespace "es-cluster") (eq .Values.namespace "es-cluster-infra") (eq .Values.namespace "kafka-cluster") (eq .Values.namespace "kafka-kraft") (eq .Values.namespace "monitoring") (eq .Values.namespace "playground") }}
+  namespace: {{ .Values.namespace }}
+  {{- else }}
+  namespace: {{ .Values.global.namespace }}
+  {{- end }}
+  {{- else }}
+  namespace: {{ .Values.namespace }}
+  {{- end }}   
 spec:
   rules:
   - host: {{ .Values.global.domain }}
@@ -18,5 +26,9 @@ spec:
             name: {{ .Values.name }}
             port:
               number: {{ .Values.httpPort }}
-        path: /{{ index $.Values "cluster-configs" "configmaps" "egov-config" "data" "s3-assets-bucket" }}/
+    {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}    
+        path: /{{ .Values.global.context.path }}/{{ index $.Values "cluster-configs" "configmaps" "egov-config" "data" "s3-assets-bucket" }}
+    {{- else }}
+        path: /{{ index $.Values "cluster-configs" "configmaps" "egov-config" "data" "s3-assets-bucket" }}
+    {{- end }}
         pathType: ImplementationSpecific
