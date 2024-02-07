@@ -134,8 +134,8 @@ cluster-configs:
                 db-schema: "gujarat"
                 domain: naljalseva.jjm.gov.in ## Add your Domain Name    
                 egov-services-fqdn-name: https://naljalseva.jjm.gov.in/ ## Add your Domain Name
-                state-level-tenant-id: "ka"
-                egov-state-level-tenant-id: "ka" 
+                state-level-tenant-id: "gj"
+                egov-state-level-tenant-id: "gj" 
                 s3-assets-bucket: "gujarat-s3"
                 es-host: "elasticsearch-data-v1.es-cluster"
                 es-indexer-host: "http://elasticsearch-data-v1.es-cluster:9200/"
@@ -287,7 +287,7 @@ citizen:
 frontend-mgramseva:
   ingress:
     context: "mgramseva"
-  state-level-tenant-id: ka
+  state-level-tenant-id: gj
   custom-js-injection: |
     sub_filter.conf: "
       sub_filter  '<head>' '<head>
