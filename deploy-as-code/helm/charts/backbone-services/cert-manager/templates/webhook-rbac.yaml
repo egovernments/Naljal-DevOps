@@ -3,7 +3,11 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: {{ template "webhook.fullname" . }}:dynamic-serving
+  {{- if .Values.global.namespace }}
+  namespace: {{ .Values.global.namespace }}
+  {{- else }}
   namespace: {{ .Values.namespace }}
+  {{- end }}
   labels:
     app: {{ include "webhook.name" . }}
     app.kubernetes.io/name: {{ include "webhook.name" . }}
