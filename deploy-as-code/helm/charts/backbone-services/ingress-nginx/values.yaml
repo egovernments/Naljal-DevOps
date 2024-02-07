@@ -308,7 +308,7 @@ controller:
     # -- Annotations to be added to controller pods
     ##
     podAnnotations: {}
-    replicaCount: 1
+    replicas: 1
     # -- Define either 'minAvailable' or 'maxUnavailable', never both.
     minAvailable: 1
     # -- Define either 'minAvailable' or 'maxUnavailable', never both.

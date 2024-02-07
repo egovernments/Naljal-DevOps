@@ -84,7 +84,11 @@ healthChecks:
     enabled: false
     livenessProbe: |
         httpGet:
+        {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
+            path: "/{{ .Values.global.context.path }}{{ .Values.healthChecks.livenessProbePath }}"
+        {{- else }}
             path: "{{ .Values.healthChecks.livenessProbePath }}"
+        {{- end }}
             port: {{ .Values.httpPort }}
         initialDelaySeconds: 30
         timeoutSeconds: 3
@@ -93,7 +97,11 @@ healthChecks:
         failureThreshold: 5
     readinessProbe: |
         httpGet:
+        {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
+            path: "/{{ .Values.global.context.path }}{{ .Values.healthChecks.readinessProbePath }}"
+        {{- else }}
             path: "{{ .Values.healthChecks.readinessProbePath }}"
+        {{- end }}
             port: {{ .Values.httpPort }}
         initialDelaySeconds: 30
         timeoutSeconds: 3

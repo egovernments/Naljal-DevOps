@@ -6,7 +6,11 @@ kind: Ingress
 metadata:
   name: {{ template "common.name" . }}
   {{- if .Values.global.namespace }}
+  {{- if or (eq .Values.namespace "backbone") (eq .Values.namespace "cert-manager") (eq .Values.namespace "es-cluster") (eq .Values.namespace "es-cluster-infra") (eq .Values.namespace "kafka-cluster") (eq .Values.namespace "kafka-kraft") (eq .Values.namespace "monitoring") (eq .Values.namespace "playground") }}
+  namespace: {{ .Values.namespace }}
+  {{- else }}
   namespace: {{ .Values.global.namespace }}
+  {{- end }}
   {{- else }}
   namespace: {{ .Values.namespace }}
   {{- end }}  
@@ -42,8 +46,12 @@ spec:
             name: {{ .Values.ingress.serviceName | default (include "common.name" .) }}
             port:
               number: {{ .Values.ingress.servicePort | default .Values.httpPort }}
-{{- end }}            
+{{- end }}
+{{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
+        path: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
+{{- else }}
         path: /{{ .Values.ingress.context }}
+{{- end }}
         pathType: Prefix
 {{- if ne .Values.global.setup "quickstart" }}        
   tls:

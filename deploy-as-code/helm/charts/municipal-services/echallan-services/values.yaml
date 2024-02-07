@@ -33,6 +33,17 @@ egov-msg-pay-link: citizen/withoutAuth/egov-common/pay?consumerCode=$consumercod
 
 # Additional Container Envs
 env: |
+  {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
+  {{- else }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  {{- end }}
   - name: EGOV_IDGEN_HOST
     valueFrom:
       configMapKeyRef:
