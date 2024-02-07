@@ -7,7 +7,11 @@ metadata:
     nginx.ingress.kubernetes.io/upstream-vhost: {{ .Values.externalName }}
     nginx.ingress.kubernetes.io/use-regex: "true"
   name: {{ .Values.name }} 
-  namespace: {{ .Values.namespace }}  
+  {{- if .Values.global.namespace }}
+  namespace: {{ .Values.global.namespace }}
+  {{- else }}
+  namespace: {{ .Values.namespace }}
+  {{- end }}   
 spec:
   rules:
   - host: {{ .Values.global.domain }}
@@ -18,5 +22,9 @@ spec:
             name: {{ .Values.name }}
             port:
               number: {{ .Values.httpPort }}
-        path: /{{ index $.Values "cluster-configs" "configmaps" "egov-config" "data" "s3-assets-bucket" }}/
+    {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}    
+        path: /{{ .Values.global.context.path }}/{{ index $.Values "cluster-configs" "configmaps" "egov-config" "data" "s3-assets-bucket" }}
+    {{- else }}
+        path: /{{ index $.Values "cluster-configs" "configmaps" "egov-config" "data" "s3-assets-bucket" }}
+    {{- end }}
         pathType: ImplementationSpecific
