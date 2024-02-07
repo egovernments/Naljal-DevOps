@@ -9,7 +9,11 @@ metadata:
     {{- toYaml . | nindent 4 }}
     {{- end }}
   name: {{ include "ingress-nginx.fullname" . }}
+  {{- if .Values.global.namespace }}
+  namespace: {{ .Values.global.namespace }}
+  {{- else }}
   namespace: {{ .Values.namespace }}
+  {{- end }}
 rules:
   - apiGroups:
       - ""
