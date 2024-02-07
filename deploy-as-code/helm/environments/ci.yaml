@@ -1,5 +1,5 @@
 global:
-  domain: naljal-builds.digit.org ## Add your Domain Name Eg: site.mydomain.com
+  domain: naljalseva.jjm.gov.in ## Add your Domain Name Eg: site.mydomain.com
   setup: fullsetup
   
 cluster-configs:
@@ -14,11 +14,11 @@ cluster-configs:
     cert-issuer: "letsencrypt-prod"
 
 jenkins:
-  persistence:
-    enabled: true
-    aws:
-      - volumeId: "vol-050f597f615755771" # Add volume id for jenkins-home
-        zone: ap-south-1b # Add respective availability_zones 
+  # persistence:
+  #   enabled: true
+  #   aws:
+  #     - volumeId: "vol-060d0b69accaf9312" # Add volume id for jenkins-home
+  #       zone: ap-south-1b # Add respective availability_zones 
 
   oauth:
     enabled: true
@@ -80,6 +80,6 @@ cluster-autoscaler:
   cloudProvider: aws  
   awsRegion: ap-south-1
   autoDiscovery:
-    clusterName: naljal-cicd # Add cluster name
+    clusterName: naljal-jenkins # Add cluster name
     tags:
-    - kubernetes.io/cluster/naljal-cicd # Add cluster name
+    - kubernetes.io/cluster/naljal-jenkins # Add cluster name
