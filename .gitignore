@@ -28,10 +28,8 @@ Session.vim
 
 # Chart dependencies
 **/charts/*.tgz
-*.tgz
 *Chart.lock
 
 .history
 *.terraform
 *.tfstate
-*.terraform*
