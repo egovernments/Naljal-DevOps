@@ -3,6 +3,7 @@ global:
    setup: fullsetup
    namespace: naljal
    containerRegistry: naljal
+   context: {}
 
 cluster-configs:
     secrets:
