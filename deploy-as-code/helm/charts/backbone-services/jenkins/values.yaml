@@ -404,7 +404,7 @@ master:
         unclassified:
           globalLibraries:
             libraries:
-            - defaultVersion: "master"
+            - defaultVersion: "naljal"
               name: "ci-libs"
               retriever:
                 modernSCM:
