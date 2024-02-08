@@ -587,24 +587,31 @@ master:
   ingress:
     enabled: false
     # Override for the default paths that map requests to the backend
-    paths: 
-    # - backend:
-    #     serviceName: ssl-redirect
-    #     servicePort: use-annotation
-    - backend:
-        serviceName: >-
-          {{ template "jenkins.fullname" . }}
-        # Don't use string here, use only integer value!
-        servicePort: 8080
+#    paths:
+#    # - backend:
+#    #     serviceName: ssl-redirect
+#    #     servicePort: use-annotation
+#    - backend:
+#        service:
+#          name: >-
+#            {{ template "jenkins.fullname" . }}
+#        # Don't use string here, use only integer value!
+#          port: 8080
+#      # Set this path to jenkinsUriPrefix above or use annotations to rewrite path
+#      path: /jenkins
+#      pathType: ImplementationSpecific
     # For Kubernetes v1.14+, use 'networking.k8s.io/v1beta1'
     apiVersion: "networking.k8s.io/v1beta1"
     labels: {}
     annotations: 
       kubernetes.io/ingress.class: "nginx"
-      nginx.ingress.kubernetes.io/use-regex: "true" 
+      nginx.ingress.kubernetes.io/use-regex: "true"
+      nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+      nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
     # kubernetes.io/tls-acme: "true"
     # Set this path to jenkinsUriPrefix above or use annotations to rewrite path
     path: "/"
+    pathType: ImplementationSpecific
     # configures the hostname e.g. jenkins.example.com
     # hostName: {{ .Values.global.domain }}
     # tls:

@@ -12,8 +12,8 @@ cluster-configs:
     namespace: jenkins
     serviceName: jenkins
     servicePort: 8080
-    appRoot: ""
     cert-issuer: "letsencrypt-prod"
+    redirect: /jenkins
 
 jenkins:
   # persistence:
@@ -56,6 +56,7 @@ jenkins:
         cpu: "2000m"
         memory: "4096Mi"
     javaOpts: "-Xms2560M -Xmx2560M -Duser.timezone=Asia/Calcutta"
+    jenkinsUriPrefix: /jenkins
 
 nginx-ingress:
   replicas: 1
