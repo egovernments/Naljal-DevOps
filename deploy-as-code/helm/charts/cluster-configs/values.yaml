@@ -9,7 +9,7 @@ cluster-configs:
     name: root-ingress
     namespace: naljal
     cert-issuer: "letsencrypt-staging"
-    appRoot: mgramseva
+#    appRoot: mgramseva
     serviceName: frontend-mgramseva
     servicePort: 80
     context: /
