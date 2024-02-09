@@ -482,29 +482,8 @@ master:
                 }
                 disabled(false)
               }
-              {{- else if (eq $job.name "naljal-uat") }}            
-              deployer(repo:'git@github.com:ddws-org/Naljal-DevOps.git', branch: 'naljal', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
-                      sandbox() 
-                    }
-                }
-                disabled(false)
-              }
-              {{- else if (eq $job.name "gujarat") }}            
-              deployer(repo:'git@github.com:ddws-org/Naljal-DevOps.git', branch: 'naljal', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
-                      sandbox() 
-                    }
-                }
-                disabled(false)
-              }
-              {{- else if (eq $job.name "karnataka") }}            
-              deployer(repo:'git@github.com:ddws-org/Naljal-DevOps.git', branch: 'naljal', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
-                      sandbox() 
-                    }
-                }
-                disabled(false)
-              }
-              {{- else if (eq $job.name "assam") }}            
-              deployer(repo:'git@github.com:ddws-org/Naljal-DevOps.git', branch: 'naljal', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+              {{- else if (eq $job.name "test") }}            
+              deployer(repo:'git@github.com:egovernments/DIGIT-DevOps.git', branch: 'central-instance', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
                       sandbox() 
                     }
                 }
