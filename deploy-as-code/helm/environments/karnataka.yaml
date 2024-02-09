@@ -29,6 +29,7 @@ global:
        - grafana
        - frontend-mgramseva
        - s3-proxy
+       - mgramseva-web
 
 cluster-configs:
     secrets:
