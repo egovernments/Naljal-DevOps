@@ -411,7 +411,7 @@ billing-service:
 ws-services:
   wcid-format: "WS/[CITY.CODE]/[fy:yyyy-yy]/[SEQ_EGOV_COMMON]"
   is-external-workflow-enabled: "true"
-  replicas: 2
+  replicas: 4
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-pending-collection-enabled: false
@@ -473,7 +473,7 @@ egov-mdms-service:
   java-args: -Dspring.profiles.active=monitoring
 
 egov-indexer:
-  replicas: 2
+  replicas: 3
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   initContainers:
@@ -809,6 +809,7 @@ kafka-v2:
 
 ### Kafka Connect <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 kafka-connect:
+  replicas: 3
   image:
     tag: "5.4.1"  
 
