@@ -33,6 +33,8 @@ global:
        - kibana-v1
        - grafana
        - jaeger
+       - vendor
+       - echallan-services
 
 cluster-configs:
     secrets:
