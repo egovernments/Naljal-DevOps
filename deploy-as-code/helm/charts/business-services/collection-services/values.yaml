@@ -132,11 +132,20 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-localization
+  - name: EGOV_URL_SHORTNER_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-url-shortening
   - name: COLL_NOTIFICATION_UI_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-config
         key: egov-services-fqdn-name
+  {{- if index .Values "tracing-enabled" }}
+  - name: TRACER_OPENTRACING_ENABLED
+    value: "true"
+  {{- end }}
   {{- if index .Values "apportion-endpoint" }}
   - name: EGOV_APPORTION_APPORTION_ENDPOINT
     value: {{ index .Values "apportion-endpoint" | quote }} 
