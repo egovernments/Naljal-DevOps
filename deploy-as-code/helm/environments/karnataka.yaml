@@ -405,7 +405,7 @@ chatbot:
 billing-service:
   replicas: 2
   memory_limits: 512Mi
-  demand.updateurl: '{"WS":"http://ws-calculator.karnataka:8080/ws-calculator/waterCalculator/_updateDemand"}'
+  demand.updateurl: '{"WS":"http://ws-calculator.karnataka:8080/karnataka/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
 
 ws-services:
