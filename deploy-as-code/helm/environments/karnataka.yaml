@@ -206,7 +206,6 @@ cluster-configs:
                 egov-searcher: "http://egov-searcher:8080/"
                 egov-data-uploader: "http://egov-data-uploader:8080/"
                 egov-indexer: "http://egov-indexer:8080/"
-                egov-hrms: "http://egov-hrms:8080/"
                 egov-pg-service: "http://egov-pg-service:8080/karnataka/"
                 es-client: "http://elasticsearch-data-v1.es-cluster:9200"
                 hr-masters: "http://hr-masters:8080/"
