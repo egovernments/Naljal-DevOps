@@ -33,8 +33,6 @@ global:
        - kibana-v1
        - grafana
        - jaeger
-       - vendor
-       - egov-hrms
 
 cluster-configs:
     secrets:

@@ -34,7 +34,7 @@ global:
        - grafana
        - jaeger
        - vendor
-       - egov-hrms
+       - echallan-services
 
 cluster-configs:
     secrets:
