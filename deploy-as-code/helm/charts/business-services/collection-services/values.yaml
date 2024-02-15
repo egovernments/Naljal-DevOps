@@ -86,6 +86,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-user
+  - name: EGOV_MDMS_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-mdms-service
   - name: EGOV_EGFCOMMONMASTERS_HOSTNAME
     valueFrom:
       configMapKeyRef:
