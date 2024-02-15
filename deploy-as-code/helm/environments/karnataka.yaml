@@ -558,7 +558,7 @@ pdf-service:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"     ##### Change repo url with Your fork Repo url
-      branch: "master"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "karnataka"                                   ##### Change repo branch with Your fork Repo branch
   data-config-urls: "file:///work-dir/config-naljal/pdf-service/data-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt-nm.json"
   format-config-urls: "file:///work-dir/config-naljal/pdf-service/format-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt-nm.json"
 
