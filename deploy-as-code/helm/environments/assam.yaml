@@ -34,8 +34,7 @@ global:
        - kibana-v1
        - grafana
        - jaeger
-       - vendor
-       - egov-hrms
+       - oauth2-proxy
 
 cluster-configs:
     secrets:

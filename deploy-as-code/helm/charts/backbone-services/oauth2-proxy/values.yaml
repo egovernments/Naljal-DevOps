@@ -44,6 +44,10 @@ args: |
   {{- if or .Values.config.existingConfig .Values.config.configFile }}
   - --config=/etc/oauth2_proxy/oauth2_proxy.cfg
   {{- end }}
+  {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
+  - --proxy-prefix=/{{ .Values.global.context.path }}/oauth2
+  - --ping-path=/{{ .Values.global.context.path }}/ping
+  {{- end }}
 
 extraVolumes: |
   - configMap:

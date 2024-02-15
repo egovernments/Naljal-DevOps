@@ -8,8 +8,13 @@ ingress:
   enabled: true
   context: "kibana"
   additionalAnnotations: |
+    {{- if and (.Values.global.context.path) (has "oauth2-proxy" .Values.global.context.list) }}
+    nginx.ingress.kubernetes.io/auth-signin:  https://$host/{{ .Values.global.context.path }}/oauth2/start?rd=$escaped_request_uri
+    nginx.ingress.kubernetes.io/auth-url:     https://$host/{{ .Values.global.context.path }}/oauth2/auth
+    {{- else }}
     nginx.ingress.kubernetes.io/auth-signin:  https://$host/oauth2/start?rd=$escaped_request_uri
-    nginx.ingress.kubernetes.io/auth-url:     https://$host/oauth2/auth 
+    nginx.ingress.kubernetes.io/auth-url:     https://$host/oauth2/auth
+    {{- end }}
 
 # Init Containers Configs
 initContainers: {}
