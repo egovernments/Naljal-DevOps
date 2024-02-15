@@ -17,6 +17,7 @@ global:
        - egov-mdms-service
        - egov-pg-service
        - egov-user
+       - egov-hrms
        - egov-user-event
        - egov-url-shortening
        - ifix-department-entity-service
@@ -184,6 +185,7 @@ cluster-configs:
                 egf-instrument: "http://egf-instrument:8080/"
                 egf-voucher: "http://egf-voucher:8080/"
                 egf-bill: "http://egf-bill:8080/"
+                egov-hrms: "http://egov-hrms:8080/karnataka/"
                 egov-enc-service: "http://egov-enc-service.karnataka:8080/"
                 egf-voucher-workflow: "http://egf-voucher-workflow:8080/"
                 egov-accesscontrol: "http://egov-accesscontrol:8080/"
@@ -204,7 +206,6 @@ cluster-configs:
                 egov-searcher: "http://egov-searcher:8080/"
                 egov-data-uploader: "http://egov-data-uploader:8080/"
                 egov-indexer: "http://egov-indexer:8080/"
-                egov-hrms: "http://egov-hrms:8080/"
                 egov-pg-service: "http://egov-pg-service:8080/karnataka/"
                 es-client: "http://elasticsearch-data-v1.es-cluster:9200"
                 hr-masters: "http://hr-masters:8080/"
@@ -557,9 +558,9 @@ pdf-service:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"     ##### Change repo url with Your fork Repo url
-      branch: "master"                                   ##### Change repo branch with Your fork Repo branch
-  data-config-urls: "file:///work-dir/config-naljal/pdf-service/data-config/tradelicense-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/property-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/property-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/tradelicense-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/firenoc-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/pt-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/tl-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/consolidatedbill.json,file:///work-dir/config-naljal/pdf-service/data-config/consolidatedreceipt.json,file:///work-dir/config-naljal/pdf-service/data-config/tlapplication.json,file:///work-dir/config-naljal/pdf-service/data-config/passvehicle-certificate.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-naljal/pdf-service/data-config/buildingpermit.json,file:///work-dir/config-naljal/pdf-service/data-config/ptmutationcertificate.json,file:///work-dir/config-naljal/pdf-service/data-config/tlrenewalcertificate.json,file:///work-dir/config-naljal/pdf-service/data-config/bpa-revocation.json,file:///work-dir/config-naljal/pdf-service/data-config/buildingpermit-low.json,file:///work-dir/config-naljal/pdf-service/data-config/misc-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-applicationwater.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-sanctionletter.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-estimationnotice.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-applicationsewerage.json,file:///work-dir/config-naljal/pdf-service/data-config/tlcertificate.json"
-  format-config-urls: "file:///work-dir/config-naljal/pdf-service/format-config/tradelicense-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/property-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/property-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/tradelicense-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/firenoc-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/pt-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/tl-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/consolidatedbill.json,file:///work-dir/config-naljal/pdf-service/format-config/consolidatedreceipt.json,file:///work-dir/config-naljal/pdf-service/format-config/tlapplication.json,file:///work-dir/config-naljal/pdf-service/format-config/passvehicle-certificate.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-naljal/pdf-service/format-config/buildingpermit.json,file:///work-dir/config-naljal/pdf-service/format-config/ptmutationcertificate.json,file:///work-dir/config-naljal/pdf-service/format-config/tlrenewalcertificate.json,file:///work-dir/config-naljal/pdf-service/format-config/bpa-revocation.json,file:///work-dir/config-naljal/pdf-service/format-config/buildingpermit-low.json,file:///work-dir/config-naljal/pdf-service/format-config/misc-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-applicationwater.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-sanctionletter.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-estimationnotice.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-applicationsewerage.json,file:///work-dir/config-naljal/pdf-service/format-config/tlcertificate.json"
+      branch: "karnataka"                                   ##### Change repo branch with Your fork Repo branch
+  data-config-urls: "file:///work-dir/config-naljal/pdf-service/data-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt-nm.json"
+  format-config-urls: "file:///work-dir/config-naljal/pdf-service/format-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt-nm.json"
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
