@@ -479,7 +479,7 @@ egov-indexer:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "master"
+      branch: "gujarat"
   egov-indexer-yaml-repo-path: "file:///work-dir/config-naljal/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-naljal/egov-indexer/collection-indexer.yml,file:///work-dir/config-naljal/egov-indexer/egov-echallan.yml,file:///work-dir/config-naljal/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-naljal/egov-indexer/error-queue.yml,file:///work-dir/config-naljal/egov-indexer/egov-vendor.yaml,file:///work-dir/config-naljal/egov-indexer/payment-indexer.yml,file:///work-dir/config-naljal/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-naljal/egov-indexer/property-services.yml,file:///work-dir/config-naljal/egov-indexer/water-service.yml,file:///work-dir/config-naljal/egov-indexer/water-services-meter.yml"
 
 egov-enc-service:
@@ -499,7 +499,7 @@ egov-persister:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "master"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "gujarat"                                    ##### Change repo branch with Your fork Repo branch
 
 pgr-services:
   memory_limits: 512Mi
@@ -515,21 +515,21 @@ egov-searcher:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "master"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "gujarat"                                   ##### Change repo branch with Your fork Repo branch
 
 dashboard-analytics:
   config-schema-paths: "file:///work-dir/config-naljal/egov-dss-dashboards/dashboard-analytics/*.json"
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "master"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "gujarat"                                   ##### Change repo branch with Your fork Repo branch
 
 dashboard-ingest:
   config-schema-paths: "file:///work-dir/config-naljal/egov-dss-dashboards/dashboard-ingest/*.json"
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "master"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "gujarat"                                    ##### Change repo branch with Your fork Repo branch
 
 # reportinfra >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -910,4 +910,4 @@ grafana:
     gitSync:
       enabled: true
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "master"
+      branch: "gujarat"
