@@ -414,6 +414,7 @@ billing-service:
 ws-services:
   wcid-format: "WS/[CITY.CODE]/[fy:yyyy-yy]/[SEQ_EGOV_COMMON]"
   is-external-workflow-enabled: "true"
+  workflow.workDir.path: "http://egov-workflow-v2:8080/karnataka/"
   replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
@@ -448,6 +449,7 @@ ws-calculator:
   replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
+  workflow.workDir.path: "http://egov-workflow-v2:8080/karnataka/"
   sms-demand-enabled: true
   sms-payment-link-enabled: false
   sms-bill-download-enable: true
