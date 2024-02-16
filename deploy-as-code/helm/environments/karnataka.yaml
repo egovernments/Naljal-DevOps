@@ -36,7 +36,6 @@ global:
        - grafana
        - jaeger
        - oauth2-proxy
-       - egov-workflow-v2
 
 
 cluster-configs:
@@ -204,7 +203,7 @@ cluster-configs:
                 egov-mdms-create: "http://egov-mdms-create:8080/"
                 egov-eis: "http://egov-eis:8080/"
                 egov-workflow: "http://egov-workflow:8080/"
-                egov-workflow-v2: "http://egov-workflow-v2:8080/karnataka/"
+                egov-workflow-v2: "http://egov-workflow-v2.karnataka:8080/"
                 egov-searcher: "http://egov-searcher:8080/"
                 egov-data-uploader: "http://egov-data-uploader:8080/"
                 egov-indexer: "http://egov-indexer:8080/"
@@ -414,7 +413,6 @@ billing-service:
 ws-services:
   wcid-format: "WS/[CITY.CODE]/[fy:yyyy-yy]/[SEQ_EGOV_COMMON]"
   is-external-workflow-enabled: "true"
-  workflow.workDir.path: "http://egov-workflow-v2:8080/karnataka/"
   replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
@@ -449,7 +447,6 @@ ws-calculator:
   replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
-  workflow.workDir.path: "http://egov-workflow-v2:8080/karnataka/"
   sms-demand-enabled: true
   sms-payment-link-enabled: false
   sms-bill-download-enable: true
