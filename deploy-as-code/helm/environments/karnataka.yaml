@@ -36,6 +36,7 @@ global:
        - grafana
        - jaeger
        - oauth2-proxy
+       - egov-workflow-v2
 
 
 cluster-configs:
@@ -203,7 +204,7 @@ cluster-configs:
                 egov-mdms-create: "http://egov-mdms-create:8080/"
                 egov-eis: "http://egov-eis:8080/"
                 egov-workflow: "http://egov-workflow:8080/"
-                egov-workflow-v2: "http://egov-workflow-v2:8080/"
+                egov-workflow-v2: "http://egov-workflow-v2:8080/karnataka/"
                 egov-searcher: "http://egov-searcher:8080/"
                 egov-data-uploader: "http://egov-data-uploader:8080/"
                 egov-indexer: "http://egov-indexer:8080/"
