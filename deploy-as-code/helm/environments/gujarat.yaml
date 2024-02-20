@@ -25,6 +25,7 @@ global:
        - property-services
        - ws-services
        - ws-calculator
+       - vendor
        - user-otp
        - pgadmin
        - grafana
@@ -184,6 +185,7 @@ cluster-configs:
                 egf-instrument: "http://egf-instrument:8080/"
                 egf-voucher: "http://egf-voucher:8080/"
                 egf-bill: "http://egf-bill:8080/"
+                egov-hrms: "http://egov-hrms:8080/gujarat/"
                 egov-enc-service: "http://egov-enc-service.gujarat:8080/"
                 egf-voucher-workflow: "http://egf-voucher-workflow:8080/"
                 egov-accesscontrol: "http://egov-accesscontrol:8080/"
@@ -204,7 +206,6 @@ cluster-configs:
                 egov-searcher: "http://egov-searcher:8080/"
                 egov-data-uploader: "http://egov-data-uploader:8080/"
                 egov-indexer: "http://egov-indexer:8080/"
-                egov-hrms: "http://egov-hrms:8080/"
                 egov-pg-service: "http://egov-pg-service:8080/gujarat/"
                 es-client: "http://elasticsearch-data-v1.es-cluster:9200"
                 hr-masters: "http://hr-masters:8080/"
@@ -405,7 +406,7 @@ chatbot:
 billing-service:
   replicas: 2
   memory_limits: 512Mi
-  demand.updateurl: '{"WS":"http://ws-calculator.gujarat:8080/ws-calculator/waterCalculator/_updateDemand"}'
+  demand.updateurl: '{"WS":"http://ws-calculator.gujarat:8080/gujarat/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
 
 ws-services:
@@ -558,8 +559,8 @@ pdf-service:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"     ##### Change repo url with Your fork Repo url
       branch: "gujarat"                                   ##### Change repo branch with Your fork Repo branch
-  data-config-urls: "file:///work-dir/config-naljal/pdf-service/data-config/tradelicense-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/property-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/property-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/tradelicense-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/firenoc-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/pt-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/tl-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/consolidatedbill.json,file:///work-dir/config-naljal/pdf-service/data-config/consolidatedreceipt.json,file:///work-dir/config-naljal/pdf-service/data-config/tlapplication.json,file:///work-dir/config-naljal/pdf-service/data-config/passvehicle-certificate.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-naljal/pdf-service/data-config/buildingpermit.json,file:///work-dir/config-naljal/pdf-service/data-config/ptmutationcertificate.json,file:///work-dir/config-naljal/pdf-service/data-config/tlrenewalcertificate.json,file:///work-dir/config-naljal/pdf-service/data-config/bpa-revocation.json,file:///work-dir/config-naljal/pdf-service/data-config/buildingpermit-low.json,file:///work-dir/config-naljal/pdf-service/data-config/misc-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-applicationwater.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-sanctionletter.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-estimationnotice.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-applicationsewerage.json,file:///work-dir/config-naljal/pdf-service/data-config/tlcertificate.json"
-  format-config-urls: "file:///work-dir/config-naljal/pdf-service/format-config/tradelicense-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/property-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/property-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/tradelicense-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/firenoc-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/pt-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/tl-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/consolidatedbill.json,file:///work-dir/config-naljal/pdf-service/format-config/consolidatedreceipt.json,file:///work-dir/config-naljal/pdf-service/format-config/tlapplication.json,file:///work-dir/config-naljal/pdf-service/format-config/passvehicle-certificate.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-naljal/pdf-service/format-config/buildingpermit.json,file:///work-dir/config-naljal/pdf-service/format-config/ptmutationcertificate.json,file:///work-dir/config-naljal/pdf-service/format-config/tlrenewalcertificate.json,file:///work-dir/config-naljal/pdf-service/format-config/bpa-revocation.json,file:///work-dir/config-naljal/pdf-service/format-config/buildingpermit-low.json,file:///work-dir/config-naljal/pdf-service/format-config/misc-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-applicationwater.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-sanctionletter.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-estimationnotice.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-applicationsewerage.json,file:///work-dir/config-naljal/pdf-service/format-config/tlcertificate.json"
+  data-config-urls: "file:///work-dir/config-naljal/pdf-service/data-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt-nm.json"
+  format-config-urls: "file:///work-dir/config-naljal/pdf-service/format-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt-nm.json"
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -602,6 +603,7 @@ cert-manager:
   
   
 zuul:
+  contextUnique: true
   namespace: gujarat
   replicas: 3
   custom-filter-property: "false"
@@ -758,6 +760,7 @@ jaeger:
 
 # redis >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 redis:
+  namespace: backbone
   replicas: 1
   images:
     - egovio/redis:3.2
@@ -782,13 +785,13 @@ kafka-v2:
     tag: "5.4.1"
   persistence:
     enabled: true
-    aws:
-      - volumeId: "<kafka-v2_volume_id_1>" ## REPLACE: add volume id
-        zone: ap-south-1b     ## REPLACE: add respective zone. 
-      - volumeId: "<kafka-v2_volume_id_2>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<kafka-v2_volume_id_3>"  ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
+    # aws:
+    #   - volumeId: "<kafka-v2_volume_id_1>" ## REPLACE: add volume id
+    #     zone: ap-south-1b     ## REPLACE: add respective zone. 
+    #   - volumeId: "<kafka-v2_volume_id_2>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<kafka-v2_volume_id_3>"  ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
   zookeeperHosts: "zookeeper-v2., kafka-kraft:2181/kafka-v2"
 
   heapOptions: "-Xms704M -Xmx704M"
@@ -807,6 +810,7 @@ kafka-v2:
 
 ### Kafka Connect <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 kafka-connect:
+  replicas: 3
   image:
     tag: "5.4.1"  
 
@@ -817,13 +821,13 @@ zookeeper-v2:
     tag: "5.4.1"
   persistence:
     enabled: true
-    aws:
-      - volumeId: "<zookeeper-v2_volume_id_1>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<zookeeper-v2_volume_id_2>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<zookeeper-v2_volume_id_3>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
+    # aws:
+    #   - volumeId: "<zookeeper-v2_volume_id_1>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<zookeeper-v2_volume_id_2>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<zookeeper-v2_volume_id_3>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
 
   ## Zookeeper JVM Heap Option
   heapOptions: "-Xms256M -Xmx256M"
@@ -842,13 +846,13 @@ elasticsearch-data-v1:
     tag: 6.6.2
   persistence:
     enabled: true
-    aws:
-      - volumeId: "<elastic_search_data_v1_volume_id_1>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<elastic_search_data_v1_volume_id_2>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<elastic_search_data_v1_volume_id_3>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
+    # aws:
+    #   - volumeId: "<elastic_search_data_v1_volume_id_1>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<elastic_search_data_v1_volume_id_2>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<elastic_search_data_v1_volume_id_3>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
 
   esJavaOpts: "-Xmx1g -Xms1g"
   resources:
@@ -867,13 +871,13 @@ elasticsearch-master-v1:
     tag: 6.6.2
   persistence:
     enabled: true
-    aws:
-      - volumeId: "<elastic_search_master_v1_volume_id_1>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<elastic_search_master_v1_volume_id_2>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<elastic_search_master_v1_volume_id_3>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
+    # aws:
+    #   - volumeId: "<elastic_search_master_v1_volume_id_1>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<elastic_search_master_v1_volume_id_2>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<elastic_search_master_v1_volume_id_3>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
  
   esJavaOpts: "-Xmx448m -Xms448m"
   resources:
@@ -896,6 +900,7 @@ es-curator:
 
 oauth2-proxy:
   namespace: gujarat
+  contextUnique: true
   config:
     configFile: |-
       email_domains = [ "*" ]
