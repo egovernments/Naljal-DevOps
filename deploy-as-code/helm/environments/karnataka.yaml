@@ -510,7 +510,7 @@ egov-data-uploader:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"      ##### Change repo url with Your fork Repo url
-      branch: "master"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "karnataka"                                    ##### Change repo branch with Your fork Repo branch
 
 egov-searcher:
   search-yaml-path: "file:///work-dir/config-naljal/egov-searcher/bill-genie.yml,file:///work-dir/config-naljal/egov-searcher/wateropensearch.yml,file:///work-dir/config-naljal/egov-searcher/localitySearcher.yml,file:///work-dir/config-naljal/egov-searcher/propertyopensearch.yml"
@@ -552,7 +552,7 @@ report:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"     ##### Change repo url with Your fork Repo url
-      branch: "master"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "karnataka"                                   ##### Change repo branch with Your fork Repo branch
   report-locationsfile-path: "file:///work-dir/config-naljal/reports/reportFileLocationsv1.txt"
 
 pdf-service:
