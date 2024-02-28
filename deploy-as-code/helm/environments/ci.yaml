@@ -46,6 +46,8 @@ jenkins:
       acl: [ddws-org*karnataka]
     - name: assam
       acl: [ddws-org*assam]
+    - name: madhyapradesh
+      acl: [ddws-org*madhyapradesh]
     
        
   master:
