@@ -22,7 +22,7 @@ initContainers: {}
 # Container Configs
 image:
   repository: "docker.elastic.co/kibana/kibana"
-  tag: 6.6.2
+  tag: 8.11.3
 replicas: "1"
 httpPort: 5601
 elasticsearchHosts: "http://elasticsearch-data-v1.es-cluster:9200"
@@ -42,7 +42,7 @@ env: |
   - name: SERVER_BASEPATH
     value: {{ .Values.serverBasePath | quote }}
   {{- end }}
-  - name: ELASTICSEARCH_URL
+  - name: ELASTICSEARCH_HOSTS
     value: {{ .Values.elasticsearchHosts | quote }}
   - name: SERVER_REWRITEBASEPATH
     value: "true"   
