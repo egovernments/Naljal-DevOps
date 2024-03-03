@@ -844,7 +844,7 @@ zookeeper-v2:
 # es-v1-cluster AWS >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 elasticsearch-data-v1:
   image:
-    tag: 6.6.2
+    tag: 8.11.3
   persistence:
     enabled: true
     # aws:
@@ -869,7 +869,7 @@ elasticsearch-data-v1:
 elasticsearch-master-v1:
   replicas: 3
   image:
-    tag: 6.6.2
+    tag: 8.11.3
   persistence:
     enabled: true
     # aws:
@@ -888,6 +888,10 @@ elasticsearch-master-v1:
     limits:
       cpu: "500m"
       memory: "896Mi"
+
+kibana-v1:
+  image:
+    tag: 8.11.3
 
 es-curator:
   schedule: "45 18 * * *"
@@ -918,3 +922,22 @@ grafana:
       repo: "git@github.com:ddws-org/config-naljal"
       branch: "madhyapradesh"
 
+
+pgadmin:
+  replicas: 1
+  dbUrl: "naljal-uat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com"
+  dbReadUrl: "naljal-uat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com"
+  environment: "NALJAL_PROD"
+  maintenance-db-name: "naljaluatdb"
+  db-admin-username: "mp_admin"
+  db-read-username: "mp_read_user"
+  cookie-protection: "False"
+  max-query-history: "50"
+  max-login-attempts: "5"
+  enable-save-password: "False"
+  persistence:
+    enabled: true
+    dataDirSize: "1Gi"
+    aws:
+      volumeId: "vol-06b79230a0d42892d"
+      zone: ap-south-1b
