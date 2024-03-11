@@ -34,7 +34,7 @@ jenkins:
 
   jobBuilder:    # Add jobBuilder repo's, add repo's ssh link
     repos: >-
-      'git@github.com:ddws-org/naljal-digit.git'
+      'git@github.com:ddws-org/naljal-digit.git','git@github.com:ddws-org/mdms-naljal.git'
   deploymentJobs:  # Setup deploymentJobs ACL 
     - name: naljal-uat    # deployment job name
       acl: [ddws-org*naljal-uat] # GitHub team name, Members of the team get access to deployment job
