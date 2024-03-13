@@ -409,6 +409,8 @@ billing-service:
   memory_limits: 512Mi
   demand.updateurl: '{"WS":"http://ws-calculator.madhyapradesh:8080/madhyapradesh/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
+  flyway-enabled: true
+  spring-flyway-enabled: true
 
 ws-services:
   wcid-format: "WS/[CITY.CODE]/[fy:yyyy-yy]/[SEQ_EGOV_COMMON]"
