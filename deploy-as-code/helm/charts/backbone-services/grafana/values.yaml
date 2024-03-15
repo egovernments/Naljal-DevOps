@@ -10,8 +10,18 @@ ingress:
   waf: 
     enabled: false  
   additionalAnnotations: |
+    {{- if and (.Values.global.context.path) (has "oauth2-proxy" .Values.global.context.list) }}
+    nginx.ingress.kubernetes.io/auth-signin:  https://$host/{{ .Values.global.context.path }}/oauth2/start?rd=$escaped_request_uri
+    nginx.ingress.kubernetes.io/auth-url:     https://$host/{{ .Values.global.context.path }}/oauth2/auth
+    {{- else }}
     nginx.ingress.kubernetes.io/auth-signin:  https://$host/oauth2/start?rd=$escaped_request_uri
-    nginx.ingress.kubernetes.io/auth-url:     https://$host/oauth2/auth 
+    nginx.ingress.kubernetes.io/auth-url:     https://$host/oauth2/auth
+    {{- end }}
+    nginx.ingress.kubernetes.io/lua-resty-waf: active
+    nginx.ingress.kubernetes.io/lua-resty-waf-allow-unknown-content-types: "true"
+    nginx.ingress.kubernetes.io/lua-resty-waf-debug: "true"
+    nginx.ingress.kubernetes.io/lua-resty-waf-process-multipart-body: "false"
+    nginx.ingress.kubernetes.io/lua-resty-waf-score-threshold: "10"
 
 # Init Containers Configs
 initContainers:

@@ -27,7 +27,6 @@ global:
        - ws-calculator
        - user-otp
        - pgadmin
-       - grafana
        - frontend-mgramseva
        - s3-proxy
        - mgramseva-web
@@ -904,6 +903,10 @@ oauth2-proxy:
       upstreams = [ "file:///dev/null" ]
 
 grafana:
+  grafana.ini:
+    server:
+      root_url: "%(protocol)s://%(domain)s/assam/monitoring"
+      serve_from_sub_path: true
   namespace: monitoring
   dashboardsFolder: /work-dir/config-naljal/configs/monitoring-dashboards
   initContainers:
