@@ -188,7 +188,7 @@ cluster-configs:
                 egov-hrms: "http://egov-hrms:8080/madhyapradesh/"
                 egov-enc-service: "http://egov-enc-service.madhyapradesh:8080/"
                 egf-voucher-workflow: "http://egf-voucher-workflow:8080/"
-                egov-accesscontrol: "http://egov-accesscontrol:8080/"
+                egov-accesscontrol: "http://egov-accesscontrol:8080/madhyapradesh/"
                 egov-user: "http://egov-user:8080/madhyapradesh/"
                 egov-user-egov: "http://egov-user.madhyapradesh:8080/madhyapradesh/"
                 egov-location: "http://egov-location:8080/madhyapradesh/"
