@@ -35,6 +35,7 @@ global:
        - grafana
        - jaeger
        - oauth2-proxy
+       - accesscontrol
 
 
 cluster-configs:
