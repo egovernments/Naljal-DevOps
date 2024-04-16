@@ -374,7 +374,7 @@ billing-service:
   sms-bill-notification-enable: false
 
 ws-services:
-  wcid-format: "[DISTRICT_CODE][CITY.CODE][SEQ_WS_CON_ID_[TENANT_ID]]"
+  wcid-format: "[DISTRICT.CODE][CITY.CODE][SEQ_WS_CON_ID_[TENANT_ID]]"
   is-external-workflow-enabled: "true"
   replicas: 4
   heap: "-Xmx512m -Xms512m"
