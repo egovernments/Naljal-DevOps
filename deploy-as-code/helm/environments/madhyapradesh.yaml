@@ -412,7 +412,7 @@ billing-service:
   spring-flyway-enabled: true
 
 ws-services:
-  wcid-format: "WS/[CITY.CODE]/[fy:yyyy-yy]/[SEQ_EGOV_COMMON]"
+  wcid-format: "[DISTRICT.CODE][CITY.CODE][SEQ_WS_CON_ID_[TENANT_ID]]"
   is-external-workflow-enabled: "true"
   replicas: 2
   heap: "-Xmx512m -Xms512m"
