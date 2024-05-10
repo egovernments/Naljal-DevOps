@@ -33,10 +33,10 @@ func main() {
 	replaceInFile("../sample-aws/main.tf", data, false)
 	fmt.Println("main.tf file updated successfully!")
 
-	replaceInFile("../../../config-as-code/environments/egov-demo.yaml", data, true)
+	replaceInFile("../../../deploy-as-code/helm/environments/egov-demo.yaml", data, true)
 	fmt.Println("env yaml file updated successfully!")
 
-	replaceInFile("../../../config-as-code/environments/egov-demo-secrets.yaml", data, true)
+	replaceInFile("../../../deploy-as-code/helm/environments/egov-demo-secrets.yaml", data, true)
 	fmt.Println("env secrets yaml file updated successfully!")
 }
 
@@ -46,12 +46,16 @@ func validateInputs(data map[string]interface{}) {
 		placeholder := fmt.Sprintf("<%s>", key) // Include angle brackets in the placeholder
 		replacement := fmt.Sprintf("%v", value)
 
-		if placeholder == "<db_name>" || placeholder == "<db_username>" {
+		if placeholder == "<db_name>"  {
 			isValidDBName(replacement)
 		}
 
 		if placeholder == "<cluster_name>" {
 			isValidClusterName(replacement)
+		}
+
+		if placeholder == "<state-name>" {
+			isValidstatename(replacement)
 		}
 
 	}
@@ -113,7 +117,7 @@ func replaceVariableValues(content string, data map[string]interface{}, stripQuo
 		placeholder := fmt.Sprintf("<%s>", key) // Include angle brackets in the placeholder
 		replacement := fmt.Sprintf("%v", value)
 
-		if placeholder == "<db_name>" || placeholder == "<db_username>" {
+		if placeholder == "<db_name>"  {
 			isValidDBName(replacement)
 		}
 
@@ -154,6 +158,17 @@ func isValidClusterName(input string) error {
 	matched, _ := regexp.MatchString(pattern, input)
 	if !matched {
 		log.Fatalf(" Cluster name can have only lowercase alphanumeric characters and hyphens")
+	}
+	return nil
+}
+
+func isValidstatename(input string) error {
+	// Regular expression pattern for lowercase alphanumeric characters and hyphens
+	pattern := "^[a-z0-9-]+$"
+	input = input[1 : len(input)-1]
+	matched, _ := regexp.MatchString(pattern, input)
+	if !matched {
+		log.Fatalf(" state name can have only lowercase alphanumeric characters and hyphens")
 	}
 	return nil
 }

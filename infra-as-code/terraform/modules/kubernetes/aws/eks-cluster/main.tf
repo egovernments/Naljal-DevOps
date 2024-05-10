@@ -50,6 +50,7 @@ resource "aws_eks_cluster" "eks_cluster" {
     security_group_ids     = "${var.master_nodes_security_grp_ids}"
     subnet_ids             = "${var.subnets}"
     endpoint_public_access = true
+    vpc_id                 = "${var.vpc_id}"
   }
 
   depends_on = [

@@ -2,6 +2,8 @@ variable "cluster_name" {
 }
 
 variable "vpc_id" {
+  description = "VPC-naljal"
+  default = "vpc-053cd69a368474226"
 }
 
 variable "subnets" {

@@ -10,30 +10,8 @@ terraform {
   }
 }
 
-module "network" {
-  source             = "../modules/kubernetes/aws/network"
-  vpc_cidr_block     = "${var.vpc_cidr_block}"
-  cluster_name       = "${var.cluster_name}"
-  availability_zones = "${var.network_availability_zones}"
-}
 
-# PostGres DB
-module "db" {
-  source                        = "../modules/db/aws"
-  subnet_ids                    = "${module.network.private_subnets}"
-  vpc_security_group_ids        = ["${module.network.rds_db_sg_id}"]
-  availability_zone             = "${element(var.availability_zones, 0)}"
-  instance_class                = "db.t3.medium"  ## postgres db instance type
-  engine_version                = "11.20"   ## postgres version
-  storage_type                  = "gp2"
-  storage_gb                    = "10"     ## postgres disk size
-  backup_retention_days         = "7"
-  administrator_login           = "${var.db_username}"
-  administrator_login_password  = "${var.db_password}"
-  identifier                    = "${var.cluster_name}-db"
-  db_name                       = "${var.db_name}"
-  environment                   = "${var.cluster_name}"
-}
+
 
 data "aws_eks_cluster" "cluster" {
   name = "${module.eks.cluster_id}"
@@ -59,9 +37,9 @@ module "eks" {
   source          = "terraform-aws-modules/eks/aws"
   version         = "17.24.0"
   cluster_name    = "${var.cluster_name}"
-  vpc_id          = "${module.network.vpc_id}"
+  vpc_id          = "${var.vpc_id}"
   cluster_version = "${var.kubernetes_version}"
-  subnets         = "${concat(module.network.private_subnets, module.network.public_subnets)}"
+  subnets         = "${concat(var.existing_private_subnet_ids, var.existing_public_subnet_ids)}"
 
 ##By default worker groups is Configured with SPOT, As per your requirement you can below values.
 
@@ -69,7 +47,7 @@ module "eks" {
     {
       name                          = "spot"
       ami_id                        = "ami-0a82b544ef71a207d"   
-      subnets                       = "${concat(slice(module.network.private_subnets, 0, length(var.availability_zones)))}"
+      subnets                       = "${concat(slice(var.existing_private_subnet_ids, 0, length(var.availability_zones)))}"
       instance_type                 = "${var.instance_type}"
       override_instance_types       = "${var.override_instance_types}"
       kubelet_extra_args            = "--node-labels=node.kubernetes.io/lifecycle=spot"
@@ -143,7 +121,7 @@ resource "aws_security_group_rule" "rds_db_ingress_workers" {
   from_port                = 5432
   to_port                  = 5432
   protocol                 = "tcp"
-  security_group_id        = "${module.network.rds_db_sg_id}"
+  security_group_id        = "${var.existing_rds_security_group_id}"
   source_security_group_id = "${module.eks.worker_security_group_id}"
   type                     = "ingress"
 }
@@ -151,39 +129,18 @@ resource "aws_security_group_rule" "rds_db_ingress_workers" {
 resource "aws_eks_addon" "kube_proxy" {
   cluster_name      = data.aws_eks_cluster.cluster.name
   addon_name        = "kube-proxy"
+  addon_version     = "v1.29.0-eksbuild.1"
   resolve_conflicts = "OVERWRITE"
 }
 resource "aws_eks_addon" "core_dns" {
   cluster_name      = data.aws_eks_cluster.cluster.name
   addon_name        = "coredns"
+  addon_version     = "v1.11.1-eksbuild.4"
   resolve_conflicts = "OVERWRITE"
 }
 resource "aws_eks_addon" "aws_ebs_csi_driver" {
   cluster_name      = data.aws_eks_cluster.cluster.name
   addon_name        = "aws-ebs-csi-driver"
-  addon_version     = "v1.23.0-eksbuild.1"
+  addon_version     = "v1.30.0-eksbuild.1"
   resolve_conflicts = "OVERWRITE"
-}
-
-module "es-master" {
-
-  source = "../modules/storage/aws"
-  storage_count = 3
-  environment = "${var.cluster_name}"
-  disk_prefix = "es-master"
-  availability_zones = "${var.availability_zones}"
-  storage_sku = "gp2"
-  disk_size_gb = "2"
-  
-}
-module "es-data-v1" {
-
-  source = "../modules/storage/aws"
-  storage_count = 3
-  environment = "${var.cluster_name}"
-  disk_prefix = "es-data-v1"
-  availability_zones = "${var.availability_zones}"
-  storage_sku = "gp2"
-  disk_size_gb = "25"
-  
 }
