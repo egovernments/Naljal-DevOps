@@ -675,7 +675,8 @@ egov-workflow-v2:
 egov-hrms:
   java-args: -Dspring.profiles.active=monitoring
   employee-applink: "https://egov-demo.egovernments.org/employee/user/login"
-
+  memory_limits: 512Mi
+  heap: "-Xmx400m -Xms400m"
 
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
