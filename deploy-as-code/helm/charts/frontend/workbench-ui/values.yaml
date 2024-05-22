@@ -8,6 +8,7 @@ namespace: naljal
 # Ingress Configs
 ingress:
   enabled: true
+  zuul: true
   context: "workbench-ui"
 
 # Init Containers Configs

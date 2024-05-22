@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Jaeger values are grouped by component. Cassandra values override subchart values
 
-namespace: monitoring
+
 
 labels:
   app: jaeger
@@ -12,13 +12,13 @@ labels:
 image:
   collector:
     repository: "jaegertracing/jaeger-collector"
-    tag: "1.18"
+    tag: "1.53.0"
   query:  
     repository: "jaegertracing/jaeger-query"
-    tag: "1.18" 
+    tag: "1.53.0" 
   agent: 
     repository: "jaegertracing/jaeger-agent"
-    tag: "1.18" 
+    tag: "1.53.0" 
   spark:   
     repository: "jaegertracing/spark-dependencies"
     tag: "latest"

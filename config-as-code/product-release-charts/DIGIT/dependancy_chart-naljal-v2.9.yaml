@@ -1,0 +1,82 @@
+version: v1.0
+modules:
+    - name: backbone
+      services:
+        - kafka-kraft
+        - kafka-connect
+        - kafka-connect-restart-tasks
+        - elasticsearch-data-v1
+        - elasticsearch-master-v1
+        - kibana-v8
+        - pgadmin
+    - name: authn-authz
+      services:
+        - redis
+        - ingress-nginx
+        - naljal/gateway:gateway-filestore-fix-ebbd0c4cd8-24
+        - oauth2-proxy
+    - name: core
+      dependencies:
+        - "backbone"
+        - "authn-authz" 
+      services:
+        - naljal/egov-accesscontrol:core-2.9-lts-mvn-check-34362a8b87-9
+        - naljal/egov-enc-service:core-2.9-lts-mvn-check-c607f2d4de-20
+        - naljal/egov-filestore:core-2.9-lts-mvn-check-17b905d01d-13
+        - naljal/egov-idgen:core-2.9-lts-mvn-check-c33cfe45ab-7
+        - naljal/egov-indexer:core-2.9-lts-mvn-check-5f0cc52126-55
+        - naljal/egov-localization:core-2.9-lts-mvn-check-59c2e5ea5b-9
+        - naljal/egov-location:core-2.9-lts-mvn-check-c33cfe45ab-9
+        - naljal/egov-mdms-service:core-2.9-lts-mvn-check-c33cfe45ab-12
+        - naljal/egov-notification-mail:core-2.9-lts-mvn-check-c33cfe45ab-4
+        - naljal/egov-notification-sms:core-2.9-lts-mvn-check-c33cfe45ab-6
+        - naljal/egov-otp:core-2.9-lts-mvn-check-72333e5530-5
+        - naljal/egov-persister:core-2.9-lts-mvn-check-c33cfe45ab-7
+        - naljal/egov-pg-service:core-2.9-lts-mvn-check-421601fcdf-10
+        - naljal/egov-searcher:v2.5-log4j-12a9331b-2
+        - naljal/egov-url-shortening:core-2.9-lts-mvn-check-ecf5d0a880-11
+        - naljal/egov-user:core-2.9-lts-egov-user-deployement-c33cfe45ab-13
+        - naljal/user-otp:core-2.9-lts-mvn-check-15fe7099b6-7
+        - naljal/egov-workflow-v2:core-2.9-lts-mvn-check-07ed8e9a49-12
+        - naljal/pdf-service:DPG-1941-pdf-producer-issue-fde2b43058-23
+        - naljal/egov-user-event:v1.1.4-1bb387be97-1
+        - naljal/playground:mongo-v2
+    - name: business
+      dependencies:
+        - "core"
+      services:
+        - naljal/collection-services:v2.5-log4j-f0f010a-19
+        - naljal/billing-service:v1.4.0-d471c7d6-22
+        - naljal/egf-instrument:v2.5-log4j-f0f010a-3
+        - naljal/egf-master:v2.5-log4j-f0f010a-3
+        - naljal/egov-apportion-service:advance-changes-snehal-4109a7cb7b-4
+        - naljal/egov-hrms:SM-3589-38549814c2-4
+        - naljal/dashboard-analytics:v2.5-log4j-f0f010a-5
+        - naljal/dashboard-ingest:v2.5-log4j-f0f010a-7
+    - name: "frontend"             
+      dependencies:
+        - "business"
+      services:
+        - naljal/frontend-mgramseva:v1.2.20-4e28726e44-5  
+        - naljal/mgramseva-web:v1.0.0-588d24dc4a-18 
+    - name: m_water-service   #Water
+      dependencies:
+          - "frontend"
+          - "core"
+      services:
+        - naljal/ws-services:v1.6.0-e995dab88b-1
+        - naljal/ws-calculator:demandNotGeneratinIsue-eb37d172d6-4
+        - naljal/echallan-calculator:v1.1.0-1b7dca65e5-2
+        - naljal/property-services:ownerNumberValidationremove-b772eb0f3a-4
+        - naljal/mgramseva-ifix-adapter:v1.1.0-17f8fe75-74
+        - naljal/echallan-services:v1.2.0-1b7dca65e5-2
+        - naljal/vendor:v1.0.5-1b7dca65e5-2
+    - name: m_expense   #Expense
+      dependencies:
+          - "frontend"
+          - "core"
+      services:
+        - naljal/echallan-services:v1.2.0-1b7dca65e5-2
+        - naljal/echallan-calculator:v1.1.0-1b7dca65e5-2       
+        - naljal/vendor:v1.0.5-1b7dca65e5-2 
+    

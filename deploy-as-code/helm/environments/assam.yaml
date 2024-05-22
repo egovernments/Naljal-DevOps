@@ -690,6 +690,10 @@ logging-config:
   es-port: "9200"
 
 jaeger:
+  query:
+    enabled: true
+    # basePath: assam/tracing
+  namespace: monitoring
   host: "jaeger-agent.monitoring"
   port: "6831"
   sampler-type: const
