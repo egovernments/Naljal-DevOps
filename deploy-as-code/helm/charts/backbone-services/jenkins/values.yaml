@@ -488,7 +488,14 @@ master:
                     }
                 }
                 disabled(false)
-              }                          
+              }
+              {{- else if (eq $job.name "uat") }}
+              deployer(repo:'git@github.com:ddws-org/Naljal-DevOps.git', branch: 'LTS-upgrade', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+                      sandbox()
+                    }
+                }
+                disabled(false)
+              }
               {{- else }}
               deployer(repo:'git@github.com:ddws-org/Naljal-DevOps.git', branch: 'naljal', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
                       sandbox() 
