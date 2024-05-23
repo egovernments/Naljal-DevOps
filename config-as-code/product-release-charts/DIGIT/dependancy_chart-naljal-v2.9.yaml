@@ -5,9 +5,9 @@ modules:
         - kafka-kraft
         - kafka-connect
         - kafka-connect-restart-tasks
-        - elasticsearch-data-v1
-        - elasticsearch-master-v1
-        - kibana-v8
+        - elasticsearch-data
+        - elasticsearch-master
+        - kibana
         - pgadmin
     - name: authn-authz
       services:
@@ -20,39 +20,39 @@ modules:
         - "backbone"
         - "authn-authz" 
       services:
-        - naljal/egov-accesscontrol:core-2.9-lts-mvn-check-34362a8b87-9
-        - naljal/egov-enc-service:core-2.9-lts-mvn-check-c607f2d4de-20
-        - naljal/egov-filestore:core-2.9-lts-mvn-check-17b905d01d-13
-        - naljal/egov-idgen:core-2.9-lts-mvn-check-c33cfe45ab-7
-        - naljal/egov-indexer:core-2.9-lts-mvn-check-5f0cc52126-55
-        - naljal/egov-localization:core-2.9-lts-mvn-check-59c2e5ea5b-9
-        - naljal/egov-location:core-2.9-lts-mvn-check-c33cfe45ab-9
-        - naljal/egov-mdms-service:core-2.9-lts-mvn-check-c33cfe45ab-12
-        - naljal/egov-notification-mail:core-2.9-lts-mvn-check-c33cfe45ab-4
-        - naljal/egov-notification-sms:core-2.9-lts-mvn-check-c33cfe45ab-6
-        - naljal/egov-otp:core-2.9-lts-mvn-check-72333e5530-5
-        - naljal/egov-persister:core-2.9-lts-mvn-check-c33cfe45ab-7
-        - naljal/egov-pg-service:core-2.9-lts-mvn-check-421601fcdf-10
-        - naljal/egov-searcher:v2.5-log4j-12a9331b-2
-        - naljal/egov-url-shortening:core-2.9-lts-mvn-check-ecf5d0a880-11
+        - naljal/egov-accesscontrol:ISNE-101-9447910200-5
+        - naljal/egov-enc-service:ISNE-101-9447910200-4
+        - naljal/egov-filestore:ISNE-101-9447910200-3
+        - naljal/egov-idgen:ISNE-101-15804b50f7-14
+        - naljal/egov-indexer:ISNE-101-9447910200-4
+        - naljal/egov-localization:ISNE-101-9447910200-2
+        - naljal/egov-location:ISNE-101-9447910200-4
+        - naljal/egov-mdms-service:ISNE-101-9447910200-4
+        - naljal/egov-notification-mail:ISNE-101-9447910200-2
+        - naljal/egov-notification-sms:ISNE-101-978a2121e6-2
+        - naljal/egov-otp:ISNE-101-9447910200-2
+        - naljal/egov-persister:ISNE-101-9447910200-2
+        - naljal/egov-pg-service:ISNE-101-d2018b7a62-26
+        - naljal/egov-searcher:ISNE-101-8d288da438-3
+        - naljal/egov-url-shortening:ISNE-101-9447910200-2
         - naljal/egov-user:core-2.9-lts-egov-user-deployement-c33cfe45ab-13
-        - naljal/user-otp:core-2.9-lts-mvn-check-15fe7099b6-7
-        - naljal/egov-workflow-v2:core-2.9-lts-mvn-check-07ed8e9a49-12
-        - naljal/pdf-service:DPG-1941-pdf-producer-issue-fde2b43058-23
-        - naljal/egov-user-event:v1.1.4-1bb387be97-1
+        - naljal/user-otp:ISNE-101-9447910200-2
+        - naljal/egov-workflow-v2:ISNE-101-9447910200-2
+        - naljal/pdf-service:ISNE-101-9447910200-4
+        - naljal/egov-user-event:ISNE-101-f08472a5b9-1
         - naljal/playground:mongo-v2
     - name: business
       dependencies:
         - "core"
       services:
-        - naljal/collection-services:v2.5-log4j-f0f010a-19
-        - naljal/billing-service:v1.4.0-d471c7d6-22
-        - naljal/egf-instrument:v2.5-log4j-f0f010a-3
-        - naljal/egf-master:v2.5-log4j-f0f010a-3
-        - naljal/egov-apportion-service:advance-changes-snehal-4109a7cb7b-4
-        - naljal/egov-hrms:SM-3589-38549814c2-4
-        - naljal/dashboard-analytics:v2.5-log4j-f0f010a-5
-        - naljal/dashboard-ingest:v2.5-log4j-f0f010a-7
+        - naljal/collection-services:ISNE-101-7c0b43e8c3-3
+        - naljal/billing-service:ISNE-101-c7325c53c7-2
+        - naljal/egf-instrument:ISNE-101-06dd5671a3-5
+        - naljal/egf-master:ISNE-101-2afb5e5d1d-3
+        - naljal/egov-apportion-service:ISNE-101-9d206531b9-1
+        - naljal/egov-hrms:ISNE-101-2b2355159e-7
+        - naljal/dashboard-analytics:ISNE-101-3f186411bb-2
+        - naljal/dashboard-ingest:ISNE-101-130deb82dd-3
     - name: "frontend"             
       dependencies:
         - "business"
@@ -64,19 +64,18 @@ modules:
           - "frontend"
           - "core"
       services:
-        - naljal/ws-services:v1.6.0-e995dab88b-1
-        - naljal/ws-calculator:demandNotGeneratinIsue-eb37d172d6-4
-        - naljal/echallan-calculator:v1.1.0-1b7dca65e5-2
-        - naljal/property-services:ownerNumberValidationremove-b772eb0f3a-4
-        - naljal/mgramseva-ifix-adapter:v1.1.0-17f8fe75-74
-        - naljal/echallan-services:v1.2.0-1b7dca65e5-2
-        - naljal/vendor:v1.0.5-1b7dca65e5-2
+        - naljal/ws-services:ISNE-101-5e52d1db0d-8
+        - naljal/ws-calculator:ISNE-101-dafd4d7653-14
+        - naljal/echallan-calculator:ISNE-101-47ad5c5ea3-1
+        - naljal/property-services:ISNE-101-49839f3f21-1
+        - naljal/echallan-services:ISNE-101-0e6fb5f453-3
+        - naljal/vendor:ISNE-101-97ca7cce1c-3
     - name: m_expense   #Expense
       dependencies:
           - "frontend"
           - "core"
       services:
-        - naljal/echallan-services:v1.2.0-1b7dca65e5-2
-        - naljal/echallan-calculator:v1.1.0-1b7dca65e5-2       
-        - naljal/vendor:v1.0.5-1b7dca65e5-2 
+        - naljal/echallan-services:ISNE-101-0e6fb5f453-3
+        - naljal/echallan-calculator:ISNE-101-47ad5c5ea3-1
+        - naljal/vendor:ISNE-101-97ca7cce1c-3
     
