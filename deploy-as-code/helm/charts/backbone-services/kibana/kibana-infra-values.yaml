@@ -1,11 +1,11 @@
 ---
-elasticsearchHosts: "https://elasticsearch-master-v8:9200"
+elasticsearchHosts: "https://elasticsearch-master-infra:9200"
 elasticsearchCertificateSecret: elasticsearch-certs
 elasticsearchCertificateAuthoritiesFile: ca.crt
 elasticsearchCredentialSecret: elasticsearch-credential
 
 replicas: 1
-namespace: es-upgrade
+namespace: es-cluster-infra
 
 # Extra environment variables to append to this nodeGroup
 # This will be appended to the current 'env:' key. You can use any of the kubernetes env
@@ -63,21 +63,12 @@ protocol: http
 
 serverHost: "0.0.0.0"
 
-healthCheckPath: "/kibana-v8/app/kibana"
-serverBasePath: /kibana-v8
+healthCheckPath: "/kibana-infra/app/kibana"
+serverBasePath: /kibana-infra
 
 # Allows you to add any config files in /usr/share/kibana/config/
 # such as kibana.yml
-kibanaConfig:
-  kibana.yml: |
-    xpack.security.authc.providers:
-      basic.basic1:
-        order: 0
-      anonymous.anonymous1:
-        order: 1
-        credentials:
-          username: "anonymous_service_account"
-          password: "anonymous_service_account_password"
+kibanaConfig: {}
 
 # If Pod Security Policy in use it may be required to specify security context as well as service account
 
@@ -172,7 +163,7 @@ tolerations: []
 affinity: {}
 
 nameOverride: ""
-fullnameOverride: "kibana-v8"
+fullnameOverride: "kibana-infra"
 
 lifecycle: {}
 # preStop:

@@ -1,30 +1,27 @@
 
-name: elasticsearch-master-infra-v1
+name: elasticsearch-master-infra
 namespace: es-cluster-infra
 replicas: 3
 
 image:
   pullPolicy: IfNotPresent  
   repository: docker.elastic.co/elasticsearch/elasticsearch
-  tag: 6.4.2
+  tag: 8.11.3
 
-clusterName: "elasticsearch-infra-v1"
-nodeGroup: "master"
+clusterName: "elasticsearch"
+nodeGroup: "master-infra"
 
 # The service that non master groups will try to connect to when joining the cluster
 # This should be set to clusterName + "-" + nodeGroup for your master group
-masterService: "elasticsearch-master-infra-v1"
+masterService: "elasticsearch-master-infra"
 
 # Elasticsearch roles that will be applied to this nodeGroup
 # These will be set as environment variables. E.g. node.master=true
-roles:
-  master: "true"
-  ingest: "false"
-  data: "false"
+roles: "master"
 
 minimumMasterNodes: 2
 
-esMajorVersion: ""
+esMajorVersion: 8
 
 # Allows you to add any config files in /usr/share/elasticsearch/config/
 # such as elasticsearch.yml and log4j2.properties
@@ -38,23 +35,50 @@ esConfig: {}
 # Extra environment variables to append to this nodeGroup
 # This will be appended to the current 'env:' key. You can use any of the kubernetes env
 # syntax here
-extraEnvs: 
-#  - name: MY_ENVIRONMENT_VAR
-#    value: the_value_goes_here
+extraEnvs: |
   - name: path.data
     value: "/usr/share/elasticsearch/data"
   - name: path.logs
     value: "/usr/share/elasticsearch/logs"
-  - name: gateway.expected_master_nodes
-    value: "2"    
-  - name: gateway.expected_data_nodes
-    value: "1"      
-  - name: gateway.recover_after_time
-    value: "5m"      
-  - name: gateway.recover_after_master_nodes
-    value: "2"      
-  - name: gateway.recover_after_data_nodes
-    value: "1"           
+  {{- if .Values.createCert }}
+  - name: ELASTIC_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: elasticsearch-credential
+        key: username
+  - name: ELASTIC_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: elasticsearch-credential
+        key: password
+  - name: xpack.security.enabled
+    value: "true"
+  - name: xpack.security.transport.ssl.enabled
+    value: "true"
+  - name: xpack.security.enrollment.enabled
+    value: "true"
+  - name: xpack.security.http.ssl.enabled
+    value: "true"
+  - name: xpack.security.transport.ssl.verification_mode
+    value: "certificate"
+  - name: xpack.security.transport.ssl.key
+    value: "/usr/share/elasticsearch/config/certs/tls.key"
+  - name: xpack.security.transport.ssl.certificate
+    value: "/usr/share/elasticsearch/config/certs/tls.crt"
+  - name: xpack.security.transport.ssl.certificate_authorities
+    value: "/usr/share/elasticsearch/config/certs/ca.crt"
+  - name: xpack.security.http.ssl.key
+    value: "/usr/share/elasticsearch/config/certs/tls.key"
+  - name: xpack.security.http.ssl.certificate
+    value: "/usr/share/elasticsearch/config/certs/tls.crt"
+  - name: xpack.security.http.ssl.certificate_authorities
+    value: "/usr/share/elasticsearch/config/certs/ca.crt"
+  {{- else }}
+  - name: xpack.security.enabled
+    value: "false"
+  {{- end }}
+
+createCert: true
 
 # Allows you to load environment variables from kubernetes secret or config map
 envFrom: []
@@ -66,10 +90,10 @@ envFrom: []
 # A list of secrets and their paths to mount inside the pod
 # This is useful for mounting certificates for security and for mounting
 # the X-Pack license
-secretMounts: []
-#  - name: elastic-certificates
-#    secretName: elastic-certificates
-#    path: /usr/share/elasticsearch/config/certs
+secretMounts:
+  - name: elasticsearch-certs
+    secretName: elasticsearch-certs
+    path: /usr/share/elasticsearch/config/certs
 
 podAnnotations: {}
   # iam.amazonaws.com/role: es-cluster
@@ -81,9 +105,9 @@ esJavaOpts: "-Xmx448m -Xms448m"
 
 resources:
   requests:
-    memory: "896Mi"
+    memory: "1Gi"
   limits:
-    memory: "896Mi"  
+    memory: "1Gi"
 
 initResources: {}
   # limits:
@@ -175,9 +199,12 @@ nodeAffinity: {}
 # the same time when bootstrapping the cluster
 podManagementPolicy: "Parallel"
 
-protocol: http
+protocol: https
 httpPort: 9200
 transportPort: 9300
+
+secret:
+  enabled: true
 
 service:
   labels: {}

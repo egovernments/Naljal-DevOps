@@ -1,11 +1,11 @@
 ---
-elasticsearchHosts: "https://elasticsearch-master-infra-v8:9200"
+elasticsearchHosts: "https://elasticsearch-master:9200"
 elasticsearchCertificateSecret: elasticsearch-certs
 elasticsearchCertificateAuthoritiesFile: ca.crt
 elasticsearchCredentialSecret: elasticsearch-credential
 
 replicas: 1
-namespace: es-upgrade-infra
+namespace: es-cluster
 
 # Extra environment variables to append to this nodeGroup
 # This will be appended to the current 'env:' key. You can use any of the kubernetes env
@@ -63,12 +63,21 @@ protocol: http
 
 serverHost: "0.0.0.0"
 
-healthCheckPath: "/kibana-infra/app/kibana"
-serverBasePath: /kibana-infra
+healthCheckPath: "/kibana/app/kibana"
+serverBasePath: /kibana
 
 # Allows you to add any config files in /usr/share/kibana/config/
 # such as kibana.yml
-kibanaConfig: {}
+kibanaConfig:
+  kibana.yml: |
+    xpack.security.authc.providers:
+      basic.basic1:
+        order: 0
+      anonymous.anonymous1:
+        order: 1
+        credentials:
+          username: "anonymous_service_account"
+          password: "anonymous_service_account_password"
 
 # If Pod Security Policy in use it may be required to specify security context as well as service account
 
@@ -140,8 +149,6 @@ ingress:
   pathtype: ImplementationSpecific
   annotations:
     kubernetes.io/ingress.class: nginx
-    # nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
-    # nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
     nginx.ingress.kubernetes.io/lua-resty-waf: active
     nginx.ingress.kubernetes.io/lua-resty-waf-allow-unknown-content-types: "true"
     nginx.ingress.kubernetes.io/lua-resty-waf-debug: "true"
@@ -163,7 +170,7 @@ tolerations: []
 affinity: {}
 
 nameOverride: ""
-fullnameOverride: "kibana-infra-v8"
+fullnameOverride: "kibana"
 
 lifecycle: {}
 # preStop:
