@@ -3,6 +3,7 @@
 # For example: "digit-demo"
 cluster_name: "demo"
 
+state-name: "demo"
 # Replace with ssh key name you want
 ssh_key_name: "demo-ssh-key" 
 
