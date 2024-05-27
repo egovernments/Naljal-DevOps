@@ -6,9 +6,11 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Values.labels.app }}
+    app.kubernetes.io/name: {{ .Values.labels.app }}
+    app.kubernetes.io/part-of: {{ .Values.labels.app }}
   annotations:
-    pv.kubernetes.io/bind-completed: "yes"
-    pv.kubernetes.io/bound-by-controller: "yes"
+    volume.beta.kubernetes.io/storage-provisioner: ebs.csi.aws.com
+    volume.kubernetes.io/storage-provisioner: ebs.csi.aws.com
 spec:
   accessModes:
     - {{ .Values.persistence.accessMode | quote }}
@@ -17,5 +19,4 @@ spec:
       storage: {{ .Values.persistence.dataDirSize | quote }}
   storageClassName: {{ .Values.persistence.storageClassName | quote }}
   volumeMode: {{ .Values.persistence.volumeMode | quote }}
-  volumeName: {{ .Chart.Name }}-data
   {{- end }}
