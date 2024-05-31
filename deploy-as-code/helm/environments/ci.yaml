@@ -48,7 +48,8 @@ jenkins:
       acl: [ddws-org*assam]
     - name: madhyapradesh
       acl: [ddws-org*madhyapradesh]
-    
+    - name: ladakh
+      acl: [ddws-org*ladakh]
        
   master:
     ingress:
