@@ -35,7 +35,7 @@ modules:
         - naljal/egov-pg-service:ISNE-101-d2018b7a62-26
         - naljal/egov-searcher:ISNE-101-8d288da438-3
         - naljal/egov-url-shortening:ISNE-101-9447910200-2
-        - naljal/egov-user:core-2.9-lts-egov-user-deployement-c33cfe45ab-13
+        - naljal/egov-user:ISNE-101-a48bc7d8f4-6
         - naljal/user-otp:ISNE-101-9447910200-2
         - naljal/egov-workflow-v2:ISNE-101-9447910200-2
         - naljal/pdf-service:ISNE-101-9447910200-4
