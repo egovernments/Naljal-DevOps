@@ -57,8 +57,8 @@ modules:
       dependencies:
         - "business"
       services:
-        - naljal/frontend-mgramseva:v1.2.20-4e28726e44-5  
-        - naljal/mgramseva-web:v1.0.0-588d24dc4a-18 
+        - naljal/frontend-mgramseva:UAT-Branch-0dd0c39ecd-54
+        - naljal/mgramseva-web:UAT-Branch-690c0a16b2-63
     - name: m_water-service   #Water
       dependencies:
           - "frontend"
