@@ -15,3 +15,5 @@ creation_rules:
           kms: 'arn:aws:kms:ap-south-1:432205181273:key/2be701ce-4737-4fae-92ef-e04258a9477d'
         - path_regex: environments/madhyapradesh\-secrets\.yaml$
           kms: 'arn:aws:kms:ap-south-1:432205181273:key/2be701ce-4737-4fae-92ef-e04258a9477d'
+        - path_regex: environments/ladakh\-secrets\.yaml$
+          kms: 'arn:aws:kms:ap-south-1:432205181273:key/2be701ce-4737-4fae-92ef-e04258a9477d'
