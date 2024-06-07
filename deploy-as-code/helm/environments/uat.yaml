@@ -469,7 +469,7 @@ egov-mdms-service:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/mdms-naljal"   ##### Change repo url with Your fork Repo url
-      branch: "master"                                        ##### Change repo branch with Your fork Repo branch
+      branch: "naljal-uat"                                        ##### Change repo branch with Your fork Repo branch
   mdms-folder: "mdms-naljal"
   masters-config-url: "file:///work-dir/mdms-naljal/master-config.json"
   java-args: -Dspring.profiles.active=monitoring
@@ -603,7 +603,7 @@ cert-manager:
   email: "devops@egovernments.org"     ### Add email-id which used by cert-manager for certificates validation.
   
   
-zuul:
+gateway:
   contextUnique: true
   namespace: uat
   replicas: 1
@@ -787,14 +787,7 @@ kafka-kraft:
     persistence:
       enabled: true
       size: 25Gi
-    heapOpts: "-Xms704M -Xmx704M"
-    resources:
-      limits:
-        cpu: 500m
-        memory: 1408Mi
-      requests:
-        cpu: 2000m
-        memory: 1408Mi
+    heapOpts: "-Xms1024M -Xmx1024M"
 
 ### Kafka Connect <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 kafka-connect:
