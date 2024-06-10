@@ -3,26 +3,19 @@
 {{- $values := dict "Values" (mustMergeOverwrite $baseValues $envOverrides) -}}
 {{- with mustMergeOverwrite . $values }}
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: RoleBinding
 metadata:
   labels:
     app: {{ .Chart.Name }}
     group: gateway
   name: {{ .Chart.Name }}
-  {{- if .Values.global.namespace }}
-  namespace: {{ .Values.global.namespace }}
-  {{- else }}
   namespace: {{ .Values.namespace }}
-  {{- end }}
-rules:
-- apiGroups:
-  - ""
-  resources:
-  - services
-  - endpoints
-  - pods
-  verbs:
-  - get
-  - list
-  - watch   
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ .Chart.Name }}
+subjects:
+- kind: ServiceAccount
+  name: {{ .Values.serviceAccount }}
+  namespace: {{ .Values.namespace }}   
 {{- end -}}  
