@@ -140,8 +140,8 @@ cluster-configs:
                 db-schema: "assam"
                 domain: naljalseva.jjm.gov.in ## Add your Domain Name    
                 egov-services-fqdn-name: https://naljalseva.jjm.gov.in/ ## Add your Domain Name
-                state-level-tenant-id: "ka"
-                egov-state-level-tenant-id: "ka" 
+                state-level-tenant-id: "as"
+                egov-state-level-tenant-id: "as" 
                 s3-assets-bucket: "assam-s3"
                 es-host: "elasticsearch-data-v1.es-cluster"
                 es-indexer-host: "http://elasticsearch-data-v1.es-cluster:9200/"
@@ -378,7 +378,7 @@ egov-user:
   citizen-registration-withlogin: "true"
   citizen-otp-fixed: "123456"
   citizen-otp-fixed-enabled: "true"
-  egov-state-level-tenant-id: "ka"
+  egov-state-level-tenant-id: "as"
   account-unlock-cool-down-period-minutes: 5
 
 chatbot:
@@ -486,7 +486,7 @@ egov-enc-service:
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   java-args: -Dspring.profiles.active=monitoring
-  state-level-tenant-id: "ka"
+  state-level-tenant-id: "as"
 
 egov-persister:
   replicas: 3
