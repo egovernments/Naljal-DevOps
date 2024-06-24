@@ -25,6 +25,7 @@ global:
        - property-services
        - ws-services
        - ws-calculator
+       - vendor
        - user-otp
        - pgadmin
        - frontend-mgramseva
@@ -34,6 +35,8 @@ global:
        - grafana
        - jaeger
        - oauth2-proxy
+       - egov-accesscontrol
+
 
 cluster-configs:
     secrets:
@@ -167,14 +170,14 @@ cluster-configs:
             data:
                 asset-services: "http://asset-services:8080/"
                 asset-services-maha: "http://asset-services-maha:8080/"
-                billing-service: "http://billing-service:8080/"
-                collection-services: "http://collection-services:8080/"
+                billing-service: "http://billing-service:8080/assam"
+                collection-services: "http://collection-services:8080/assam"
                 collection-masters: "http://collection-masters:8080/"
                 collection-search-indexer: "http://collection-search-indexer:8080/"
                 citizen-indexer: "http://citizen-indexer:8080/"
                 citizen-services: "http://citizen-services:8080/"
-                dashboard-analytics: http://dashboard-analytics.assam:8080/
-                dashboard-ingest: http://dashboard-ingest.assam:8080/
+                dashboard-analytics: "http://dashboard-analytics.assam:8080/assam/"
+                dashboard-ingest: "http://dashboard-ingest.assam:8080/assam/"
                 demand-services: "http://demand-services:8080/"
                 data-sync-employee: "http://data-sync-employee:8080/"
                 egov-common-masters: "http://egov-common-masters:8080/"
@@ -183,9 +186,10 @@ cluster-configs:
                 egf-instrument: "http://egf-instrument:8080/"
                 egf-voucher: "http://egf-voucher:8080/"
                 egf-bill: "http://egf-bill:8080/"
+                egov-hrms: "http://egov-hrms:8080/assam/"
                 egov-enc-service: "http://egov-enc-service.assam:8080/"
                 egf-voucher-workflow: "http://egf-voucher-workflow:8080/"
-                egov-accesscontrol: "http://egov-accesscontrol:8080/"
+                egov-accesscontrol: "http://egov-accesscontrol:8080/assam"
                 egov-user: "http://egov-user:8080/assam/"
                 egov-user-egov: "http://egov-user.assam:8080/assam/"
                 egov-location: "http://egov-location:8080/assam/"
@@ -203,7 +207,6 @@ cluster-configs:
                 egov-searcher: "http://egov-searcher:8080/"
                 egov-data-uploader: "http://egov-data-uploader:8080/"
                 egov-indexer: "http://egov-indexer:8080/"
-                egov-hrms: "http://egov-hrms:8080/"
                 egov-pg-service: "http://egov-pg-service:8080/assam/"
                 es-client: "http://elasticsearch-data-v1.es-cluster:9200"
                 hr-masters: "http://hr-masters:8080/"
@@ -557,8 +560,8 @@ pdf-service:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"     ##### Change repo url with Your fork Repo url
       branch: "assam"                                   ##### Change repo branch with Your fork Repo branch
-  data-config-urls: "file:///work-dir/config-naljal/pdf-service/data-config/tradelicense-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/property-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/property-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/tradelicense-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/firenoc-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/pt-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/tl-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/consolidatedbill.json,file:///work-dir/config-naljal/pdf-service/data-config/consolidatedreceipt.json,file:///work-dir/config-naljal/pdf-service/data-config/tlapplication.json,file:///work-dir/config-naljal/pdf-service/data-config/passvehicle-certificate.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-naljal/pdf-service/data-config/buildingpermit.json,file:///work-dir/config-naljal/pdf-service/data-config/ptmutationcertificate.json,file:///work-dir/config-naljal/pdf-service/data-config/tlrenewalcertificate.json,file:///work-dir/config-naljal/pdf-service/data-config/bpa-revocation.json,file:///work-dir/config-naljal/pdf-service/data-config/buildingpermit-low.json,file:///work-dir/config-naljal/pdf-service/data-config/misc-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-applicationwater.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-sanctionletter.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-estimationnotice.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-applicationsewerage.json,file:///work-dir/config-naljal/pdf-service/data-config/tlcertificate.json"
-  format-config-urls: "file:///work-dir/config-naljal/pdf-service/format-config/tradelicense-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/property-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/property-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/tradelicense-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/firenoc-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/pt-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/tl-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/consolidatedbill.json,file:///work-dir/config-naljal/pdf-service/format-config/consolidatedreceipt.json,file:///work-dir/config-naljal/pdf-service/format-config/tlapplication.json,file:///work-dir/config-naljal/pdf-service/format-config/passvehicle-certificate.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-naljal/pdf-service/format-config/buildingpermit.json,file:///work-dir/config-naljal/pdf-service/format-config/ptmutationcertificate.json,file:///work-dir/config-naljal/pdf-service/format-config/tlrenewalcertificate.json,file:///work-dir/config-naljal/pdf-service/format-config/bpa-revocation.json,file:///work-dir/config-naljal/pdf-service/format-config/buildingpermit-low.json,file:///work-dir/config-naljal/pdf-service/format-config/misc-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-applicationwater.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-sanctionletter.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-estimationnotice.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-applicationsewerage.json,file:///work-dir/config-naljal/pdf-service/format-config/tlcertificate.json"
+  data-config-urls: "file:///work-dir/config-naljal/pdf-service/data-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt-nm.json"
+  format-config-urls: "file:///work-dir/config-naljal/pdf-service/format-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt-nm.json"
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -601,6 +604,7 @@ cert-manager:
   
   
 zuul:
+  contextUnique: true
   namespace: assam
   replicas: 3
   custom-filter-property: "false"
@@ -608,8 +612,8 @@ zuul:
   heap: "-Xmx704m -Xms512m"
   server-tomcat-max-threads: "350"
   server-tomcat-max-connections: "1500"
-  egov-open-endpoints-whitelist: "/assam/user/oauth/token,/assam/user-otp/v1/_send,/assam/otp/v1/_validate,/assam/user/citizen/_create,/assam/localization/messages,/assam/localization/messages/v1/_search,/assam/user/password/nologin/_update,/assam/pgr/servicedefinition/v1/_search,/assam/pgr/servicecategories/v1/_search,/assam/pgr/v1/otp/_send,/assam/pgr-master/receivingmode/v1/_search,/assam/tenant/v1/tenant/_search,/assam/egov-location/boundarys,/assam/egov-location/boundarys/boundariesByBndryTypeNameAndHierarchyTypeName,/assam/pgr-master/service/v1/_search,/assam/egov-location/boundarys/getLocationByLocationName,/assam/pgr-master/OTPConfig/_search,/assam/pgr-master/serviceGroup/v1/_search,/assam/egov-location/boundarys/isshapefileexist,/assam/pgr/services/v1/_search,/assam/hr-masters/hrconfigurations/_search,/assam/collection-services/receipts/_view,/assam/pgr-master/service/v2/_search,/assam/pgr-master/servicedefinition/v1/_search,/assam/citizen-services,/assam/citizen-services/v1/requests/receipt/_create,/assam/citizen-services/v1/pgresponse,/assam/citizen-services/v1/requests/anonymous/_search,/assam/egov-mdms-service/v1/_search,/assam/egov-mdms-service/v1/_get,/assam/egov-mdms-service/v1/_reload,/assam/egov-mdms-service/v1/_reloadobj,/assam/egov-location/boundarys/getshapefile,/assam/egov-indexer/index-operations/_index,/assam/egov-indexer/index-operations/_reload,/assam/egov-mdms-service-test/v1/_search,/assam/egov-mdms-create/v1/_update,/assam/egov-mdms-create/v1/_create,/assam/egov-mdms-service-test/v1/_reload,/assam/filestore/v1/files/url,/assam/egov-url-shortening,/assam/adapter-master-data/department/v1/_search,/assam/ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search,/assam/ifix-department-entity/departmentEntity/v1/_search,/assam/adapter-master-data/project/v1/_create,/assam/adapter-master-data/project/v1/_search"
-  egov-mixed-mode-endpoints-whitelist: "/assam/pgr/seva/v1/_create,/assam/pgr/seva/v1/_search,/assam/pgr/seva/v1/_count,/assam/workflow/history/v1/_search,/assam/filestore/v1/files/id,/assam/filestore/v1/files,/assam/filestore/v1/files/tag,/assam/egov-common-masters/departments/_search,/assam/pt-property/property/propertytypes/_search,/assam/pt-property/properties/_search,/assam/pt-property/property/usages/_search,/assam/egov-idgen/id/_generate,/assam/egf-masters/financialyears/_search,/assam/egov-common-workflows/process/_start,/assam/egov-common-workflows/process/_search,/assam/egov-common-workflows/tasks,/assam/egov-common-workflows/tasks/{id}/_update,/assam/user/_search,/assam/billing-service/demand/_dues,/assam/billing-service/bill/_generate,/assam/billing-service/demand/_create,/assam/wcms/masters/waterchargesconfig/_search,/assam/wcms/masters/usagetypes/_search,/assam/wcms/masters/pipesizes/_search,/assam/wcms-connection/connection/_getbillingtypes,/assam/wcms-connection/connection/_getconnectiontypes,/assam/wcms/masters/sourcetypes/_search,/assam/wcms/masters/supplytypes/_search,/assam/wcms/masters/storagereservoirs/_search,/assam/wcms/masters/treatmentplants/_search,/assam/wcms/masters/documenttypes-applicationtypes/_search,/assam/wcms/masters/donations/_search,/assam/wcms/masters/nonmeterwaterrates/_search,/assam/wcms-connection/connection/_create,/assam/egov-common-masters/genders/_search,/assam/egov-common-workflows/designations/_search,/assam/access/v1/actions/mdms/_get,/assam/tl-services/v1/BPAREG/_create,/assam/tl-services/v1/BPAREG/_update,/assam/tl-calculator/v1/BPAREG/_getbill,/assam/property-services/property/_search,/assam/billing-service/bill/v2/_search,/assam/egov-location/location/v11/boundarys/_search,/assam/pg-service/transaction/v1/_create,/assam/collection-services/payments/_search,/assam/pdf-service/v1/_create,/assam/billing-service/bill/v2/_fetchbill,/assam/pg-service/transaction/v1/_update,/assam/ws-services/wc/_bulkonboard,/assam/ws-services/wc/_submitfeedback,/assam/ws-services/wc/_search,/assam/collection-services/payments/WS/_search,/assam/ws-calculator/waterCalculator/_getPenaltyDetails,/assam/billing-service/demand/_search,/assam/collection-services/payments/_create,/assam/pg-service/transaction/v1/_redirect,/assam/adapter-master-data/project/v1/_search"
+  egov-open-endpoints-whitelist: "/assam/egov-user-event/v1/events/_search,/assam/user/oauth/token,/assam/user-otp/v1/_send,/assam/otp/v1/_validate,/assam/user/citizen/_create,/assam/localization/messages,/assam/localization/messages/v1/_search,/assam/user/password/nologin/_update,/assam/pgr/servicedefinition/v1/_search,/assam/pgr/servicecategories/v1/_search,/assam/pgr/v1/otp/_send,/assam/pgr-master/receivingmode/v1/_search,/assam/tenant/v1/tenant/_search,/assam/egov-location/boundarys,/assam/egov-location/boundarys/boundariesByBndryTypeNameAndHierarchyTypeName,/assam/pgr-master/service/v1/_search,/assam/egov-location/boundarys/getLocationByLocationName,/assam/pgr-master/OTPConfig/_search,/assam/pgr-master/serviceGroup/v1/_search,/assam/egov-location/boundarys/isshapefileexist,/assam/pgr/services/v1/_search,/assam/hr-masters/hrconfigurations/_search,/assam/collection-services/receipts/_view,/assam/pgr-master/service/v2/_search,/assam/pgr-master/servicedefinition/v1/_search,/assam/citizen-services,/assam/citizen-services/v1/requests/receipt/_create,/assam/citizen-services/v1/pgresponse,/assam/citizen-services/v1/requests/anonymous/_search,/assam/egov-mdms-service/v1/_search,/assam/egov-mdms-service/v1/_get,/assam/egov-mdms-service/v1/_reload,/assam/egov-mdms-service/v1/_reloadobj,/assam/egov-location/boundarys/getshapefile,/assam/egov-indexer/index-operations/_index,/assam/egov-indexer/index-operations/_reload,/assam/egov-mdms-service-test/v1/_search,/assam/egov-mdms-create/v1/_update,/assam/egov-mdms-create/v1/_create,/assam/egov-mdms-service-test/v1/_reload,/assam/filestore/v1/files/url,/assam/egov-url-shortening,/assam/adapter-master-data/department/v1/_search,/assam/ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search,/assam/ifix-department-entity/departmentEntity/v1/_search,/assam/adapter-master-data/project/v1/_create,/assam/adapter-master-data/project/v1/_search"
+  egov-mixed-mode-endpoints-whitelist: "/assam/egov-user-event/v1/events/_search,/assam/pgr/seva/v1/_create,/assam/pgr/seva/v1/_search,/assam/pgr/seva/v1/_count,/assam/workflow/history/v1/_search,/assam/filestore/v1/files/id,/assam/filestore/v1/files,/assam/filestore/v1/files/tag,/assam/egov-common-masters/departments/_search,/assam/pt-property/property/propertytypes/_search,/assam/pt-property/properties/_search,/assam/pt-property/property/usages/_search,/assam/egov-idgen/id/_generate,/assam/egf-masters/financialyears/_search,/assam/egov-common-workflows/process/_start,/assam/egov-common-workflows/process/_search,/assam/egov-common-workflows/tasks,/assam/egov-common-workflows/tasks/{id}/_update,/assam/user/_search,/assam/billing-service/demand/_dues,/assam/billing-service/bill/_generate,/assam/billing-service/demand/_create,/assam/wcms/masters/waterchargesconfig/_search,/assam/wcms/masters/usagetypes/_search,/assam/wcms/masters/pipesizes/_search,/assam/wcms-connection/connection/_getbillingtypes,/assam/wcms-connection/connection/_getconnectiontypes,/assam/wcms/masters/sourcetypes/_search,/assam/wcms/masters/supplytypes/_search,/assam/wcms/masters/storagereservoirs/_search,/assam/wcms/masters/treatmentplants/_search,/assam/wcms/masters/documenttypes-applicationtypes/_search,/assam/wcms/masters/donations/_search,/assam/wcms/masters/nonmeterwaterrates/_search,/assam/wcms-connection/connection/_create,/assam/egov-common-masters/genders/_search,/assam/egov-common-workflows/designations/_search,/assam/access/v1/actions/mdms/_get,/assam/tl-services/v1/BPAREG/_create,/assam/tl-services/v1/BPAREG/_update,/assam/tl-calculator/v1/BPAREG/_getbill,/assam/property-services/property/_search,/assam/billing-service/bill/v2/_search,/assam/egov-location/location/v11/boundarys/_search,/assam/pg-service/transaction/v1/_create,/assam/collection-services/payments/_search,/assam/pdf-service/v1/_create,/assam/billing-service/bill/v2/_fetchbill,/assam/pg-service/transaction/v1/_update,/assam/ws-services/wc/_bulkonboard,/assam/ws-services/wc/_submitfeedback,/assam/ws-services/wc/_search,/assam/collection-services/payments/WS/_search,/assam/ws-calculator/waterCalculator/_getPenaltyDetails,/assam/billing-service/demand/_search,/assam/collection-services/payments/_create,/assam/pg-service/transaction/v1/_redirect,/assam/adapter-master-data/project/v1/_search"
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -677,6 +681,7 @@ egov-hrms:
   employee-applink: "https://egov-demo.egovernments.org/employee/user/login"
   memory_limits: 512Mi
   heap: "-Xmx400m -Xms400m"
+  sms-user-creation-enabled: true
 
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -782,13 +787,13 @@ kafka-v2:
     tag: "5.4.1"
   persistence:
     enabled: true
-    aws:
-      - volumeId: "<kafka-v2_volume_id_1>" ## REPLACE: add volume id
-        zone: ap-south-1b     ## REPLACE: add respective zone. 
-      - volumeId: "<kafka-v2_volume_id_2>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<kafka-v2_volume_id_3>"  ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
+    # aws:
+    #   - volumeId: "<kafka-v2_volume_id_1>" ## REPLACE: add volume id
+    #     zone: ap-south-1b     ## REPLACE: add respective zone. 
+    #   - volumeId: "<kafka-v2_volume_id_2>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<kafka-v2_volume_id_3>"  ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
   zookeeperHosts: "zookeeper-v2., kafka-kraft:2181/kafka-v2"
 
   heapOptions: "-Xms704M -Xmx704M"
@@ -807,8 +812,9 @@ kafka-v2:
 
 ### Kafka Connect <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 kafka-connect:
+  replicas: 3
   image:
-    tag: "5.4.1"  
+    tag: "8.1.3"
 
 
 # zookeeper-v2 AWS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -817,13 +823,13 @@ zookeeper-v2:
     tag: "5.4.1"
   persistence:
     enabled: true
-    aws:
-      - volumeId: "<zookeeper-v2_volume_id_1>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<zookeeper-v2_volume_id_2>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<zookeeper-v2_volume_id_3>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
+    # aws:
+    #   - volumeId: "<zookeeper-v2_volume_id_1>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<zookeeper-v2_volume_id_2>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<zookeeper-v2_volume_id_3>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
 
   ## Zookeeper JVM Heap Option
   heapOptions: "-Xms256M -Xmx256M"
@@ -839,16 +845,16 @@ zookeeper-v2:
 # es-v1-cluster AWS >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 elasticsearch-data-v1:
   image:
-    tag: 6.6.2
+    tag: 8.11.3
   persistence:
     enabled: true
-    aws:
-      - volumeId: "<elastic_search_data_v1_volume_id_1>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<elastic_search_data_v1_volume_id_2>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<elastic_search_data_v1_volume_id_3>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
+    # aws:
+    #   - volumeId: "<elastic_search_data_v1_volume_id_1>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<elastic_search_data_v1_volume_id_2>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<elastic_search_data_v1_volume_id_3>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
 
   esJavaOpts: "-Xmx1g -Xms1g"
   resources:
@@ -864,16 +870,16 @@ elasticsearch-data-v1:
 elasticsearch-master-v1:
   replicas: 3
   image:
-    tag: 6.6.2
+    tag: 8.11.3
   persistence:
     enabled: true
-    aws:
-      - volumeId: "<elastic_search_master_v1_volume_id_1>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<elastic_search_master_v1_volume_id_2>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
-      - volumeId: "<elastic_search_master_v1_volume_id_3>" ## REPLACE: add volume id
-        zone: ap-south-1b ## REPLACE: add zone
+    # aws:
+    #   - volumeId: "<elastic_search_master_v1_volume_id_1>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<elastic_search_master_v1_volume_id_2>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
+    #   - volumeId: "<elastic_search_master_v1_volume_id_3>" ## REPLACE: add volume id
+    #     zone: ap-south-1b ## REPLACE: add zone
  
   esJavaOpts: "-Xmx448m -Xms448m"
   resources:
@@ -883,6 +889,10 @@ elasticsearch-master-v1:
     limits:
       cpu: "500m"
       memory: "896Mi"
+
+kibana-v1:
+  image:
+    tag: 8.11.3
 
 es-curator:
   schedule: "45 18 * * *"
@@ -896,6 +906,7 @@ es-curator:
 
 oauth2-proxy:
   namespace: assam
+  contextUnique: true
   config:
     configFile: |-
       email_domains = [ "*" ]
