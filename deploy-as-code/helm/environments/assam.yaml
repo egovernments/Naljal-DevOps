@@ -170,7 +170,7 @@ cluster-configs:
             data:
                 asset-services: "http://asset-services:8080/"
                 asset-services-maha: "http://asset-services-maha:8080/"
-                billing-service: "http://billing-service:8080/assam"
+                billing-service: "http://billing-service:8080/assam/"
                 collection-services: "http://collection-services:8080/assam"
                 collection-masters: "http://collection-masters:8080/"
                 collection-search-indexer: "http://collection-search-indexer:8080/"
