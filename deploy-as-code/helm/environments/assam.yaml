@@ -171,7 +171,7 @@ cluster-configs:
                 asset-services: "http://asset-services:8080/"
                 asset-services-maha: "http://asset-services-maha:8080/"
                 billing-service: "http://billing-service:8080/assam/"
-                collection-services: "http://collection-services:8080/assam"
+                collection-services: "http://collection-services:8080/assam/"
                 collection-masters: "http://collection-masters:8080/"
                 collection-search-indexer: "http://collection-search-indexer:8080/"
                 citizen-indexer: "http://citizen-indexer:8080/"
@@ -189,7 +189,7 @@ cluster-configs:
                 egov-hrms: "http://egov-hrms:8080/assam/"
                 egov-enc-service: "http://egov-enc-service.assam:8080/"
                 egf-voucher-workflow: "http://egf-voucher-workflow:8080/"
-                egov-accesscontrol: "http://egov-accesscontrol:8080/assam"
+                egov-accesscontrol: "http://egov-accesscontrol:8080/assam/"
                 egov-user: "http://egov-user:8080/assam/"
                 egov-user-egov: "http://egov-user.assam:8080/assam/"
                 egov-location: "http://egov-location:8080/assam/"
@@ -262,7 +262,7 @@ cluster-configs:
                 fsm-calculator: "http://fsm-calculator.assam:8080/"
                 fsm: "http://fsm.assam:8080/"
                 vehicle: "http://vehicle.assam:8080"
-                vendor: "http://vendor.assam:8080/assam"
+                vendor: "http://vendor.assam:8080/assam/"
                 egov-edcr: "http://egov-edcr.assam:8080/"
                 echallan-calculator: "http://echallan-calculator.assam:8080/"
                 echallan-services: "http://echallan-services.assam:8080/assam/"
@@ -407,7 +407,7 @@ chatbot:
 billing-service:
   replicas: 2
   memory_limits: 512Mi
-  demand.updateurl: '{"WS":"http://ws-calculator.assam:8080/ws-calculator/waterCalculator/_updateDemand"}'
+  demand.updateurl: '{"WS":"http://ws-calculator.assam:8080/assam/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
 
 ws-services:
