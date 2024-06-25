@@ -55,7 +55,7 @@ variable "instance_type" {
 variable "override_instance_types" {
   description = "Arry of instance types for SPOT instances"
   default = ["r5a.large", "r5ad.large", "r5d.large", "m4.xlarge"]
-  
+
 }
 
 variable "number_of_worker_nodes" {
