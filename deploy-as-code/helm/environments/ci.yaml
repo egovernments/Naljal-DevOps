@@ -38,6 +38,8 @@ jenkins:
   deploymentJobs:  # Setup deploymentJobs ACL 
     - name: naljal-uat    # deployment job name
       acl: [ddws-org*naljal-uat] # GitHub team name, Members of the team get access to deployment job
+    - name: uat
+      acl: [ ddws-org*naljal-uat ]
     - name: ci
       acl: [ddws-org*micro-service-devops] 
     - name: gujarat
