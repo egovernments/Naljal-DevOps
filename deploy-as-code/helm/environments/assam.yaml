@@ -341,7 +341,7 @@ egov-notification-sms:
   egov-notification-sms:
   sms-provider-url: "https://api.textlocal.in/send/?"
   sms.provider.url: "https://api.textlocal.in/send/?"
-  sms.provider.class: "Console"
+  sms.provider.class: "generic"
   sms.provider.requestType: "GET"
   sms.provider.contentType: "application/json"
   sms-config-map: "{'apikey':'$username', 'sender':'$senderid', 'numbers':'$mobileno', 'message':'$message'}"
