@@ -3,8 +3,14 @@ labels:
   app: "egov-notification-sms"
   group: "core"
 
+
 # Init Containers Configs
-initContainers: {}
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "egov_notification_sms_schema"
+    image:
+      repository: "egov-notification-sms-db"
 
 # Container Configs
 image:
