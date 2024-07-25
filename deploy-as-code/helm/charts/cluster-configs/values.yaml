@@ -145,5 +145,5 @@ cluster-configs:
       name: postgres
 
     elasticsearch:
-      namespace: [ es-cluster, es-cluster-infra ]
+      namespace: [ es-cluster, es-cluster-infra, uat ]
       name: elasticsearch-credential
