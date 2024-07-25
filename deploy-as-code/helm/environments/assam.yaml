@@ -341,11 +341,11 @@ egov-notification-sms:
   egov-notification-sms:
   sms-provider-url: "https://api.textlocal.in/send/?"
   sms.provider.url: "https://api.textlocal.in/send/?"
-  sms.provider.class: "Console"
+  sms.provider.class: "Generic"
   sms.provider.requestType: "GET"
   sms.provider.contentType: "application/json"
   sms-config-map: "{'apikey':'$username', 'sender':'$senderid', 'numbers':'$mobileno', 'message':'$message'}"
-  sms-gateway-to-use: "Console"
+  sms-gateway-to-use: "Generic"
   sms-sender: "ASPHED"
   sms.senderid: "ASPHED"
   sms-sender-requesttype: "GET"
