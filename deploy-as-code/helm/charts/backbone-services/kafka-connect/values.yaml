@@ -14,9 +14,9 @@ initContainers:
       args:
         - |
           set -e;
-          openssl pkcs12 -export -in /etc/kafka-connect/secrets/tls.crt -inkey /etc/kafka-connect/secrets/tls.key -out /tmp/keystore/keystore.p12 -name elasticsearch-master.es-cluster -passout pass:changeit;
-          keytool -importkeystore -deststorepass changeit -destkeypass changeit -destkeystore /tmp/keystore/es.keystore.jks -srckeystore /tmp/keystore/keystore.p12 -srcstoretype PKCS12 -srcstorepass changeit -alias elasticsearch-master.es-cluster;
-          keytool -import -file /etc/kafka-connect/secrets/ca.crt -alias elasticsearch-master.es-cluster -keystore /tmp/keystore/es.truststore.jks -storepass changeit -noprompt;
+          openssl pkcs12 -export -in /etc/kafka-connect/secrets/tls.crt -inkey /etc/kafka-connect/secrets/tls.key -out /tmp/keystore/keystore.p12 -name elasticsearch-master -passout pass:changeit;
+          keytool -importkeystore -deststorepass changeit -destkeypass changeit -destkeystore /tmp/keystore/es.keystore.jks -srckeystore /tmp/keystore/keystore.p12 -srcstoretype PKCS12 -srcstorepass changeit -alias elasticsearch-master;
+          keytool -import -file /etc/kafka-connect/secrets/ca.crt -alias elasticsearch-master -keystore /tmp/keystore/es.truststore.jks -storepass changeit -noprompt;
       volumeMounts:
         - mountPath: /etc/kafka-connect/secrets
           name: elasticsearch-certs
