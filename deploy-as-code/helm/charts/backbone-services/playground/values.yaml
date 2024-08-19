@@ -1,4 +1,4 @@
-namespace: playground 
+namespace: es-cluster
 
 # Common Labels
 labels:
