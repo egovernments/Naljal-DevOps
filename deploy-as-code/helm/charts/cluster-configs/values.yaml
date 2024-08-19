@@ -149,5 +149,5 @@ cluster-configs:
       name: elasticsearch-credential
       
     elasticsearch-certificate:
-      namespace: [ es-cluster, monitoring, kafka-kraft , egov, works ]
+      namespace: [ es-cluster, monitoring, kafka-kraft , egov, uat ]
       name: elasticsearch-certs
