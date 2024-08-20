@@ -33,10 +33,14 @@ format-config-urls: "file:///work-dir/configs/pdf-service/format-config/firenoc-
 env: |
   {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
   - name: SERVER_CONTEXT_PATH
-    value:   /{{ .Values.global.context.path }}
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context}}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
   {{- else }}
   - name: SERVER_CONTEXT_PATH
-    value: ""
+    value: /{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
   {{- end }}
   - name: NODE_ENV
     value: "production"
