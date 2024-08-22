@@ -15,6 +15,7 @@ global:
        - egov-localization
        - egov-location
        - egov-mdms-service
+       - mdms-v2
        - egov-pg-service
        - egov-user
        - egov-hrms
