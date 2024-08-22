@@ -33,7 +33,7 @@ egov-mdms-data-save-topic: "save-mdms-data"
 
 # Additional Container Envs
 env: |
- {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
+  {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
   - name: SERVER_CONTEXT_PATH
     value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context}}
   - name: SERVER_SERVLET_CONTEXT_PATH
