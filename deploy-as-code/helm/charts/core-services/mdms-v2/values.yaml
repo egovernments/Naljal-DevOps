@@ -21,9 +21,7 @@ image:
   repository: "mdms-v2"
 replicas: "1"
 healthChecks:
-  enabled: true
-  livenessProbePath: "/mdms-v2/health"
-  readinessProbePath: "/mdms-v2/health"
+  enabled: false
 appType: "java-spring"
 tracing-enabled: true
 heap: "-Xmx512m -Xms512m"
@@ -33,8 +31,17 @@ egov-mdms-data-save-topic: "save-mdms-data"
 
 # Additional Container Envs
 env: |
+ {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
   - name: SERVER_CONTEXT_PATH
-    value: /mdms-v2
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context}}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
+  {{- else }}
+  - name: SERVER_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  {{- end }}
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: egov-mdms-service-consumer-group
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER
