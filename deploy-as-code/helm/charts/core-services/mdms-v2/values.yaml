@@ -21,7 +21,9 @@ image:
   repository: "mdms-v2"
 replicas: "1"
 healthChecks:
-  enabled: false
+  enabled: true
+  livenessProbePath: "/mdms-v2/health"
+  readinessProbePath: "/mdms-v2/health"
 appType: "java-spring"
 tracing-enabled: true
 heap: "-Xmx512m -Xms512m"
