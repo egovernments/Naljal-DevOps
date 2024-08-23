@@ -464,7 +464,7 @@ egov-persister:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "master"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "ISNE-209"                                    ##### Change repo branch with Your fork Repo branch
 
 pgr-services:
   memory_limits: 512Mi
