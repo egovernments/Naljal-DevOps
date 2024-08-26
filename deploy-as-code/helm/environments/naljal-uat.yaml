@@ -274,7 +274,7 @@ mgramseva-web:
       <script src=https://assam-s3.s3.ap-south-1.amazonaws.com/globalConfigas.js type=text/javascript></script>
       ';"  
 property-services:
- replicas: 4
+ replicas: 2
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
 
@@ -293,7 +293,7 @@ egov-filestore:
   fixed-bucketname: naljal-uat-s3
 
 egov-idgen:
-  replicas: 3
+  replicas: 1
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   idformat-from-mdms: "true"
@@ -376,7 +376,7 @@ billing-service:
 ws-services:
   wcid-format: "[DISTRICT.CODE][CITY.CODE][SEQ_WS_CON_ID_[TENANT_ID]]"
   is-external-workflow-enabled: "true"
-  replicas: 4
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-pending-collection-enabled: false
@@ -407,7 +407,7 @@ echallan-services:
   sms-monthy-summary-enabled: false
 
 ws-calculator:
-  replicas: 4
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-demand-enabled: true
@@ -415,7 +415,7 @@ ws-calculator:
   sms-bill-download-enable: true
 
 egov-pg-service:
-  replicas: 2
+  replicas: 1
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   axis: true  
@@ -423,7 +423,7 @@ egov-pg-service:
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 egov-mdms-service:
-  replicas: 3
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   images:
@@ -448,14 +448,14 @@ egov-indexer:
   egov-indexer-yaml-repo-path: "file:///work-dir/config-naljal/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-naljal/egov-indexer/collection-indexer.yml,file:///work-dir/config-naljal/egov-indexer/egov-echallan.yml,file:///work-dir/config-naljal/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-naljal/egov-indexer/error-queue.yml,file:///work-dir/config-naljal/egov-indexer/egov-vendor.yaml,file:///work-dir/config-naljal/egov-indexer/payment-indexer.yml,file:///work-dir/config-naljal/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-naljal/egov-indexer/property-services.yml,file:///work-dir/config-naljal/egov-indexer/water-service.yml,file:///work-dir/config-naljal/egov-indexer/water-services-meter.yml"
 
 egov-enc-service:
-  replicas: 3
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   java-args: -Dspring.profiles.active=monitoring
   state-level-tenant-id: "as"
 
 egov-persister:
-  replicas: 4
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   images:
@@ -500,7 +500,7 @@ dashboard-ingest:
 
 national-dashboard-ingest:
   heap: "-Xmx750m -Xms750m"
-  replicas: 1
+  replicas: 0
   server-tomcat-max-threads: 25
   module-index-mapping: '{"PT": "pt-national-dashboard", "PGR": "pgr-national-dashboard", "WS": "ws-national-dashboard", "FIRENOC": "firenoc-national-dashboard", "TL": "tl-national-dashboard", "MCOLLECT": "mcollect-national-dashboard", "OBPS": "obps-national-dashboard", "COMMON": "common-national-dashboard", "BPA": "bpa-national-dashboard","BIRTH":"birth-cert-national-dashboard"}'
   master-data-index: "master-national-dashboard"
@@ -631,7 +631,7 @@ tl-services:
   tl-search-default-limit: "100"
 
 egov-workflow-v2:
-  replicas: 3
+  replicas: 1
   logging-level: "DEBUG"
   java-args: -Dspring.profiles.active=monitoring
   heap: "-Xmx256m -Xms256m"
