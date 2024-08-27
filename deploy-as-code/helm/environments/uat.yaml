@@ -295,6 +295,7 @@ citizen:
       ';"
 
 frontend-mgramseva:
+  replicas: 1
   ingress:
     context: "mgramseva"
   state-level-tenant-id: ka
@@ -312,7 +313,7 @@ mgramseva-web:
       ';" 
 
 property-services:
- replicas: 2
+ replicas: 1
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
 
@@ -331,7 +332,7 @@ egov-filestore:
   fixed-bucketname: naljal-uat-s3
 
 egov-idgen:
-  replicas: 3
+  replicas: 1
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   idformat-from-mdms: "true"
@@ -368,7 +369,7 @@ egov-notification-sms:
   sms-disabled-tenants-list: "pb.testing"
 
 egov-user:
-  replicas: 2
+  replicas: 1
   heap: "-Xmx256m -Xms256m"
   memory_limits: 512Mi
   otp-validation: "true"
@@ -406,7 +407,7 @@ chatbot:
   user-service-chatbot-citizen-passwrord: "123456"
 
 billing-service:
-  replicas: 2
+  replicas: 1
   memory_limits: 512Mi
   demand.updateurl: '{"WS":"http://ws-calculator.uat:8080/uat/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
@@ -414,7 +415,7 @@ billing-service:
 ws-services:
   wcid-format: "WS/[CITY.CODE]/[fy:yyyy-yy]/[SEQ_EGOV_COMMON]"
   is-external-workflow-enabled: "true"
-  replicas: 2
+  replicas: 1
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-pending-collection-enabled: false
@@ -426,17 +427,17 @@ ws-services:
 
 egov-location:
   memory_limits: 512Mi
-  replicas: 2
+  replicas: 1
 
 vendor:
   vendor.role: CITIZEN
   vendor.driver: CITIZEN
   vendor.role.name: Vendor role Citizen
   vendor.driver.role.name: Vendor Driver Role Citizen
-  replicas: 2
+  replicas: 1
 
 echallan-services:
-  replicas: 2
+  replicas: 1
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   egov-idgen-challanNum-format: "EB-[fy:yyyy-yy]-[SEQ_EG_ECHALLAN_EXPENSE]"
@@ -445,7 +446,7 @@ echallan-services:
   sms-monthy-summary-enabled: false
 
 ws-calculator:
-  replicas: 2
+  replicas: 1
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-demand-enabled: true
@@ -453,7 +454,7 @@ ws-calculator:
   sms-bill-download-enable: true
 
 egov-pg-service:
-  replicas: 2
+  replicas: 1
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   axis: true  
@@ -461,7 +462,7 @@ egov-pg-service:
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 egov-mdms-service:
-  replicas: 3
+  replicas: 1
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   images:
@@ -476,7 +477,7 @@ egov-mdms-service:
   java-args: -Dspring.profiles.active=monitoring
 
 egov-indexer:
-  replicas: 3
+  replicas: 1
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   initContainers:
@@ -486,14 +487,14 @@ egov-indexer:
   egov-indexer-yaml-repo-path: "file:///work-dir/config-naljal/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-naljal/egov-indexer/collection-indexer.yml,file:///work-dir/config-naljal/egov-indexer/egov-echallan.yml,file:///work-dir/config-naljal/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-naljal/egov-indexer/error-queue.yml,file:///work-dir/config-naljal/egov-indexer/egov-vendor.yaml,file:///work-dir/config-naljal/egov-indexer/payment-indexer.yml,file:///work-dir/config-naljal/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-naljal/egov-indexer/property-services.yml,file:///work-dir/config-naljal/egov-indexer/water-service.yml,file:///work-dir/config-naljal/egov-indexer/water-services-meter.yml"
 
 egov-enc-service:
-  replicas: 3
+  replicas: 1
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   java-args: -Dspring.profiles.active=monitoring
   state-level-tenant-id: "ka"
 
 egov-persister:
-  replicas: 3
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   images:
@@ -631,7 +632,7 @@ zuul:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 collection-services:
-  replicas: 2
+  replicas: 1
   memory_limits: 512Mi
   receiptnumber-servicebased: "true"
   receipt-search-paginate: "true"
@@ -683,7 +684,7 @@ tl-services:
   tl-search-default-limit: "100"
 
 egov-workflow-v2:
-  replicas: 3
+  replicas: 1
   logging-level: "DEBUG"
   java-args: -Dspring.profiles.active=monitoring
   heap: "-Xmx256m -Xms256m"
