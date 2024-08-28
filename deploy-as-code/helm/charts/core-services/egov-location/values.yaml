@@ -53,11 +53,6 @@ env: |
   {{- end }}
   - name: SERVER_PORT
     value: "8080"
-  - name: EGOV_SERVICES_EGOV_MDMS_HOSTNAME
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: egov-mdms-service
   {{- if index .Values "gmaps" }}
   - name: GMAPS_API_KEY
     valueFrom:
