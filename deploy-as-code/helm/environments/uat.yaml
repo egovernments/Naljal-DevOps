@@ -328,16 +328,9 @@ property-services:
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
 
 mdms-v2:
-#  memory_limits: 2100Mi
-  heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
-  java-args: -Dspring.profiles.active=monitoring
-  resources: |
-    requests:
-      cpu: 200m
-      memory: 2150Mi
-    limits:
-      cpu: 500m
-      memory: 2150Mi
+ replicas: 1
+ memory_limits: 512Mi
+ heap: "-Xmx512m -Xms512m"
 
 egov-filestore:
   memory_limits: 512Mi
