@@ -79,4 +79,4 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-config
-        key: egov-services-fqdn-name
+        key: egov-services-fqdn-name-sms
