@@ -37,7 +37,6 @@ global:
        - jaeger
        - oauth2-proxy
        - egov-accesscontrol
-       - workbench-ui
 
 
 cluster-configs:
