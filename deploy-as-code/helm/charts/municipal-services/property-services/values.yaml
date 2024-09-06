@@ -171,9 +171,9 @@ env: |
     valueFrom:
       secretKeyRef:
         key: username
-        name: elasticsearch-master-credential
+        name: elasticsearch-master-credentials
   - name: EGOV_INDEXER_ES_PASSWORD
     valueFrom:
       secretKeyRef:
         key: password
-        name: elasticsearch-master-credential
+        name: elasticsearch-master-credentials
