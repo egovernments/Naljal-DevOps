@@ -56,7 +56,7 @@ variable "db_name" {
   default = "assamproddb" #REPLACE
 }
 
-variable "db_username" {
+variable "db_username" {#assamprod37427
   description = "RDS database user name"
   default = "assamprod" #REPLACE
 }
@@ -68,5 +68,4 @@ variable "iam_user_arn" {
 
 #DO NOT fill in here. This will be asked at runtime
 variable "db_password" {}
-#assamprod37427
 
