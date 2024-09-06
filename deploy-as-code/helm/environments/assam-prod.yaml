@@ -148,8 +148,8 @@ cluster-configs:
             data:
                 db-host: assam-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432 ## Add db-host name eg: egov-demo.database.azure.com
                 db-name: assamproddb ## Add db-name
-                db-url: jdbc:postgresql://assam-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/assamproddb?currentSchema=assam ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
-                db-schema: "assam"
+                db-url: jdbc:postgresql://assam-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/assamproddb?currentSchema=assam-test ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
+                db-schema: "assam-test"
                 domain: naljal-uat.digit.org ## Add your Domain Name    
                 egov-services-fqdn-name: https://naljal-uat.digit.org/ ## Add your Domain Name
                 egov-services-fqdn-name-sms: https://naljal-uat.digit.org/assam/
