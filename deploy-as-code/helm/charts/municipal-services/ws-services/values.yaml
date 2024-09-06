@@ -63,6 +63,8 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-mdms-service
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: {{ index .Values "egov-mdms-search-endpoint" | quote }}
   - name: EGOV_USER_HOST
     valueFrom:
       configMapKeyRef:
@@ -164,7 +166,7 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-config
-        key: egov-services-fqdn-name-sms
+        key: egov-services-fqdn-name
   - name: SECURITY_BASIC_ENABLED
     value: "false"
   - name: MANAGEMENT_SECURITY_ENABLED
@@ -175,3 +177,13 @@ env: |
   {{- end }}
   - name: IS_EXTERNAL_WORKFLOW_ENABLED
     value: {{ index .Values "is-external-workflow-enabled" | quote }}
+  - name: EGOV_INDEXER_ES_USERNAME
+    valueFrom:
+      secretKeyRef:
+        key: username
+        name: elasticsearch-credential
+  - name: EGOV_INDEXER_ES_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        key: password
+        name: elasticsearch-credential

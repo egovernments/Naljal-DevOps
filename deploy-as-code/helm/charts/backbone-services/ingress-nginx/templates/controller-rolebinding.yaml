@@ -9,11 +9,7 @@ metadata:
     {{- toYaml . | nindent 4 }}
     {{- end }}
   name: {{ include "ingress-nginx.fullname" . }}
-  {{- if .Values.global.namespace }}
-  namespace: {{ .Values.global.namespace }}
-  {{- else }}
-  namespace: {{ .Values.namespace }}
-  {{- end }}
+  namespace: {{ include "ingress-nginx.namespace" . }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -21,5 +17,5 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ template "ingress-nginx.serviceAccountName" . }}
-    namespace: {{ .Values.namespace }}
+    namespace: {{ include "ingress-nginx.namespace" . }}
 {{- end }}

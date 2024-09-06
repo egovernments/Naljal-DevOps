@@ -5,7 +5,7 @@
 
 variable "cluster_name" {
   description = "Name of the Kubernetes cluster"
-  default = <cluster_name> #REPLACE
+  default = "assam-prod" #REPLACE
 }
 
 variable "vpc_cidr_block" {
@@ -26,50 +26,47 @@ variable "availability_zones" {
 
 variable "kubernetes_version" {
   description = "kubernetes version"
-  default = "1.27"
+  default = "1.30"
 }
 
-variable "instance_type" {
-  description = "eGov recommended below instance type as a default"
-  default = "r5ad.large"
-}
-
-variable "override_instance_types" {
+variable "instance_types" {
   description = "Arry of instance types for SPOT instances"
-  default = ["r5a.large", "r5ad.large", "r5d.large", "m4.xlarge"]
+  default = ["r5ad.xlarge"]
   
 }
 
-variable "number_of_worker_nodes" {
-  description = "eGov recommended below worker node counts as default"
-  default = "4" #REPLACE IF NEEDED
+variable "min_worker_nodes" {
+  description = "eGov recommended below worker node counts as default for min nodes"
+  default = "1" #REPLACE IF NEEDED
 }
 
-variable "ssh_key_name" {
-  description = "ssh key name, not required if your using spot instance types"
-  default = <ssh_key_name> #REPLACE
+variable "desired_worker_nodes" {
+  description = "eGov recommended below worker node counts as default for desired nodes"
+  default = "2" #REPLACE IF NEEDED
+}
+
+variable "max_worker_nodes" {
+  description = "eGov recommended below worker node counts as default for max nodes"
+  default = "5" #REPLACE IF NEEDED
 }
 
 
 variable "db_name" {
   description = "RDS DB name. Make sure there are no hyphens or other special characters in the DB name. Else, DB creation will fail"
-  default = <db_name> #REPLACE
+  default = "assamproddb" #REPLACE
 }
 
 variable "db_username" {
   description = "RDS database user name"
-  default = <db_username> #REPLACE
+  default = "assamprod" #REPLACE
+}
+
+variable "iam_user_arn" {
+  description = "Provide the IAM user arn which you are using to create infrastructure"
+  default = "arn:aws:iam::432205181273:user/assam-prod" #REPLACE 
 }
 
 #DO NOT fill in here. This will be asked at runtime
 variable "db_password" {}
-
-variable "public_key" {
-  default = <public_ssh_key>
-  description = "ssh key"
-}
-
-## change ssh key_name eg. digit-quickstart_your-name
-
-
+#assamprod37427
 
