@@ -37,6 +37,7 @@ global:
        - oauth2-proxy
        - egov-accesscontrol
        - workbench-ui
+       - mdms-v2
 
 
 cluster-configs:
