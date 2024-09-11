@@ -139,6 +139,10 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-workflow-v2
+  - name: FLYWAY_ENABLED
+    value: "false"
+  - name: SPRING_FLYWAY_ENABLED
+    value: "false"
   {{- if index .Values "global" "tracer-errors-provideexceptionindetails" }}
   - name: TRACER_ERRORS_PROVIDEEXCEPTIONINDETAILS
     valueFrom:
