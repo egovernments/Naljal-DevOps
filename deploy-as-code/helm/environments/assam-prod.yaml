@@ -882,3 +882,11 @@ pgadmin:
   persistence:
     enabled: true
     dataDirSize: "1Gi"
+
+kafka-ui:
+  yamlApplicationConfig:
+    kafka:
+      clusters:
+      - name: assam-prod
+        bootstrapServers: kafka-kraft-controller-headless.backbone:9092
+        readonly: true
