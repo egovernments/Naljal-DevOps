@@ -179,27 +179,14 @@ cluster-configs:
         egov-service-host:
             namespace: [ assam, monitoring ]
             data:
-                asset-services: "http://asset-services:8080/"
-                asset-services-maha: "http://asset-services-maha:8080/"
                 billing-service: "http://billing-service:8080/assam/"
                 collection-services: "http://collection-services:8080/assam/"
-                collection-masters: "http://collection-masters:8080/"
-                collection-search-indexer: "http://collection-search-indexer:8080/"
-                citizen-indexer: "http://citizen-indexer:8080/"
-                citizen-services: "http://citizen-services:8080/"
                 dashboard-analytics: "http://dashboard-analytics.assam:8080/assam/"
                 dashboard-ingest: "http://dashboard-ingest.assam:8080/assam/"
-                demand-services: "http://demand-services:8080/"
-                data-sync-employee: "http://data-sync-employee:8080/"
-                egov-common-masters: "http://egov-common-masters:8080/"
-                egf-masters: "http://egf-masters:8080/"
                 egf-master: "http://egf-master:8080/"
                 egf-instrument: "http://egf-instrument:8080/"
-                egf-voucher: "http://egf-voucher:8080/"
-                egf-bill: "http://egf-bill:8080/"
                 egov-hrms: "http://egov-hrms:8080/assam/"
                 egov-enc-service: "http://egov-enc-service.assam:8080/"
-                egf-voucher-workflow: "http://egf-voucher-workflow:8080/"
                 egov-accesscontrol: "http://egov-accesscontrol:8080/assam/"
                 egov-user: "http://egov-user:8080/assam/"
                 egov-user-egov: "http://egov-user.assam:8080/assam/"
@@ -208,102 +195,44 @@ cluster-configs:
                 egov-localization: "http://egov-localization:8080/assam/"
                 egov-idgen: "http://egov-idgen:8080/"
                 egov-otp: "http://egov-otp:8080/"
-                egov-common-workflows: "http://egov-common-workflows:8080/"
                 egov-mdms-service: "http://mdms-v2:8080/assam/"
                 egov-mdms-service-test: "http://egov-mdms-service-test:8080/"
-                egov-mdms-create: "http://egov-mdms-create:8080/"
-                egov-eis: "http://egov-eis:8080/"
                 egov-workflow: "http://egov-workflow:8080/"
                 egov-workflow-v2: "http://egov-workflow-v2:8080/"
                 egov-searcher: "http://egov-searcher:8080/"
-                egov-data-uploader: "http://egov-data-uploader:8080/"
                 egov-indexer: "http://egov-indexer:8080/"
                 egov-pg-service: "http://egov-pg-service:8080/assam/"
                 es-client: "http://elasticsearch-master.backbone:9200"
-                hr-masters: "http://hr-masters:8080/"
-                hr-employee: "http://hr-employee:8080/"
-                hr-masters-v2: "http://hr-masters-v2:8080/"
-                hr-employee-v2: "http://hr-employee-v2:8080/"
-                hr-attendance: "http://hr-attendance:8080/"
-                hr-leave: "http://hr-leave:8080/"
-                hr-employee-movement: "http://hr-employee-movement:8080/"
-                ifix-reference-adapter: "http://ifix-reference-adapter.assam:8080/"
-                inventory-services: "http://inventory-services:8080/"
-                lams-services: "http://lams-services:8080/"
-                lcms-workflow: "http://lcms-workflow:8080/"
-                lcms-services: "http://lcms-services:8080/"
-                location: "http://location:8080/"
-                mgramseva-ifix-adapter: "http://mgramseva-ifix-adapter.assam:8080/"
-                performance-assessment: "http://performance-assessment:8080/"
-                pt-property: "http://pt-property:8080/"
-                pt-workflow: "http://pt-workflow:8080/"
-                pt-tax-enrichment: "http://pt-tax-enrichment:8080/"
                 pt-calculator: "http://pt-calculator:8080/"
                 pt-calculator-v2: "http://pt-calculator-v2:8080/"
                 pt-services-v2: "http://pt-services-v2:8080/"
                 property-services: "http://property-services.assam:8080/assam/"
-                pgr-master: "http://pgr-master:8080/"
-                pgr-rest: "http://pgr-rest:8080/"
                 pdf-service: "http://pdf-service.assam:8080/assam/"
                 report: "http://report:8080/"
-                swm-services: "http://swm-services:8080/"
-                tenant: "http://tenant:8080/"
-                tl-masters: "http://tl-masters:8080/"
                 tl-services: "http://tl-services:8080/"
-                tl-workflow: "http://tl-workflow:8080/"
-                tl-indexer: "http://tl-indexer:8080/"
                 tl-calculator: "http://tl-calculator:8080/"
                 user-otp: "http://user-otp:8080/assam/"
-                firenoc-services: "http://firenoc-services:8080/"
-                firenoc-calculator: "http://firenoc-calculator:8080/"
                 egov-apportion-service: "http://egov-apportion-service:8080/"
-                bpa-services: "http://bpa-services.assam:8080/"
-                bpa-calculator: "http://bpa-calculator.assam:8080/"
-                rainmaker-pgr: "http://rainmaker-pgr:8080/"
                 ws-calculator: "http://ws-calculator.assam:8080/assam/"
                 ws-services: "http://ws-services.assam:8080/assam/"
-                sw-services: "http://sw-services.assam:8080/"
-                sw-calculator: "http://sw-calculator.assam:8080/"
-                land-services: "http://land-services.assam:8080/"
-                noc-services: "http://noc-services.assam:8080/"
                 minio-url: "https://minio-uat.digit.org/"
                 egov-user-chatbot: "http://egov-user-chatbot:8080/"
                 zuul: "http://zuul:8080/"
                 egov-url-shortening: "http://egov-url-shortening:8080/assam/"
-                fsm-calculator: "http://fsm-calculator.assam:8080/"
-                fsm: "http://fsm.assam:8080/"
-                vehicle: "http://vehicle.assam:8080"
                 vendor: "http://vendor.assam:8080/assam/"
-                egov-edcr: "http://egov-edcr.assam:8080/"
                 echallan-calculator: "http://echallan-calculator.assam:8080/"
                 echallan-services: "http://echallan-services.assam:8080/assam/"
                 inbox: "http://inbox.assam:8080/"
                 turn-io-adapter: "http://turn-io-adapter.assam:8080/"
-                pgr-services: "http://pgr-services.assam:8080/"
-                birth-death-services: "http://birth-death-services.assam:8080/"
                 egov-pdf: "http://egov-pdf.assam:8080/"
                 mdms-v2: "http://mdms-v2:8080/assam/"
-employee:
-  dashboard-url: "https://dashboard-pbuat.egovernments.org/s/w---s/app/kibana#/dashboard/4e687470-f3c7-11e8-8d09-b151e2b1cf8e?embed=true&_g=(refreshInterval%3A(pause%3A!f%2Cvalue%3A300000)%2Ctime%3A(from%3Anow-15m%2Cmode%3Aquick%2Cto%3Anow))"
-  custom-js-injection: |
-    sub_filter.conf: "
-      sub_filter  '<head>' '<head>
-      <script src=https://unpkg.com/@egovernments/telemetry@0.0.2/dist/egov-telemetry-1557467338.js type=text/javascript></script>
-      <script src=https://s3.ap-south-1.amazonaws.com/egov-uat-assets/globalConfigs.js type=text/javascript></script>
-      ';"
+
 digit-ui:
   custom-js-injection: |
     sub_filter.conf: "
       sub_filter  '<head>' '<head>
       <script src=https://s3.ap-south-1.amazonaws.com/egov-uat-assets/globalConfigs.js type=text/javascript></script>
       ';"     
-citizen:
-  custom-js-injection: |
-    sub_filter.conf: "
-      sub_filter  '<head>' '<head>
-      <script src=https://unpkg.com/@egovernments/telemetry@0.0.2/dist/egov-telemetry-1557467338.js type=text/javascript></script>
-      <script src=https://s3.ap-south-1.amazonaws.com/egov-uat-assets/globalConfigs.js type=text/javascript></script>
-      ';"
 
 frontend-mgramseva:
   ingress:
@@ -339,6 +268,9 @@ mdms-v2:
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
 
+egov-url-shortening:
+  replicas: 2
+
 egov-filestore:
   memory_limits: 512Mi
   heap: "-Xmx512m -Xms512m"
@@ -354,7 +286,7 @@ egov-filestore:
   fixed-bucketname: assam-s3
 
 egov-idgen:
-  replicas: 3
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   idformat-from-mdms: "true"
@@ -363,7 +295,7 @@ egov-idgen:
   mdms-service-search-uri: "mdms-v2/v1/_search"
 
 egov-notification-sms:
-  egov-notification-sms:
+  replicas: 2
   sms-provider-url: "https://api.textlocal.in/send/?"
   sms.provider.url: "https://api.textlocal.in/send/?"
   sms.provider.class: "generic"
@@ -388,7 +320,7 @@ egov-notification-sms:
   sms.debug.msggateway: "true"
   sms.enabled: "true"
   save-sms-entity-enabled: "true"
-  sms-disabled-tenants-list: "pb.testing"
+  sms-disabled-tenants-list: "as.testing"
   sms.mobile.prefix: 91
 
 egov-user:
@@ -411,25 +343,6 @@ egov-user:
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
   mdms-path: "/mdms-v2/v1/_search"
 
-chatbot:
-  kafka-topics-partition-count: 3
-  kafka-topics-replication-factor: 2
-  kafka-consumer-poll-ms: 10
-  kafka-producer-linger-ms: 5
-
-  contact-card-whatsapp-number: "+918744960111"
-  contact-card-whatsapp-name: "mSeva Punjab"
-  valuefirst-whatsapp-number: "918744960111"
-  valuefirst-notification-assigned-templateid: "194781"
-  valuefirst-notification-resolved-templateid: "194783"
-  valuefirst-notification-rejected-templateid: "194785"
-  valuefirst-notification-reassigned-templateid: "194787"
-  valuefirst-notification-commented-templateid: "194789"
-  valuefirst-notification-welcome-templateid: "194791"
-  valuefirst-notification-root-templateid: "194795"
-  valuefirst-send-message-url: "https://api.myvaluefirst.com/psms/servlet/psms.JsonEservice"
-
-  user-service-chatbot-citizen-passwrord: "123456"
 
 billing-service:
   replicas: 2
@@ -474,6 +387,9 @@ echallan-services:
   sms-monthy-summary-enabled: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
 
+echallan-calculator:
+  replicas: 2
+
 ws-calculator:
   replicas: 2
   heap: "-Xmx512m -Xms512m"
@@ -492,7 +408,7 @@ egov-pg-service:
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 egov-mdms-service:
-  replicas: 3
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   images:
@@ -517,7 +433,7 @@ egov-indexer:
   egov-indexer-yaml-repo-path: "file:///work-dir/config-naljal/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-naljal/egov-indexer/collection-indexer.yml,file:///work-dir/config-naljal/egov-indexer/egov-echallan.yml,file:///work-dir/config-naljal/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-naljal/egov-indexer/error-queue.yml,file:///work-dir/config-naljal/egov-indexer/egov-vendor.yaml,file:///work-dir/config-naljal/egov-indexer/payment-indexer.yml,file:///work-dir/config-naljal/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-naljal/egov-indexer/property-services.yml,file:///work-dir/config-naljal/egov-indexer/water-service.yml,file:///work-dir/config-naljal/egov-indexer/water-services-meter.yml"
 
 egov-enc-service:
-  replicas: 3
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   java-args: -Dspring.profiles.active=monitoring
@@ -525,7 +441,7 @@ egov-enc-service:
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
 
 egov-persister:
-  replicas: 3
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   images:
@@ -534,15 +450,6 @@ egov-persister:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "assam"                                    ##### Change repo branch with Your fork Repo branch
-
-pgr-services:
-  memory_limits: 512Mi
-
-egov-data-uploader:
-  initContainers:
-    gitSync:
-      repo: "git@github.com:ddws-org/config-naljal"      ##### Change repo url with Your fork Repo url
       branch: "assam"                                    ##### Change repo branch with Your fork Repo branch
 
 egov-searcher:
@@ -568,16 +475,6 @@ dashboard-ingest:
 
 # reportinfra >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-national-dashboard-ingest:
-  heap: "-Xmx750m -Xms750m"
-  replicas: 1
-  server-tomcat-max-threads: 25
-  module-index-mapping: '{"PT": "pt-national-dashboard", "PGR": "pgr-national-dashboard", "WS": "ws-national-dashboard", "FIRENOC": "firenoc-national-dashboard", "TL": "tl-national-dashboard", "MCOLLECT": "mcollect-national-dashboard", "OBPS": "obps-national-dashboard", "COMMON": "common-national-dashboard", "BPA": "bpa-national-dashboard","BIRTH":"birth-cert-national-dashboard"}'
-  master-data-index: "master-national-dashboard"
-  module-fields-mapping: '{"PT":{"transactions":"array::number","todaysTotalApplications":"number","todaysClosedApplications":"number","assessments":"number","assessedProperties":"array::number","propertiesRegistered":"array::number","todaysCollection":"array::number","propertyTax":"array::number","cess":"array::number","rebate":"array::number","penalty":"array::number","interest":"array::number"},"TL":{"transactions":"number","todaysApplications":"number","todaysLicenseIssuedWithinSLA":"number","tlTax":"number","adhocPenalty":"number","adhocRebate":"number","todaysCollection":"array::number","todaysTradeLicenses":"array::number","applicationsMovedToday":"array::number"},"PGR":{"uniqueCitizens":"number","todaysComplaints":"array::number","todaysReopenedComplaints":"array::number","todaysOpenComplaints":"array::number","todaysAssignedComplaints":"array::number","todaysRejectedComplaints":"array::number","todaysReassignedComplaints":"array::number","todaysReassignRequestedComplaints":"array::number","todaysClosedComplaints":"array::number","todaysResolvedComplaints":"array::number","slaAchievement":"array::number","completionRate":"array::number","averageSolutionTime":"array::number"},"WS":{"transactions":"number","connectionsCreated":"array::number","todaysCollection":"array::number","sewerageConnections":"array::number","waterConnections":"array::number","pendingConnections":"array::number","slaCompliance":"number","todaysTotalApplications":"number","todaysClosedApplications":"number","todaysCompletedApplicationsWithinSLA":"number"},"MCOLLECT":{"numberOfCategories":"number","todaysCollection":"array::number","numberOfReceipts":"array::number","numberOfChallans":"array::number"},"OBPS":{"ocPlansScrutinized":"number","plansScrutinized":"number","ocSubmitted":"number","applicationsSubmitted":"number","ocIssued":"number","landAreaAppliedInSystemForBPA":"number","averageDaysToIssuePermit":"number","averageDaysToIssueOC":"number","todaysCollection":"array::number","permitsIssued":"array::number","todaysClosedApplicationsOC":"number","todaysCompletedApplicationsWithinSLAOC":"number","todaysClosedApplicationsPermit":"number","todaysCompletedApplicationsWithinSLAPermit":"number","slaComplianceOC":"number","slaCompliancePermit":"number","applicationsWithDeviation":"number","averageDeviation":"number","ocWithDeviation":"number"},"FIRENOC":{"todaysApplications":"array::number","todaysCollection":"array::number","nocIssuedToday":"array::number","provisionalNOCIssued":"array::number","actualNOCIssued":"array::number","avgDaysToIssueProvisionalNOC":"array::number","slaComplianceActual":"array::number","slaComplianceProvisional":"array::number","avgDaysToIssueActualNOC":"array::number","todaysClosedApplications":"number","todaysCompletedApplicationsWithinSLA":"number"},"COMMON":{"onboardedUlbsCount":"number","totalCitizensCount":"number","slaAchievement":"number","liveUlbsCount":"array::number","status":"string","totalLiveUlbsCount":"number","totalUlbCount":"number"},"BIRTH":{"todaysCollection":"array::number","numberOfCertificatesDownloadedToday":"array::number","numberOfBirthsToday":"array::number"},"DEATH":{"todaysCollection":"array::number","numberOfCertificatesDownloadedToday":"array::number","numberOfDeathsToday":"array::number"}}'
-  master-module-fields-mapping: '{"PT":{"snoForMunicipalCorporation":"string","ulbName":"string","date":"string","budgetProposedForMunicipalCorporation":"number"},"PGR":{"snoForMunicipalCorporation":"string","ulbName":"string","date":"string","budgetProposedForMunicipalCorporation":"number"},"TL":{"snoForMunicipalCorporation":"string","ulbName":"string","date":"string","budgetProposedForMunicipalCorporation":"number"},"WS":{"snoForMunicipalCorporation":"string","ulbName":"string","date":"string","budgetProposedForMunicipalCorporation":"number"},"MCOLLECT":{"snoForMunicipalCorporation":"string","ulbName":"string","date":"string","budgetProposedForMunicipalCorporation":"number"},"OBPS":{"snoForMunicipalCorporation":"string","ulbName":"string","date":"string","budgetProposedForMunicipalCorporation":"number"},"FIRENOC":{"snoForMunicipalCorporation":"string","ulbName":"string","date":"string","budgetProposedForMunicipalCorporation":"number"},"BIRTH":{"snoForMunicipalCorporation":"string","ulbName":"string","date":"string","budgetProposedForMunicipalCorporation":"number"},"DEATH":{"snoForMunicipalCorporation":"string","ulbName":"string","date":"string","budgetProposedForMunicipalCorporation":"number"}}'
-  module-allowed-groupby-fields-mapping: '{"PT":{"financialYear","usageCategory"},"WS":{"connectionType","channelType","usageType","paymentChannelType","taxHeads","meterType","duration"},"FIRENOC":{"applicationType","department","paymentMode","type","usageType"},"OBPS":{"paymentMode","riskType","occupancyType","subOccupancyType"},"PGR":{"status","channel","department","category"},"TL":{"tradeType","status"},"MCOLLECT":{"paymentMode","status","category","challanStatus"},"COMMON":{"serviceModuleCode"},"BIRTH":{"channel","gender","boundary"},"DEATH":{"channel","gender","boundary","age"}}'
-
 report:
   heap: "-Xmx512m -Xms512m"
   tracing-enabled: "true"
@@ -589,6 +486,7 @@ report:
   report-locationsfile-path: "file:///work-dir/config-naljal/reports/reportFileLocationsv1.txt"
 
 pdf-service:
+  replicas: 2
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"     ##### Change repo url with Your fork Repo url
@@ -648,18 +546,6 @@ gateway:
   egov-open-endpoints-whitelist: "/assam/egov-user-event/v1/events/_search,/assam/user/oauth/token,/assam/user-otp/v1/_send,/assam/otp/v1/_validate,/assam/user/citizen/_create,/assam/localization/messages,/assam/localization/messages/v1/_search,/assam/user/password/nologin/_update,/assam/pgr/servicedefinition/v1/_search,/assam/pgr/servicecategories/v1/_search,/assam/pgr/v1/otp/_send,/assam/pgr-master/receivingmode/v1/_search,/assam/tenant/v1/tenant/_search,/assam/egov-location/boundarys,/assam/egov-location/boundarys/boundariesByBndryTypeNameAndHierarchyTypeName,/assam/pgr-master/service/v1/_search,/assam/egov-location/boundarys/getLocationByLocationName,/assam/pgr-master/OTPConfig/_search,/assam/pgr-master/serviceGroup/v1/_search,/assam/egov-location/boundarys/isshapefileexist,/assam/pgr/services/v1/_search,/assam/hr-masters/hrconfigurations/_search,/assam/collection-services/receipts/_view,/assam/pgr-master/service/v2/_search,/assam/pgr-master/servicedefinition/v1/_search,/assam/citizen-services,/assam/citizen-services/v1/requests/receipt/_create,/assam/citizen-services/v1/pgresponse,/assam/citizen-services/v1/requests/anonymous/_search,/assam/egov-mdms-service/v1/_search,/assam/egov-mdms-service/v1/_get,/assam/egov-mdms-service/v1/_reload,/assam/egov-mdms-service/v1/_reloadobj,/assam/egov-location/boundarys/getshapefile,/assam/egov-indexer/index-operations/_index,/assam/egov-indexer/index-operations/_reload,/assam/egov-mdms-service-test/v1/_search,/assam/egov-mdms-create/v1/_update,/assam/egov-mdms-create/v1/_create,/assam/egov-mdms-service-test/v1/_reload,/assam/filestore/v1/files/url,/assam/egov-url-shortening,/assam/adapter-master-data/department/v1/_search,/assam/ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search,/assam/ifix-department-entity/departmentEntity/v1/_search,/assam/adapter-master-data/project/v1/_create,/assam/adapter-master-data/project/v1/_search,/assam/egov-location/location/v11/boundarys/_search,/assam/mdms-v2/v1/_search,/assam/mdms-v2/schema/v1/_search,/assam/mdms-v2/v1/_get,/assam/filestore/v1/files"
   egov-mixed-mode-endpoints-whitelist: "/assam/egov-user-event/v1/events/_search,/assam/pgr/seva/v1/_create,/assam/pgr/seva/v1/_search,/assam/pgr/seva/v1/_count,/assam/workflow/history/v1/_search,/assam/filestore/v1/files/id,/assam/filestore/v1/files/tag,/assam/egov-common-masters/departments/_search,/assam/pt-property/property/propertytypes/_search,/assam/pt-property/properties/_search,/assam/pt-property/property/usages/_search,/assam/egov-idgen/id/_generate,/assam/egf-masters/financialyears/_search,/assam/egov-common-workflows/process/_start,/assam/egov-common-workflows/process/_search,/assam/egov-common-workflows/tasks,/assam/egov-common-workflows/tasks/{id}/_update,/assam/user/_search,/assam/billing-service/demand/_dues,/assam/billing-service/bill/_generate,/assam/billing-service/demand/_create,/assam/wcms/masters/waterchargesconfig/_search,/assam/wcms/masters/usagetypes/_search,/assam/wcms/masters/pipesizes/_search,/assam/wcms-connection/connection/_getbillingtypes,/assam/wcms-connection/connection/_getconnectiontypes,/assam/wcms/masters/sourcetypes/_search,/assam/wcms/masters/supplytypes/_search,/assam/wcms/masters/storagereservoirs/_search,/assam/wcms/masters/treatmentplants/_search,/assam/wcms/masters/documenttypes-applicationtypes/_search,/assam/wcms/masters/donations/_search,/assam/wcms/masters/nonmeterwaterrates/_search,/assam/wcms-connection/connection/_create,/assam/egov-common-masters/genders/_search,/assam/egov-common-workflows/designations/_search,/assam/access/v1/actions/mdms/_get,/assam/tl-services/v1/BPAREG/_create,/assam/tl-services/v1/BPAREG/_update,/assam/tl-calculator/v1/BPAREG/_getbill,/assam/property-services/property/_search,/assam/billing-service/bill/v2/_search,/assam/pg-service/transaction/v1/_create,/assam/collection-services/payments/_search,/assam/pdf-service/v1/_create,/assam/billing-service/bill/v2/_fetchbill,/assam/pg-service/transaction/v1/_update,/assam/ws-services/wc/_bulkonboard,/assam/ws-services/wc/_submitfeedback,/assam/ws-services/wc/_search,/assam/collection-services/payments/WS/_search,/assam/ws-calculator/waterCalculator/_getPenaltyDetails,/assam/billing-service/demand/_search,/assam/collection-services/payments/_create,/assam/pg-service/transaction/v1/_redirect,/assam/adapter-master-data/project/v1/_search"
 
-zuul:
-  contextUnique: true
-  namespace: assam
-  replicas: 3
-  custom-filter-property: "false"
-  tracing-enabled: "true"
-  heap: "-Xmx704m -Xms512m"
-  server-tomcat-max-threads: "350"
-  server-tomcat-max-connections: "1500"
-  egov-open-endpoints-whitelist: "/assam/egov-user-event/v1/events/_search,/assam/user/oauth/token,/assam/user-otp/v1/_send,/assam/otp/v1/_validate,/assam/user/citizen/_create,/assam/localization/messages,/assam/localization/messages/v1/_search,/assam/user/password/nologin/_update,/assam/pgr/servicedefinition/v1/_search,/assam/pgr/servicecategories/v1/_search,/assam/pgr/v1/otp/_send,/assam/pgr-master/receivingmode/v1/_search,/assam/tenant/v1/tenant/_search,/assam/egov-location/boundarys,/assam/egov-location/boundarys/boundariesByBndryTypeNameAndHierarchyTypeName,/assam/pgr-master/service/v1/_search,/assam/egov-location/boundarys/getLocationByLocationName,/assam/pgr-master/OTPConfig/_search,/assam/pgr-master/serviceGroup/v1/_search,/assam/egov-location/boundarys/isshapefileexist,/assam/pgr/services/v1/_search,/assam/hr-masters/hrconfigurations/_search,/assam/collection-services/receipts/_view,/assam/pgr-master/service/v2/_search,/assam/pgr-master/servicedefinition/v1/_search,/assam/citizen-services,/assam/citizen-services/v1/requests/receipt/_create,/assam/citizen-services/v1/pgresponse,/assam/citizen-services/v1/requests/anonymous/_search,/assam/egov-mdms-service/v1/_search,/assam/egov-mdms-service/v1/_get,/assam/egov-mdms-service/v1/_reload,/assam/egov-mdms-service/v1/_reloadobj,/assam/egov-location/boundarys/getshapefile,/assam/egov-indexer/index-operations/_index,/assam/egov-indexer/index-operations/_reload,/assam/egov-mdms-service-test/v1/_search,/assam/egov-mdms-create/v1/_update,/assam/egov-mdms-create/v1/_create,/assam/egov-mdms-service-test/v1/_reload,/assam/filestore/v1/files/url,/assam/egov-url-shortening,/assam/adapter-master-data/department/v1/_search,/assam/ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search,/assam/ifix-department-entity/departmentEntity/v1/_search,/assam/adapter-master-data/project/v1/_create,/assam/adapter-master-data/project/v1/_search"
-  egov-mixed-mode-endpoints-whitelist: "/assam/egov-user-event/v1/events/_search,/assam/pgr/seva/v1/_create,/assam/pgr/seva/v1/_search,/assam/pgr/seva/v1/_count,/assam/workflow/history/v1/_search,/assam/filestore/v1/files/id,/assam/filestore/v1/files,/assam/filestore/v1/files/tag,/assam/egov-common-masters/departments/_search,/assam/pt-property/property/propertytypes/_search,/assam/pt-property/properties/_search,/assam/pt-property/property/usages/_search,/assam/egov-idgen/id/_generate,/assam/egf-masters/financialyears/_search,/assam/egov-common-workflows/process/_start,/assam/egov-common-workflows/process/_search,/assam/egov-common-workflows/tasks,/assam/egov-common-workflows/tasks/{id}/_update,/assam/user/_search,/assam/billing-service/demand/_dues,/assam/billing-service/bill/_generate,/assam/billing-service/demand/_create,/assam/wcms/masters/waterchargesconfig/_search,/assam/wcms/masters/usagetypes/_search,/assam/wcms/masters/pipesizes/_search,/assam/wcms-connection/connection/_getbillingtypes,/assam/wcms-connection/connection/_getconnectiontypes,/assam/wcms/masters/sourcetypes/_search,/assam/wcms/masters/supplytypes/_search,/assam/wcms/masters/storagereservoirs/_search,/assam/wcms/masters/treatmentplants/_search,/assam/wcms/masters/documenttypes-applicationtypes/_search,/assam/wcms/masters/donations/_search,/assam/wcms/masters/nonmeterwaterrates/_search,/assam/wcms-connection/connection/_create,/assam/egov-common-masters/genders/_search,/assam/egov-common-workflows/designations/_search,/assam/access/v1/actions/mdms/_get,/assam/tl-services/v1/BPAREG/_create,/assam/tl-services/v1/BPAREG/_update,/assam/tl-calculator/v1/BPAREG/_getbill,/assam/property-services/property/_search,/assam/billing-service/bill/v2/_search,/assam/egov-location/location/v11/boundarys/_search,/assam/pg-service/transaction/v1/_create,/assam/collection-services/payments/_search,/assam/pdf-service/v1/_create,/assam/billing-service/bill/v2/_fetchbill,/assam/pg-service/transaction/v1/_update,/assam/ws-services/wc/_bulkonboard,/assam/ws-services/wc/_submitfeedback,/assam/ws-services/wc/_search,/assam/collection-services/payments/WS/_search,/assam/ws-calculator/waterCalculator/_getPenaltyDetails,/assam/billing-service/demand/_search,/assam/collection-services/payments/_create,/assam/pg-service/transaction/v1/_redirect,/assam/adapter-master-data/project/v1/_search"
-
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 collection-services:
@@ -687,15 +573,6 @@ finance-collections-voucher-consumer:
 user-otp:
   logging-level: "DEBUG"
 
-# rainmaker-pgr >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-rainmaker-pgr:
-  notification-sms-enabled: "true"
-  notification-email-enabled: "false"
-  new-complaint-enabled: "true"
-  reassign-complaint-enabled: "true"
-  reopen-complaint-enabled: "true"
-  comment-by-employee-notif-enabled: "false"
-  notification-allowed-status: "open,assigned,rejected,resolved"
 
 pt-services-v2:
   pt-userevents-pay-link: "/citizen/otpLogin?mobileNo=$mobile&redirectTo=egov-common/pay?consumerCode=$consumerCode&tenantId=$tenantId"
@@ -716,13 +593,14 @@ tl-services:
   tl-search-default-limit: "100"
 
 egov-workflow-v2:
-  replicas: 3
+  replicas: 2
   logging-level: "DEBUG"
   java-args: -Dspring.profiles.active=monitoring
   heap: "-Xmx256m -Xms256m"
   workflow-statelevel: "true"
 
 egov-hrms:
+  replicas: 2
   java-args: -Dspring.profiles.active=monitoring
   employee-applink: "https://egov-demo.egovernments.org/employee/user/login"
   memory_limits: 512Mi
