@@ -26,11 +26,16 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: db-host
-  - name: DB_SCHEMA
+  - name: DB_NAME
     valueFrom:
       configMapKeyRef:
         name: egov-config
         key: db-name
+  - name: DB_SCHEMA
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: db-schema
   - name: DB_PWD
     valueFrom:
       secretKeyRef:
