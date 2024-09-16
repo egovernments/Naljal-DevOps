@@ -227,6 +227,7 @@ cluster-configs:
                 egov-pdf: "http://egov-pdf.assam:8080/"
                 mdms-v2: "http://mdms-v2:8080/assam/"
                 vehicle: "http://vehicle.assam:8080"
+                egov-common-masters: "http://egov-common-masters:8080/"
 
 digit-ui:
   custom-js-injection: |
