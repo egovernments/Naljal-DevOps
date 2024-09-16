@@ -1,5 +1,5 @@
 global:
-   domain: naljal-uat.digit.org ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
+   domain: naljalseva.jjm.gov.in ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
    setup: fullsetup
    namespace: assam
    containerRegistry: naljal
