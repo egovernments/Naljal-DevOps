@@ -770,3 +770,33 @@ kafka-ui:
       - name: assam-prod
         bootstrapServers: kafka-kraft-controller-headless.backbone:9092
         readonly: true
+
+prometheus:
+  externalLabels:
+    cluster: assam-prod                          ## provide cluster name    
+  additionalScrapeConfigs:
+    - job_name: 'nginx-ingress-metrics'
+      static_configs:
+        - targets: [ 'release-name-ingress-nginx-controller.backbone:10254' ]
+    - job_name: 'blackbox'
+      metrics_path: /probe
+      params:
+        module: [ http_2xx ]
+      static_configs:
+        - targets:
+            - naljalseva.jjm.gov.in         ## add all URLs to monitor
+      relabel_configs:
+        - source_labels: [ __address__ ]
+          target_label: __param_target
+        - source_labels: [ __param_target ]
+          target_label: instance
+        - target_label: __address__
+          replacement: prometheus-blackbox-exporter:9115
+    - job_name: 'blackbox_exporter'
+      static_configs:
+        - targets: [ 'prometheus-blackbox-exporter:9115' ]
+
+grafana:
+  github:
+    allowed_organizations: ["ddws-org"]
+    role_attribute_path: contains(groups[*], '@ddws-org/assam') && 'Viewer'
