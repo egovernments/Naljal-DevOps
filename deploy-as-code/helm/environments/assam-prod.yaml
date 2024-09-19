@@ -298,6 +298,8 @@ egov-idgen:
 
 egov-notification-sms:
   replicas: 2
+  heap: "-Xmx512m -Xms512m"
+  memory_limits: "768Mi"
   sms-provider-url: "https://api.textlocal.in/send/?"
   sms.provider.url: "https://api.textlocal.in/send/?"
   sms.provider.class: "generic"
