@@ -66,10 +66,16 @@ serverBasePath: /assam/kibana
 
 # Allows you to add any config files in /usr/share/kibana/config/
 # such as kibana.yml
-kibanaConfig: {}
-#   kibana.yml: |
-#     key:
-#       nestedkey: value
+kibanaConfig: 
+  kibana.yml: | 
+    xpack.security.authc.providers:
+      basic.basic1:       
+        order: 0
+      anonymous.anonymous1: 
+        order: 1
+        credentials:
+          username: "anonymous_user"
+          password: "anonymous@123"
 
 # If Pod Security Policy in use it may be required to specify security context as well as service account
 
