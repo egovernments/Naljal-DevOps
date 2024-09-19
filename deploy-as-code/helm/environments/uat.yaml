@@ -141,8 +141,8 @@ cluster-configs:
             data:
                 db-host: naljal-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432
                 db-name: naljaluatdb
-                db-url: jdbc:postgresql://naljal-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/naljaluatdb?currentSchema=assam_uat
-                db-schema: "assam_uat"
+                db-url: jdbc:postgresql://naljal-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/naljaluatdb?currentSchema=assam
+                db-schema: "assam"
                 domain: naljalseva.jjm.gov.in ## Add your Domain Name    
                 egov-services-fqdn-name: https://naljalseva.jjm.gov.in/ ## Add your Domain Name
                 state-level-tenant-id: "as"
