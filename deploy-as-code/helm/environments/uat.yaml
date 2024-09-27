@@ -525,7 +525,7 @@ egov-persister:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "uat"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "UAT"                                    ##### Change repo branch with Your fork Repo branch
 
 pgr-services:
   memory_limits: 512Mi
@@ -534,28 +534,28 @@ egov-data-uploader:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"      ##### Change repo url with Your fork Repo url
-      branch: "uat"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "UAT"                                    ##### Change repo branch with Your fork Repo branch
 
 egov-searcher:
   search-yaml-path: "file:///work-dir/config-naljal/egov-searcher/bill-genie.yml,file:///work-dir/config-naljal/egov-searcher/wateropensearch.yml,file:///work-dir/config-naljal/egov-searcher/localitySearcher.yml,file:///work-dir/config-naljal/egov-searcher/propertyopensearch.yml"
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "uat"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
 
 dashboard-analytics:
   config-schema-paths: "file:///work-dir/config-naljal/egov-dss-dashboards/dashboard-analytics/*.json"
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "uat"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
 
 dashboard-ingest:
   config-schema-paths: "file:///work-dir/config-naljal/egov-dss-dashboards/dashboard-ingest/*.json"
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "uat"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "UAT"                                    ##### Change repo branch with Your fork Repo branch
 
 # reportinfra >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -576,14 +576,14 @@ report:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"     ##### Change repo url with Your fork Repo url
-      branch: "uat"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
   report-locationsfile-path: "file:///work-dir/config-naljal/reports/reportFileLocationsv1.txt"
 
 pdf-service:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"     ##### Change repo url with Your fork Repo url
-      branch: "uat"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
   data-config-urls: "file:///work-dir/config-naljal/pdf-service/data-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt-nm.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-bill-nm-v2.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-bill-v2.json"
   format-config-urls: "file:///work-dir/config-naljal/pdf-service/format-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt-nm.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-bill-nm-v2.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-bill-v2.json"
 
