@@ -58,6 +58,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: property-services
+  - name: EGOV_COLLECTION_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: collection-services
   - name: EGOV_MDMS_HOST
     valueFrom:
       configMapKeyRef:
