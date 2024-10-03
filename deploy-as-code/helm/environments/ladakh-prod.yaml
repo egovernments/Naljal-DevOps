@@ -612,7 +612,7 @@ cert-manager:
   email: "devops@egovernments.org"     ### Add email-id which used by cert-manager for certificates validation.
   
   
-zuul:
+gateway:
   contextUnique: true
   namespace: ladakh
   replicas: 3
