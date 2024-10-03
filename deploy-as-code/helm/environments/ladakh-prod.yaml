@@ -134,7 +134,7 @@ cluster-configs:
 
     namespaces:  
       create: true
-      values: [ backbone, monitoring, playground, ladakh, kafka-cluster ]
+      values: [ backbone, monitoring, playground, ladakh, kafka-cluster, es-cluster ]
       
     root-ingress:
       cert-issuer: letsencrypt-prod
