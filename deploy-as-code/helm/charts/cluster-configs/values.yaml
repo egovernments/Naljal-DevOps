@@ -143,3 +143,7 @@ cluster-configs:
     postgres:
       namespace: jenkins
       name: postgres
+
+    firebase-secrets:
+      namespace: naljal
+      name: firebase-secrets  
