@@ -164,6 +164,7 @@ cluster-configs:
                 tracer-errors-provideexceptionindetails: "true"
                 egov-bnd-freedownload-tenants: "pg.testing"
                 egov-bnd-live-citizen-tenants: "pg.testing"
+                firebase-api-key: "AIzaSyDQvWEo6L8z1uwHTxRQFhqGNrMLY-Zl5uk"
 
         egov-service-host:
             namespace: [ madhyapradesh, monitoring ]
