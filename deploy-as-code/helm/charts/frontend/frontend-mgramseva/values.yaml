@@ -35,4 +35,6 @@ extraVolumeMounts: |
 env: |
   - name: STATE_LEVEL_TENANT_ID
     value: {{ index .Values "state-level-tenant-id" | quote }}
+  - name: API_KEY
+    value: {{ index .Values "firebase-api-key" | quote }}   
 
