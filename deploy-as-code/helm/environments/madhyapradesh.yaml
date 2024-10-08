@@ -123,6 +123,10 @@ cluster-configs:
       alertmanager:
         namespace: monitoring
         name: alertmanager-main
+        
+      firebase-secrets:
+        namespace: madhyapradesh
+        name: firebase-secrets
     namespaces:  
       create: true
       values: [ backbone, cert-manager, monitoring, playground, kafka-kraft, es-cluster, es-cluster-infra, madhyapradesh, kafka-cluster ]
