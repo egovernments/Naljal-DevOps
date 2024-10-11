@@ -442,6 +442,7 @@ ws-services:
   sms-workflow-enabled: false
   sms-feedback-notification-enabled: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+  java-enable-debug: true
 
 egov-location:
   memory_limits: 512Mi
