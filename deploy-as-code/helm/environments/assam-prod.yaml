@@ -145,7 +145,7 @@ cluster-configs:
 
     configmaps:
         egov-config:
-            namespace: [ assam, monitoring ]
+            namespace: [ assam, monitoring, backbone ]
             data:
                 db-host: assam-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com ## Add db-host name eg: egov-demo.database.azure.com
                 db-name: assamproddb ## Add db-name
@@ -177,7 +177,7 @@ cluster-configs:
                 egov-bnd-live-citizen-tenants: "pg.testing"
 
         egov-service-host:
-            namespace: [ assam, monitoring ]
+            namespace: [ assam, monitoring, backbone ]
             data:
                 billing-service: "http://billing-service:8080/assam/"
                 collection-services: "http://collection-services:8080/assam/"
