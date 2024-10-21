@@ -152,8 +152,8 @@ cluster-configs:
                 db-url: jdbc:postgresql://assam-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/assamproddb?currentSchema=assam ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
                 db-schema: "assam"
                 domain: naljal-uat.digit.org ## Add your Domain Name    
-                egov-services-fqdn-name: https://naljal-uat.digit.org/ ## Add your Domain Name
-                egov-services-fqdn-name-sms: https://naljal-uat.digit.org/assam/
+                egov-services-fqdn-name: https://naljalseva.jjm.gov.in/ ## Add your Domain Name
+                egov-services-fqdn-name-sms: https://naljalseva.jjm.gov.in/assam/
                 state-level-tenant-id: "as"
                 egov-state-level-tenant-id: "as" 
                 s3-assets-bucket: "assam-s3"
@@ -364,7 +364,7 @@ ws-services:
   sms-pending-collection-enabled: false
   sms-todays-collection-enabled: false
   sms-edit-water-connection-notification-enabled: false
-  sms-payment-notification-enabled: true
+  sms-payment-notification-enabled: false
   sms-workflow-enabled: false
   sms-feedback-notification-enabled: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
@@ -398,9 +398,9 @@ ws-calculator:
   replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
-  sms-demand-enabled: true
+  sms-demand-enabled: false
   sms-payment-link-enabled: false
-  sms-bill-download-enable: true
+  sms-bill-download-enable: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
 
 egov-pg-service:
