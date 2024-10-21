@@ -364,7 +364,7 @@ ws-services:
   sms-pending-collection-enabled: false
   sms-todays-collection-enabled: false
   sms-edit-water-connection-notification-enabled: false
-  sms-payment-notification-enabled: false
+  sms-payment-notification-enabled: true
   sms-workflow-enabled: false
   sms-feedback-notification-enabled: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
@@ -398,9 +398,9 @@ ws-calculator:
   replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
-  sms-demand-enabled: false
+  sms-demand-enabled: true
   sms-payment-link-enabled: false
-  sms-bill-download-enable: false
+  sms-bill-download-enable: true
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
 
 egov-pg-service:
