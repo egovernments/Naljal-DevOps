@@ -35,4 +35,4 @@ extraVolumeMounts: |
 # Additional Container Envs
 env: |
   - name: PUBLIC_PATH
-    value: "/assam/mgramseva-web/"    
+    value: "/uat/mgramseva-web/"    
