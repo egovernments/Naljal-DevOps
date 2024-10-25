@@ -149,8 +149,7 @@ cluster-configs:
             data:
                 db-host: <db_host> ## Add db-host name eg: egov-demo.database.azure.com
                 db-name: <db_name> ## Add db-name
-                db-url: jdbc:postgresql://<db_host>:5432/<db_name>?currentSchema=<state-name> ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
-                db-schema: "<state-name>"
+                db-url: jdbc:postgresql://<db_host>:5432/<db_name> ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
                 domain: naljalseva.jjm.gov.in ## Add your Domain Name    
                 egov-services-fqdn-name: https://naljalseva.jjm.gov.in/ ## Add your Domain Name
                 egov-services-fqdn-name-sms: https://naljalseva.jjm.gov.in/<state-name>/
