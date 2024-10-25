@@ -4,7 +4,7 @@ elasticsearchCertificateSecret: elasticsearch-master-certs
 elasticsearchCertificateAuthoritiesFile: ca.crt
 elasticsearchCredentialSecret: elasticsearch-master-credentials
 
-replicas: 1
+replicas: 2
 namespace: backbone
 
 # Extra environment variables to append to this nodeGroup
