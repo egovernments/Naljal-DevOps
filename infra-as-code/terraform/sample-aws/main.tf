@@ -1,10 +1,10 @@
 terraform {
   backend "s3" {
-    bucket = "assam-prod-terraform-bucket"
+    bucket = "<s3-bucket-name>" #REPLACE
     key    = "terraform-setup/terraform.tfstate"
     region = "ap-south-1"
     # The below line is optional depending on whether you are using DynamoDB for state locking and consistency
-    dynamodb_table = "assam-prod-terraform-bucket"
+    dynamodb_table = "<s3-bucket-name>" #REPLACE
     # The below line is optional if your S3 bucket is encrypted
     encrypt = true
   }
@@ -24,7 +24,7 @@ module "db" {
   vpc_security_group_ids        = ["${module.network.rds_db_sg_id}"]
   availability_zone             = "${element(var.availability_zones, 0)}"
   instance_class                = "db.t4g.medium"  ## postgres db instance type
-  engine_version                = "15.5"   ## postgres version
+  engine_version                = "15.7"   ## postgres version
   storage_type                  = "gp3"
   storage_gb                    = "20"     ## postgres disk size
   backup_retention_days         = "7"
@@ -47,6 +47,16 @@ module "eks" {
   cluster_endpoint_private_access = true
   authentication_mode = "API_AND_CONFIG_MAP"
   subnet_ids      = concat(module.network.private_subnets, module.network.public_subnets)
+  node_security_group_additional_rules = {
+    ingress_self_ephemeral = {
+      description = "Node to node communication"
+      protocol    = "-1"
+      from_port   = 0
+      to_port     = 0
+      type        = "ingress"
+      self        = true
+    }
+  }
   access_entries = {
     devops = {
       kubernetes_groups = []
@@ -67,7 +77,7 @@ module "eks" {
 module "eks_spot_managed_node_group" {
   depends_on = [module.eks]
   source = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  name            = "${var.cluster_name}-spot-ng"
+  name            = "${var.cluster_name}-spot"
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version
   subnet_ids = slice(module.network.private_subnets, 0, length(var.availability_zones))
@@ -106,7 +116,7 @@ module "eks_spot_managed_node_group" {
 module "eks_ondemand_managed_node_group" {
   depends_on = [module.eks]
   source = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  name            = "${var.cluster_name}-ondemand-ng"
+  name            = "${var.cluster_name}-ondemand"
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version
   subnet_ids = slice(module.network.private_subnets, 0, length(var.availability_zones))

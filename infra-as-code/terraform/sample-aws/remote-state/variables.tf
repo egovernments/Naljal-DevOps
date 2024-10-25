@@ -1,3 +1,3 @@
 variable "bucket_name" {
-  default = "assam-prod-terraform-bucket"
+  default = "<s3-bucket-name>" #REPLACE
 }

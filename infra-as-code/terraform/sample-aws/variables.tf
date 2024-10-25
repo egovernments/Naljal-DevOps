@@ -5,7 +5,7 @@
 
 variable "cluster_name" {
   description = "Name of the Kubernetes cluster"
-  default = "assam-prod" #REPLACE
+  default = "<cluster_name>" #REPLACE
 }
 
 variable "vpc_cidr_block" {
@@ -53,17 +53,17 @@ variable "max_worker_nodes" {
 
 variable "db_name" {
   description = "RDS DB name. Make sure there are no hyphens or other special characters in the DB name. Else, DB creation will fail"
-  default = "assamproddb" #REPLACE
+  default = "<db_name>" #REPLACE
 }
 
 variable "db_username" {#assamprod37427
   description = "RDS database user name"
-  default = "assamprod" #REPLACE
+  default = "<db_uname>" #REPLACE
 }
 
 variable "iam_user_arn" {
   description = "Provide the IAM user arn which you are using to create infrastructure"
-  default = "arn:aws:iam::432205181273:user/assam-prod" #REPLACE 
+  default = "<iam_user_arn>" #Example:arn:aws:iam::3535468183:user/demo
 }
 
 #DO NOT fill in here. This will be asked at runtime
