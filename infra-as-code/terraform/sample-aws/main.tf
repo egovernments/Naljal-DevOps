@@ -113,44 +113,6 @@ module "eks_spot_managed_node_group" {
   }
 }
 
-module "eks_ondemand_managed_node_group" {
-  depends_on = [module.eks]
-  source = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  name            = "${var.cluster_name}-ondemand"
-  cluster_name    = var.cluster_name
-  cluster_version = var.kubernetes_version
-  subnet_ids = slice(module.network.private_subnets, 0, length(var.availability_zones))
-  vpc_security_group_ids  = [module.eks.node_security_group_id]
-  cluster_service_cidr = module.eks.cluster_service_cidr
-  use_custom_launch_template = true
-  block_device_mappings = {
-    xvda = {
-      device_name = "/dev/xvda"
-      ebs = {
-        volume_size           = 100
-        volume_type           = "gp3"
-        delete_on_termination = true
-      }
-    }
-  }
-  min_size     = 1
-  max_size     = 5
-  desired_size = 3
-  instance_types = var.instance_types
-  ebs_optimized  = "true"
-  enable_monitoring = "true"
-  launch_template_name = "${var.cluster_name}-lt-ondemand"
-  iam_role_additional_policies = {
-    CSI_DRIVER_POLICY = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
-  }
-  labels = {
-    Environment = var.cluster_name
-  }
-  tags = {
-    "KubernetesCluster" = var.cluster_name
-  }
-}
-
 resource "aws_security_group_rule" "rds_db_ingress_workers" {
   description              = "Allow node groups to communicate with RDS database"
   from_port                = 5432
