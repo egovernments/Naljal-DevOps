@@ -7,7 +7,7 @@ labels:
 ingress:
   enabled: true
   zuul: false
-  context: "egov-url-shortening"
+  context: "eus"
 
 # Init Containers Configs
 initContainers:
@@ -23,8 +23,8 @@ image:
 replicas: "1"
 healthChecks:
   enabled: true
-  livenessProbePath: "/egov-url-shortening/health"
-  readinessProbePath: "/egov-url-shortening/health"
+  livenessProbePath: "/eus/health"
+  readinessProbePath: "/eus/health"
 appType: "java-spring"
 tracing-enabled: true
 heap: "-Xmx384m -Xms256m"
