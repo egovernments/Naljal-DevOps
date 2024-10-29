@@ -191,3 +191,7 @@ env: |
       secretKeyRef:
         key: password
         name: elasticsearch-master-credentials
+  - name: EGOV_URL_SHORTNER_ENDPOINT
+    value: {{ index .Values "egov-url-shortener-endpoint" | quote }}
+  - name: EGOV_SHORTENER_URL
+    value: {{ index .Values "egov-shortener-url" | quote }} 
