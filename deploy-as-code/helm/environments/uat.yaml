@@ -324,6 +324,8 @@ property-services:
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+ egov-shortener-url: "eus/shortener"
+ egov-url-shortener-endpoint: "/eus/shortener"
 
 mdms-v2:
  replicas: 1
