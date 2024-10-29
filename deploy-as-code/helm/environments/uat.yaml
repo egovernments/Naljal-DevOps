@@ -145,6 +145,7 @@ cluster-configs:
                 db-schema: "assam"
                 domain: naljalseva.jjm.gov.in ## Add your Domain Name    
                 egov-services-fqdn-name: https://naljalseva.jjm.gov.in/ ## Add your Domain Name
+                egov-services-fqdn-name-sms: https://naljalseva.jjm.gov.in/uat/
                 state-level-tenant-id: "as"
                 egov-state-level-tenant-id: "as" 
                 s3-assets-bucket: "naljal-uat-s3"
