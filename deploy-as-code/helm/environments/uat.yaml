@@ -20,7 +20,7 @@ global:
        - egov-user
        - egov-hrms
        - egov-user-event
-       - eus
+       - egov-url-shortening
        - ifix-department-entity-service
        - pdf-service
        - property-services
