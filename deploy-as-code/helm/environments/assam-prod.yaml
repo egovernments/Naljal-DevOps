@@ -264,6 +264,8 @@ property-services:
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+ egov-shortener-url: "eus/shortener"
+ egov-url-shortener-endpoint: "/eus/shortener"
 
 mdms-v2:
  replicas: 2
@@ -368,6 +370,8 @@ ws-services:
   sms-workflow-enabled: false
   sms-feedback-notification-enabled: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+  egov-shortener-url: "eus/shortener"
+  egov-url-shortener-endpoint: "/eus/shortener"
 
 egov-location:
   memory_limits: 512Mi
@@ -390,6 +394,8 @@ echallan-services:
   sms-expenditure-mark-bill-enabled: false
   sms-monthy-summary-enabled: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+  egov-shortener-url: "eus/shortener"
+  egov-url-shortner-endpoint: "/eus/shortener"
 
 echallan-calculator:
   replicas: 2
@@ -402,6 +408,8 @@ ws-calculator:
   sms-payment-link-enabled: false
   sms-bill-download-enable: true
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+  egov-shortener-url: "eus/shortener"
+  egov-url-shortener-endpoint: "/eus/shortener"
 
 egov-pg-service:
   replicas: 2
@@ -409,6 +417,7 @@ egov-pg-service:
   memory_limits: "768Mi"
   axis: true  
   egov-pg-reconciliation-system-user-uuid: "db4fe8ed-c0e0-4c2a-829b-72296d8d156f"
+  egov-url-shortener-endpoint: "/eus/shortener"
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 egov-mdms-service:
