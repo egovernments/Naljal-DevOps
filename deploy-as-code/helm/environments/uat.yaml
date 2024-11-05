@@ -318,6 +318,8 @@ property-services:
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+ egov-shortener-url: "eus/shortener"
+ egov-url-shortener-endpoint: "/eus/shortener"
 
 egov-filestore:
   memory_limits: 512Mi
@@ -431,6 +433,9 @@ ws-services:
   sms-workflow-enabled: false
   sms-feedback-notification-enabled: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+  egov-shortener-url: "eus/shortener"
+  egov-url-shortener-endpoint: "/eus/shortener"
+  report-in-chronological-order: true
 
 egov-location:
   memory_limits: 512Mi
@@ -453,6 +458,8 @@ echallan-services:
   sms-expenditure-mark-bill-enabled: false
   sms-monthy-summary-enabled: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+  egov.shortener.url: "eus/shortener"
+  egov.url.shortner.endpoint: "/eus/shortener"
 
 ws-calculator:
   replicas: 1
@@ -462,6 +469,13 @@ ws-calculator:
   sms-payment-link-enabled: false
   sms-bill-download-enable: true
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+  egov-shortener-url: "eus/shortener"
+  egov-url-shortener-endpoint: "/eus/shortener"
+  penalty-applicable-in-days: 10
+  penalty-start-threshold-time: "1680285630000"
+  is-penalty-feature-enable: true
+  is-save-demand-audit-enabled: true
+  egov-save-demand-audit-from-wscal: "save-ws-demand-change-audit"
 
 egov-pg-service:
   replicas: 1
@@ -469,6 +483,7 @@ egov-pg-service:
   memory_limits: "768Mi"
   axis: true  
   egov-pg-reconciliation-system-user-uuid: "db4fe8ed-c0e0-4c2a-829b-72296d8d156f"
+  egov-url-shortener-endpoint: "/eus/shortener"
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 egov-mdms-service:
