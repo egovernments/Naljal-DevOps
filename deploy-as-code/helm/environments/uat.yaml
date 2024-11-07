@@ -445,9 +445,9 @@ ws-services:
   sms-workflow-enabled: false
   sms-feedback-notification-enabled: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
-  java-enable-debug: true
   egov-shortener-url: "eus/shortener"
   egov-url-shortener-endpoint: "/eus/shortener"
+  report-in-chronological-order: true
 
 egov-location:
   memory_limits: 512Mi
@@ -483,6 +483,11 @@ ws-calculator:
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
   egov-shortener-url: "eus/shortener"
   egov-url-shortener-endpoint: "/eus/shortener"
+  penalty-applicable-in-days: 10
+  penalty-start-threshold-time: "1680285630000"
+  is-penalty-feature-enable: true
+  is-save-demand-audit-enabled: true
+  egov-save-demand-audit-from-wscal: "save-ws-demand-change-audit"
 
 egov-pg-service:
   replicas: 1
