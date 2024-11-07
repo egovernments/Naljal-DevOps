@@ -171,6 +171,8 @@ cluster-configs:
         egov-service-host:
             namespace: [ uat, monitoring ]
             data:
+                boundary-bulk-bff: "http://boundary-bulk-bff.uat:8080/"
+                boundary-service: "http://boundary-service.uat:8080/"
                 asset-services: "http://asset-services:8080/"
                 asset-services-maha: "http://asset-services-maha:8080/"
                 billing-service: "http://billing-service:8080/uat/"
@@ -327,6 +329,10 @@ property-services:
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
  egov-shortener-url: "eus/shortener"
  egov-url-shortener-endpoint: "/eus/shortener"
+
+boundary-service:
+    egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+    egov-mdms-create-endpoint: "/mdms-v2/v2/_create"
 
 mdms-v2:
  replicas: 1
