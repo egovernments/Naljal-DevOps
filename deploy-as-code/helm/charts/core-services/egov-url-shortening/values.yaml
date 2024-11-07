@@ -44,8 +44,6 @@ env: |
   {{- else }}
   - name: SERVER_CONTEXT_PATH
     value: /{{ .Values.ingress.context }}
-  - name: SERVER_CONTEXT_PATH
-    value: /{{ .Values.ingress.context }}
   - name: SERVER_SERVLET_CONTEXT_PATH
     value: /{{ .Values.ingress.context }}
   {{- end }}
@@ -80,4 +78,4 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-config
-        key: egov-services-fqdn-name
+        key: egov-services-fqdn-name-sms

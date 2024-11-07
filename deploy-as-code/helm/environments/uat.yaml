@@ -11,7 +11,7 @@ global:
        - collection-services
        - dashboard-analytics
        - echallan-services
-       - egov-filestore
+       - egov-filestorex
        - egov-localization
        - egov-location
        - egov-mdms-service
@@ -37,6 +37,7 @@ global:
        - jaeger
        - oauth2-proxy
        - egov-accesscontrol
+       - workbench-ui
 
 
 cluster-configs:
@@ -140,12 +141,13 @@ cluster-configs:
             data:
                 db-host: naljal-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432
                 db-name: naljaluatdb
-                db-url: jdbc:postgresql://naljal-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/naljaluatdb?currentSchema=uat
-                db-schema: "uat"
+                db-url: jdbc:postgresql://naljal-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/naljaluatdb?currentSchema=assam
+                db-schema: "assam"
                 domain: naljalseva.jjm.gov.in ## Add your Domain Name    
                 egov-services-fqdn-name: https://naljalseva.jjm.gov.in/ ## Add your Domain Name
-                state-level-tenant-id: "ka"
-                egov-state-level-tenant-id: "ka" 
+                egov-services-fqdn-name-sms: https://naljalseva.jjm.gov.in/uat/
+                state-level-tenant-id: "as"
+                egov-state-level-tenant-id: "as" 
                 s3-assets-bucket: "naljal-uat-s3"
                 es-host: "elasticsearch-master.es-cluster"
                 es-indexer-host: "https://elasticsearch-master.es-cluster:9200/"
@@ -299,20 +301,25 @@ frontend-mgramseva:
   replicas: 1
   ingress:
     context: "mgramseva"
-  state-level-tenant-id: ka
+  state-level-tenant-id: as
   custom-js-injection: |
-    sub_filter.conf: "
-      sub_filter  '<head>' '<head>
-      <script src=https://s3.ap-south-1.amazonaws.com/mgramseva-dev-assets/firebaseConfigs.js type=text/javascript></script>
-      ';"
+    sub_filter.conf: "sub_filter  '<head>' '<head>';"
 
 mgramseva-web:
   custom-js-injection: |
     sub_filter.conf: "
       sub_filter  '<head>' '<head>
-      <script src=https://naljal-uat-s3.s3.ap-south-1.amazonaws.com/globalConfigNaljal.js type=text/javascript></script>
+      <script src=https://naljal-uat-s3.s3.ap-south-1.amazonaws.com/globalConfigNaljalLTS.js type=text/javascript></script>
       ';" 
 
+# workbench-ui >>>>>>>>>>>>>>>>>>>>>>>>>>>
+workbench-ui:
+  custom-js-injection: |
+    sub_filter.conf: "
+      sub_filter '<head>' '<head>
+      <script src=https://naljal-uat-s3.s3.ap-south-1.amazonaws.com/globalConfigsWorkbench.js type=text/javascript></script>
+      <link rel=stylesheet href=https://naljal-uat-s3.s3.ap-south-1.amazonaws.com/naljal-workbench-login.css>';"
+      
 property-services:
  replicas: 1
  memory_limits: 512Mi
@@ -320,6 +327,11 @@ property-services:
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
  egov-shortener-url: "eus/shortener"
  egov-url-shortener-endpoint: "/eus/shortener"
+
+mdms-v2:
+ replicas: 1
+ memory_limits: 512Mi
+ heap: "-Xmx512m -Xms512m"
 
 egov-filestore:
   memory_limits: 512Mi
@@ -388,7 +400,7 @@ egov-user:
   citizen-registration-withlogin: "true"
   citizen-otp-fixed: "123456"
   citizen-otp-fixed-enabled: "true"
-  egov-state-level-tenant-id: "ka"
+  egov-state-level-tenant-id: "as"
   account-unlock-cool-down-period-minutes: 5
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
   mdms-path: "/mdms-v2/v1/_search"
@@ -508,15 +520,15 @@ egov-indexer:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "uat"
-  egov-indexer-yaml-repo-path: "file:///work-dir/config-naljal/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-naljal/egov-indexer/collection-indexer.yml,file:///work-dir/config-naljal/egov-indexer/egov-echallan.yml,file:///work-dir/config-naljal/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-naljal/egov-indexer/error-queue.yml,file:///work-dir/config-naljal/egov-indexer/egov-vendor.yaml,file:///work-dir/config-naljal/egov-indexer/payment-indexer.yml,file:///work-dir/config-naljal/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-naljal/egov-indexer/property-services.yml,file:///work-dir/config-naljal/egov-indexer/water-service.yml,file:///work-dir/config-naljal/egov-indexer/water-services-meter.yml"
+      branch: "UAT"
+  egov-indexer-yaml-repo-path: "file:///work-dir/config-naljal/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-naljal/egov-indexer/collection-indexer.yml,file:///work-dir/config-naljal/egov-indexer/egov-echallan.yml,file:///work-dir/config-naljal/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-naljal/egov-indexer/error-queue.yml,file:///work-dir/config-naljal/egov-indexer/egov-vendor.yaml,file:///work-dir/config-naljal/egov-indexer/payment-indexer.yml,file:///work-dir/config-naljal/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-naljal/egov-indexer/property-services.yml,file:///work-dir/config-naljal/egov-indexer/water-service.yml,file:///work-dir/config-naljal/egov-indexer/water-services-meter.yml,file:///work-dir/config-naljal/egov-indexer/hrms-indexer.yml,file:///work-dir/config-naljal/egov-indexer/roll-out-dashboard-indexer.yml,file:///work-dir/config-naljal/egov-indexer/tenant-mdms-indexer.yml,file:///work-dir/config-naljal/egov-indexer/rate-mdms-indexer.yml"
 
 egov-enc-service:
   replicas: 1
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   java-args: -Dspring.profiles.active=monitoring
-  state-level-tenant-id: "ka"
+  state-level-tenant-id: "as"
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
 
 egov-persister:
@@ -529,7 +541,7 @@ egov-persister:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "uat"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "UAT"                                    ##### Change repo branch with Your fork Repo branch
 
 pgr-services:
   memory_limits: 512Mi
@@ -538,28 +550,28 @@ egov-data-uploader:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"      ##### Change repo url with Your fork Repo url
-      branch: "uat"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "UAT"                                    ##### Change repo branch with Your fork Repo branch
 
 egov-searcher:
   search-yaml-path: "file:///work-dir/config-naljal/egov-searcher/bill-genie.yml,file:///work-dir/config-naljal/egov-searcher/wateropensearch.yml,file:///work-dir/config-naljal/egov-searcher/localitySearcher.yml,file:///work-dir/config-naljal/egov-searcher/propertyopensearch.yml"
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "uat"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
 
 dashboard-analytics:
   config-schema-paths: "file:///work-dir/config-naljal/egov-dss-dashboards/dashboard-analytics/*.json"
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "uat"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
 
 dashboard-ingest:
   config-schema-paths: "file:///work-dir/config-naljal/egov-dss-dashboards/dashboard-ingest/*.json"
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
-      branch: "uat"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "UAT"                                    ##### Change repo branch with Your fork Repo branch
 
 # reportinfra >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -580,16 +592,16 @@ report:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"     ##### Change repo url with Your fork Repo url
-      branch: "uat"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
   report-locationsfile-path: "file:///work-dir/config-naljal/reports/reportFileLocationsv1.txt"
 
 pdf-service:
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"     ##### Change repo url with Your fork Repo url
-      branch: "uat"                                   ##### Change repo branch with Your fork Repo branch
-  data-config-urls: "file:///work-dir/config-naljal/pdf-service/data-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt-nm.json"
-  format-config-urls: "file:///work-dir/config-naljal/pdf-service/format-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt-nm.json"
+      branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
+  data-config-urls: "file:///work-dir/config-naljal/pdf-service/data-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-receipt-nm.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-bill-nm-v2.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-bill-v2.json"
+  format-config-urls: "file:///work-dir/config-naljal/pdf-service/format-config/ws-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-bill-nm.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-receipt-nm.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-bill-nm-v2.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-bill-v2.json"
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -641,8 +653,8 @@ gateway:
   heap: "-Xmx704m -Xms512m"
   server-tomcat-max-threads: "350"
   server-tomcat-max-connections: "1500"
-  egov-open-endpoints-whitelist: "/uat/egov-user-event/v1/events/_search,/uat/user/oauth/token,/uat/user-otp/v1/_send,/uat/otp/v1/_validate,/uat/user/citizen/_create,/uat/localization/messages,/uat/localization/messages/v1/_search,/uat/user/password/nologin/_update,/uat/pgr/servicedefinition/v1/_search,/uat/pgr/servicecategories/v1/_search,/uat/pgr/v1/otp/_send,/uat/pgr-master/receivingmode/v1/_search,/uat/tenant/v1/tenant/_search,/uat/egov-location/boundarys,/uat/egov-location/boundarys/boundariesByBndryTypeNameAndHierarchyTypeName,/uat/pgr-master/service/v1/_search,/uat/egov-location/boundarys/getLocationByLocationName,/uat/pgr-master/OTPConfig/_search,/uat/pgr-master/serviceGroup/v1/_search,/uat/egov-location/boundarys/isshapefileexist,/uat/pgr/services/v1/_search,/uat/hr-masters/hrconfigurations/_search,/uat/collection-services/receipts/_view,/uat/pgr-master/service/v2/_search,/uat/pgr-master/servicedefinition/v1/_search,/uat/citizen-services,/uat/citizen-services/v1/requests/receipt/_create,/uat/citizen-services/v1/pgresponse,/uat/citizen-services/v1/requests/anonymous/_search,/uat/egov-mdms-service/v1/_search,/uat/egov-mdms-service/v1/_get,/uat/egov-mdms-service/v1/_reload,/uat/egov-mdms-service/v1/_reloadobj,/uat/egov-location/boundarys/getshapefile,/uat/egov-indexer/index-operations/_index,/uat/egov-indexer/index-operations/_reload,/uat/egov-mdms-service-test/v1/_search,/uat/egov-mdms-create/v1/_update,/uat/egov-mdms-create/v1/_create,/uat/egov-mdms-service-test/v1/_reload,/uat/filestore/v1/files/url,/uat/egov-url-shortening,/uat/adapter-master-data/department/v1/_search,/uat/ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search,/uat/ifix-department-entity/departmentEntity/v1/_search,/uat/adapter-master-data/project/v1/_create,/uat/adapter-master-data/project/v1/_search,/uat/egov-location/location/v11/boundarys/_search"
-  egov-mixed-mode-endpoints-whitelist: "/uat/egov-user-event/v1/events/_search,/uat/pgr/seva/v1/_create,/uat/pgr/seva/v1/_search,/uat/pgr/seva/v1/_count,/uat/workflow/history/v1/_search,/uat/filestore/v1/files/id,/uat/filestore/v1/files,/uat/filestore/v1/files/tag,/uat/egov-common-masters/departments/_search,/uat/pt-property/property/propertytypes/_search,/uat/pt-property/properties/_search,/uat/pt-property/property/usages/_search,/uat/egov-idgen/id/_generate,/uat/egf-masters/financialyears/_search,/uat/egov-common-workflows/process/_start,/uat/egov-common-workflows/process/_search,/uat/egov-common-workflows/tasks,/uat/egov-common-workflows/tasks/{id}/_update,/uat/user/_search,/uat/billing-service/demand/_dues,/uat/billing-service/bill/_generate,/uat/billing-service/demand/_create,/uat/wcms/masters/waterchargesconfig/_search,/uat/wcms/masters/usagetypes/_search,/uat/wcms/masters/pipesizes/_search,/uat/wcms-connection/connection/_getbillingtypes,/uat/wcms-connection/connection/_getconnectiontypes,/uat/wcms/masters/sourcetypes/_search,/uat/wcms/masters/supplytypes/_search,/uat/wcms/masters/storagereservoirs/_search,/uat/wcms/masters/treatmentplants/_search,/uat/wcms/masters/documenttypes-applicationtypes/_search,/uat/wcms/masters/donations/_search,/uat/wcms/masters/nonmeterwaterrates/_search,/uat/wcms-connection/connection/_create,/uat/egov-common-masters/genders/_search,/uat/egov-common-workflows/designations/_search,/uat/access/v1/actions/mdms/_get,/uat/tl-services/v1/BPAREG/_create,/uat/tl-services/v1/BPAREG/_update,/uat/tl-calculator/v1/BPAREG/_getbill,/uat/property-services/property/_search,/uat/billing-service/bill/v2/_search,/uat/pg-service/transaction/v1/_create,/uat/collection-services/payments/_search,/uat/pdf-service/v1/_create,/uat/billing-service/bill/v2/_fetchbill,/uat/pg-service/transaction/v1/_update,/uat/ws-services/wc/_bulkonboard,/uat/ws-services/wc/_submitfeedback,/uat/ws-services/wc/_search,/uat/collection-services/payments/WS/_search,/uat/ws-calculator/waterCalculator/_getPenaltyDetails,/uat/billing-service/demand/_search,/uat/collection-services/payments/_create,/uat/pg-service/transaction/v1/_redirect,/uat/adapter-master-data/project/v1/_search"
+  egov-open-endpoints-whitelist: "/uat/egov-user-event/v1/events/_search,/uat/user/oauth/token,/uat/user-otp/v1/_send,/uat/otp/v1/_validate,/uat/user/citizen/_create,/uat/localization/messages,/uat/localization/messages/v1/_search,/uat/user/password/nologin/_update,/uat/pgr/servicedefinition/v1/_search,/uat/pgr/servicecategories/v1/_search,/uat/pgr/v1/otp/_send,/uat/pgr-master/receivingmode/v1/_search,/uat/tenant/v1/tenant/_search,/uat/egov-location/boundarys,/uat/egov-location/boundarys/boundariesByBndryTypeNameAndHierarchyTypeName,/uat/pgr-master/service/v1/_search,/uat/egov-location/boundarys/getLocationByLocationName,/uat/pgr-master/OTPConfig/_search,/uat/pgr-master/serviceGroup/v1/_search,/uat/egov-location/boundarys/isshapefileexist,/uat/pgr/services/v1/_search,/uat/hr-masters/hrconfigurations/_search,/uat/collection-services/receipts/_view,/uat/pgr-master/service/v2/_search,/uat/pgr-master/servicedefinition/v1/_search,/uat/citizen-services,/uat/citizen-services/v1/requests/receipt/_create,/uat/citizen-services/v1/pgresponse,/uat/citizen-services/v1/requests/anonymous/_search,/uat/egov-mdms-service/v1/_search,/uat/egov-mdms-service/v1/_get,/uat/egov-mdms-service/v1/_reload,/uat/egov-mdms-service/v1/_reloadobj,/uat/egov-location/boundarys/getshapefile,/uat/egov-indexer/index-operations/_index,/uat/egov-indexer/index-operations/_reload,/uat/egov-mdms-service-test/v1/_search,/uat/egov-mdms-create/v1/_update,/uat/egov-mdms-create/v1/_create,/uat/egov-mdms-service-test/v1/_reload,/uat/filestore/v1/files/url,/uat/eus,/uat/adapter-master-data/department/v1/_search,/uat/ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search,/uat/ifix-department-entity/departmentEntity/v1/_search,/uat/adapter-master-data/project/v1/_create,/uat/adapter-master-data/project/v1/_search,/uat/egov-location/location/v11/boundarys/_search,/uat/mdms-v2/v1/_search,/uat/mdms-v2/schema/v1/_search,/uat/mdms-v2/v1/_get"
+  egov-mixed-mode-endpoints-whitelist: "/uat/egov-user-event/v1/events/_search,/uat/pgr/seva/v1/_create,/uat/pgr/seva/v1/_search,/uat/pgr/seva/v1/_count,/uat/workflow/history/v1/_search,/uat/filestore/v1/files/id,/uat/filestore/v1/files,/uat/filestore/v1/files/tag,/uat/egov-common-masters/departments/_search,/uat/pt-property/property/propertytypes/_search,/uat/pt-property/properties/_search,/uat/pt-property/property/usages/_search,/uat/egov-idgen/id/_generate,/uat/egf-masters/financialyears/_search,/uat/egov-common-workflows/process/_start,/uat/egov-common-workflows/process/_search,/uat/egov-common-workflows/tasks,/uat/egov-common-workflows/tasks/{id}/_update,/uat/user/_search,/uat/billing-service/demand/_dues,/uat/billing-service/bill/_generate,/uat/billing-service/demand/_create,/uat/wcms/masters/waterchargesconfig/_search,/uat/wcms/masters/usagetypes/_search,/uat/wcms/masters/pipesizes/_search,/uat/wcms-connection/connection/_getbillingtypes,/uat/wcms-connection/connection/_getconnectiontypes,/uat/wcms/masters/sourcetypes/_search,/uat/wcms/masters/supplytypes/_search,/uat/wcms/masters/storagereservoirs/_search,/uat/wcms/masters/treatmentplants/_search,/uat/wcms/masters/documenttypes-applicationtypes/_search,/uat/wcms/masters/donations/_search,/uat/wcms/masters/nonmeterwaterrates/_search,/uat/wcms-connection/connection/_create,/uat/egov-common-masters/genders/_search,/uat/egov-common-workflows/designations/_search,/uat/access/v1/actions/mdms/_get,/uat/tl-services/v1/BPAREG/_create,/uat/tl-services/v1/BPAREG/_update,/uat/tl-calculator/v1/BPAREG/_getbill,/uat/property-services/property/_search,/uat/billing-service/bill/v2/_search,/uat/pg-service/transaction/v1/_create,/uat/collection-services/payments/_search,/uat/pdf-service/v1/_create,/uat/billing-service/bill/v2/_fetchbill,/uat/pg-service/transaction/v1/_update,/uat/ws-services/wc/_bulkonboard,/uat/ws-services/wc/_submitfeedback,/uat/ws-services/wc/_search,/uat/collection-services/payments/WS/_search,/uat/ws-calculator/waterCalculator/_getPenaltyDetails,/uat/billing-service/demand/_search,/uat/collection-services/payments/_create,/uat/pg-service/transaction/v1/_redirect,/uat/adapter-master-data/project/v1/_search,/uat/billing-service/demand/_getAggregateDemandDetails,/uat/egov-hrms/employees/_searchListOfEmployee"
 
 zuul:
   contextUnique: true
@@ -653,7 +665,7 @@ zuul:
   heap: "-Xmx704m -Xms512m"
   server-tomcat-max-threads: "350"
   server-tomcat-max-connections: "1500"
-  egov-open-endpoints-whitelist: "/uat/egov-user-event/v1/events/_search,/uat/user/oauth/token,/uat/user-otp/v1/_send,/uat/otp/v1/_validate,/uat/user/citizen/_create,/uat/localization/messages,/uat/localization/messages/v1/_search,/uat/user/password/nologin/_update,/uat/pgr/servicedefinition/v1/_search,/uat/pgr/servicecategories/v1/_search,/uat/pgr/v1/otp/_send,/uat/pgr-master/receivingmode/v1/_search,/uat/tenant/v1/tenant/_search,/uat/egov-location/boundarys,/uat/egov-location/boundarys/boundariesByBndryTypeNameAndHierarchyTypeName,/uat/pgr-master/service/v1/_search,/uat/egov-location/boundarys/getLocationByLocationName,/uat/pgr-master/OTPConfig/_search,/uat/pgr-master/serviceGroup/v1/_search,/uat/egov-location/boundarys/isshapefileexist,/uat/pgr/services/v1/_search,/uat/hr-masters/hrconfigurations/_search,/uat/collection-services/receipts/_view,/uat/pgr-master/service/v2/_search,/uat/pgr-master/servicedefinition/v1/_search,/uat/citizen-services,/uat/citizen-services/v1/requests/receipt/_create,/uat/citizen-services/v1/pgresponse,/uat/citizen-services/v1/requests/anonymous/_search,/uat/egov-mdms-service/v1/_search,/uat/egov-mdms-service/v1/_get,/uat/egov-mdms-service/v1/_reload,/uat/egov-mdms-service/v1/_reloadobj,/uat/egov-location/boundarys/getshapefile,/uat/egov-indexer/index-operations/_index,/uat/egov-indexer/index-operations/_reload,/uat/egov-mdms-service-test/v1/_search,/uat/egov-mdms-create/v1/_update,/uat/egov-mdms-create/v1/_create,/uat/egov-mdms-service-test/v1/_reload,/uat/filestore/v1/files/url,/uat/egov-url-shortening,/uat/adapter-master-data/department/v1/_search,/uat/ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search,/uat/ifix-department-entity/departmentEntity/v1/_search,/uat/adapter-master-data/project/v1/_create,/uat/adapter-master-data/project/v1/_search"
+  egov-open-endpoints-whitelist: "/uat/egov-user-event/v1/events/_search,/uat/user/oauth/token,/uat/user-otp/v1/_send,/uat/otp/v1/_validate,/uat/user/citizen/_create,/uat/localization/messages,/uat/localization/messages/v1/_search,/uat/user/password/nologin/_update,/uat/pgr/servicedefinition/v1/_search,/uat/pgr/servicecategories/v1/_search,/uat/pgr/v1/otp/_send,/uat/pgr-master/receivingmode/v1/_search,/uat/tenant/v1/tenant/_search,/uat/egov-location/boundarys,/uat/egov-location/boundarys/boundariesByBndryTypeNameAndHierarchyTypeName,/uat/pgr-master/service/v1/_search,/uat/egov-location/boundarys/getLocationByLocationName,/uat/pgr-master/OTPConfig/_search,/uat/pgr-master/serviceGroup/v1/_search,/uat/egov-location/boundarys/isshapefileexist,/uat/pgr/services/v1/_search,/uat/hr-masters/hrconfigurations/_search,/uat/collection-services/receipts/_view,/uat/pgr-master/service/v2/_search,/uat/pgr-master/servicedefinition/v1/_search,/uat/citizen-services,/uat/citizen-services/v1/requests/receipt/_create,/uat/citizen-services/v1/pgresponse,/uat/citizen-services/v1/requests/anonymous/_search,/uat/egov-mdms-service/v1/_search,/uat/egov-mdms-service/v1/_get,/uat/egov-mdms-service/v1/_reload,/uat/egov-mdms-service/v1/_reloadobj,/uat/egov-location/boundarys/getshapefile,/uat/egov-indexer/index-operations/_index,/uat/egov-indexer/index-operations/_reload,/uat/egov-mdms-service-test/v1/_search,/uat/egov-mdms-create/v1/_update,/uat/egov-mdms-create/v1/_create,/uat/egov-mdms-service-test/v1/_reload,/uat/filestore/v1/files/url,/uat/eus,/uat/adapter-master-data/department/v1/_search,/uat/ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search,/uat/ifix-department-entity/departmentEntity/v1/_search,/uat/adapter-master-data/project/v1/_create,/uat/adapter-master-data/project/v1/_search"
   egov-mixed-mode-endpoints-whitelist: "/uat/egov-user-event/v1/events/_search,/uat/pgr/seva/v1/_create,/uat/pgr/seva/v1/_search,/uat/pgr/seva/v1/_count,/uat/workflow/history/v1/_search,/uat/filestore/v1/files/id,/uat/filestore/v1/files,/uat/filestore/v1/files/tag,/uat/egov-common-masters/departments/_search,/uat/pt-property/property/propertytypes/_search,/uat/pt-property/properties/_search,/uat/pt-property/property/usages/_search,/uat/egov-idgen/id/_generate,/uat/egf-masters/financialyears/_search,/uat/egov-common-workflows/process/_start,/uat/egov-common-workflows/process/_search,/uat/egov-common-workflows/tasks,/uat/egov-common-workflows/tasks/{id}/_update,/uat/user/_search,/uat/billing-service/demand/_dues,/uat/billing-service/bill/_generate,/uat/billing-service/demand/_create,/uat/wcms/masters/waterchargesconfig/_search,/uat/wcms/masters/usagetypes/_search,/uat/wcms/masters/pipesizes/_search,/uat/wcms-connection/connection/_getbillingtypes,/uat/wcms-connection/connection/_getconnectiontypes,/uat/wcms/masters/sourcetypes/_search,/uat/wcms/masters/supplytypes/_search,/uat/wcms/masters/storagereservoirs/_search,/uat/wcms/masters/treatmentplants/_search,/uat/wcms/masters/documenttypes-applicationtypes/_search,/uat/wcms/masters/donations/_search,/uat/wcms/masters/nonmeterwaterrates/_search,/uat/wcms-connection/connection/_create,/uat/egov-common-masters/genders/_search,/uat/egov-common-workflows/designations/_search,/uat/access/v1/actions/mdms/_get,/uat/tl-services/v1/BPAREG/_create,/uat/tl-services/v1/BPAREG/_update,/uat/tl-calculator/v1/BPAREG/_getbill,/uat/property-services/property/_search,/uat/billing-service/bill/v2/_search,/uat/egov-location/location/v11/boundarys/_search,/uat/pg-service/transaction/v1/_create,/uat/collection-services/payments/_search,/uat/pdf-service/v1/_create,/uat/billing-service/bill/v2/_fetchbill,/uat/pg-service/transaction/v1/_update,/uat/ws-services/wc/_bulkonboard,/uat/ws-services/wc/_submitfeedback,/uat/ws-services/wc/_search,/uat/collection-services/payments/WS/_search,/uat/ws-calculator/waterCalculator/_getPenaltyDetails,/uat/billing-service/demand/_search,/uat/collection-services/payments/_create,/uat/pg-service/transaction/v1/_redirect,/uat/adapter-master-data/project/v1/_search"
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -720,6 +732,7 @@ egov-workflow-v2:
 
 egov-hrms:
   java-args: -Dspring.profiles.active=monitoring
+  memory_limits: "512Mi"
   employee-applink: "https://egov-demo.egovernments.org/employee/user/login"
   sms-user-creation-enabled: true
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
