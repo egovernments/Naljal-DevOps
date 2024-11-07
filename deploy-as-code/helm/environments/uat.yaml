@@ -820,6 +820,7 @@ redis:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 playground:
+  namespace: playground
   replicas: 1
   images:
     - egovio/playground:1.3
