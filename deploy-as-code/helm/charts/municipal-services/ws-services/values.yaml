@@ -120,7 +120,9 @@ env: |
   - name: EGOV_URL_SHORTNER_ENDPOINT
     value: {{ index .Values "egov-url-shortener-endpoint" | quote }}
   - name: EGOV_SHORTENER_URL
-    value: {{ index .Values "egov-shortener-url" | quote }}  
+    value: {{ index .Values "egov-shortener-url" | quote }}
+  - name: REPORT_IN_CHRONOLOGICAL_ORDER
+    value: {{ index .Values "report-in-chronological-order" | quote }}
   - name: EGOV_FILESTORE_HOST
     valueFrom:
       configMapKeyRef:
@@ -148,6 +150,8 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-workflow-v2
+  - name: JAVA_ENABLE_DEBUG
+    value: "true"
   {{- if index .Values "global" "tracer-errors-provideexceptionindetails" }}
   - name: TRACER_ERRORS_PROVIDEEXCEPTIONINDETAILS
     valueFrom:

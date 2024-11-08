@@ -134,3 +134,18 @@ env: |
   - name: TRACER_OPENTRACING_ENABLED
     value: "true" 
   {{- end }}
+  - name: ELASTICSEARCH_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: es-indexer-host
+  - name: EGOV_ES_USERNAME
+    valueFrom:
+      secretKeyRef:
+        key: username
+        name: elasticsearch-credential
+  - name: EGOV_ES_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        key: password
+        name: elasticsearch-credential
