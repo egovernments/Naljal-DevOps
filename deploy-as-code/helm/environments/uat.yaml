@@ -2,7 +2,6 @@ global:
    domain: naljalseva.jjm.gov.in
    setup: fullsetup
    namespace: uat
-   containerRegistry: naljal
    context:
      path: uat
      list:
@@ -624,10 +623,6 @@ egov-apportion-service:
   memory_limits: 512Mi
   heap: -Xmx256m -Xms256m
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
-
-boundary-bulf-bff:
-  global:
-    containerRegistry: egovio
 
 # docs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 redoc:
