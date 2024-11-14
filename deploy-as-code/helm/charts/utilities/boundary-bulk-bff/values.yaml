@@ -1,3 +1,5 @@
+global:
+    containerRegistry: egovio
 # Common Labels
 labels:
   app: "boundary-bulk-bff"
