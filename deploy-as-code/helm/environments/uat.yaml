@@ -625,6 +625,10 @@ egov-apportion-service:
   heap: -Xmx256m -Xms256m
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
 
+boundary-bulf-bff:
+  global:
+    containerRegistry: egovio
+
 # docs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 redoc:
   replicas: 1
