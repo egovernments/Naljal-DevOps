@@ -254,7 +254,7 @@ cluster-configs:
                 bpa-calculator: "http://bpa-calculator.uat:8080/"
                 rainmaker-pgr: "http://rainmaker-pgr:8080/"
                 ws-calculator: "http://ws-calculator.uat:8080/uat/"
-                ws-services: "http://ws-services.uat:8080/uat/"
+                vices: "http://vices.uat:8080/uat/"
                 sw-services: "http://sw-services.uat:8080/"
                 sw-calculator: "http://sw-calculator.uat:8080/"
                 land-services: "http://land-services.uat:8080/"
@@ -322,7 +322,7 @@ workbench-ui:
       <link rel=stylesheet href=https://naljal-uat-s3.s3.ap-south-1.amazonaws.com/naljal-workbench-login.css>';"
       
 property-services:
- replicas: 1
+ replicas: 3
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
@@ -431,7 +431,7 @@ chatbot:
   user-service-chatbot-citizen-passwrord: "123456"
 
 billing-service:
-  replicas: 1
+  replicas: 3
   memory_limits: 512Mi
   demand.updateurl: '{"WS":"http://ws-calculator.uat:8080/uat/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
@@ -440,7 +440,7 @@ billing-service:
 ws-services:
   wcid-format: "WS/[CITY.CODE]/[fy:yyyy-yy]/[SEQ_EGOV_COMMON]"
   is-external-workflow-enabled: "true"
-  replicas: 1
+  replicas: 3
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-pending-collection-enabled: false
@@ -479,7 +479,7 @@ echallan-services:
   egov.url.shortner.endpoint: "/eus/shortener"
 
 ws-calculator:
-  replicas: 1
+  replicas: 3
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-demand-enabled: true
@@ -537,7 +537,7 @@ egov-enc-service:
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
 
 egov-persister:
-  replicas: 2
+  replicas: 3
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   images:
