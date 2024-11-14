@@ -334,7 +334,7 @@ boundary-service:
     egov-mdms-create-endpoint: "/mdms-v2/v2/_create"
 
 mdms-v2:
- replicas: 1
+ replicas: 3
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
 
