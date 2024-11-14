@@ -254,7 +254,7 @@ cluster-configs:
                 bpa-calculator: "http://bpa-calculator.uat:8080/"
                 rainmaker-pgr: "http://rainmaker-pgr:8080/"
                 ws-calculator: "http://ws-calculator.uat:8080/uat/"
-                vices: "http://vices.uat:8080/uat/"
+                ws-service: "http://ws-service.uat:8080/uat/"
                 sw-services: "http://sw-services.uat:8080/"
                 sw-calculator: "http://sw-calculator.uat:8080/"
                 land-services: "http://land-services.uat:8080/"
