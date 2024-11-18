@@ -1,25 +1,25 @@
 # Common Labels
 labels:
-  app: "naljalcustomisation"
+  app: "naljal-custom-service"
   group: "rainmaker"
 
 # Ingress Configs
 ingress:
   enabled: true
   zuul: true
-  context: "naljalcustomisation"
+  context: "naljal-custom-service"
 
 # Init Containers Configs
 initContainers: {}
 
 # Container Configs
 image:
-  repository: "naljalcustomisation"
+  repository: "naljal-custom-service"
 replicas: "1"
 healthChecks:
   enabled: true
-  livenessProbePath: "/naljalcustomisation/health"
-  readinessProbePath: "/naljalcustomisation/health"
+  livenessProbePath: "/naljal-custom-service/health"
+  readinessProbePath: "/naljal-custom-service/health"
 appType: "java-spring"
 tracing-enabled: true
 heap: "-Xmx192m -Xms192m"
@@ -28,9 +28,9 @@ java-args: "-Dspring.profiles.active=monitoring"
 # Additional Container Envs
 env: |
   - name: SERVER_CONTEXTPATH
-    value: /naljalcustomisation
+    value: /naljal-custom-service
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
-    value: naljalcustomisation
+    value: naljal-custom-service
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER
     value: org.apache.kafka.common.serialization.StringSerializer
   - name: SPRING_KAFKA_PRODUCER_VALUE_SERIALIZER
