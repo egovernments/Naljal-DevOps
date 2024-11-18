@@ -504,7 +504,7 @@ egov-pg-service:
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 egov-mdms-service:
-  replicas: 0
+  replicas: 1
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   images:
