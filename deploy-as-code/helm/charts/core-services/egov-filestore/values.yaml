@@ -13,8 +13,8 @@ initContainers:
 
 # Ingress Configs
 ingress:
-  zuul: false
-  enabled: false
+  zuul: true
+  enabled: true
   context: "filestore"
 
 # Container Configs
