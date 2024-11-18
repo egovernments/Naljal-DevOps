@@ -322,7 +322,7 @@ workbench-ui:
       <link rel=stylesheet href=https://naljal-uat-s3.s3.ap-south-1.amazonaws.com/naljal-workbench-login.css>';"
       
 property-services:
- replicas: 5
+ replicas: 10
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
@@ -334,7 +334,7 @@ boundary-service:
     egov-mdms-create-endpoint: "/mdms-v2/v2/_create"
 
 mdms-v2:
- replicas: 5
+ replicas: 10
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
 
@@ -353,7 +353,7 @@ egov-filestore:
   fixed-bucketname: naljal-uat-s3
 
 egov-idgen:
-  replicas: 1
+  replicas: 5
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   idformat-from-mdms: "true"
@@ -391,7 +391,7 @@ egov-notification-sms:
   sms-disabled-tenants-list: "pb.testing"
 
 egov-user:
-  replicas: 1
+  replicas: 3
   heap: "-Xmx256m -Xms256m"
   memory_limits: 512Mi
   otp-validation: "true"
@@ -431,7 +431,7 @@ chatbot:
   user-service-chatbot-citizen-passwrord: "123456"
 
 billing-service:
-  replicas: 1
+  replicas: 3
   memory_limits: 512Mi
   demand.updateurl: '{"WS":"http://ws-calculator.uat:8080/uat/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
@@ -440,7 +440,7 @@ billing-service:
 ws-services:
   wcid-format: "WS/[CITY.CODE]/[fy:yyyy-yy]/[SEQ_EGOV_COMMON]"
   is-external-workflow-enabled: "true"
-  replicas: 5
+  replicas: 10
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-pending-collection-enabled: false
@@ -479,7 +479,7 @@ echallan-services:
   egov.url.shortner.endpoint: "/eus/shortener"
 
 ws-calculator:
-  replicas: 3
+  replicas: 5
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-demand-enabled: true
@@ -519,7 +519,7 @@ egov-mdms-service:
   java-args: -Dspring.profiles.active=monitoring
 
 egov-indexer:
-  replicas: 1
+  replicas: 3
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   initContainers:
@@ -537,7 +537,7 @@ egov-enc-service:
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
 
 egov-persister:
-  replicas: 3
+  replicas: 5
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   images:
@@ -953,7 +953,7 @@ grafana:
       branch: "master"
 
 pgadmin:
-  replicas: 1
+  replicas: 3
   dbUrl: "naljal-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com"
   dbReadUrl: "naljal-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com"
   environment: "NALJAL_PROD"
