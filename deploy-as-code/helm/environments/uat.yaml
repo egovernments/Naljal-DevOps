@@ -322,7 +322,7 @@ workbench-ui:
       <link rel=stylesheet href=https://naljal-uat-s3.s3.ap-south-1.amazonaws.com/naljal-workbench-login.css>';"
       
 property-services:
- replicas: 3
+ replicas: 5
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
@@ -440,7 +440,7 @@ billing-service:
 ws-services:
   wcid-format: "WS/[CITY.CODE]/[fy:yyyy-yy]/[SEQ_EGOV_COMMON]"
   is-external-workflow-enabled: "true"
-  replicas: 3
+  replicas: 5
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-pending-collection-enabled: false
