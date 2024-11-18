@@ -10,7 +10,7 @@ global:
        - collection-services
        - dashboard-analytics
        - echallan-services
-       - egov-filestorex
+       - egov-filestore
        - egov-localization
        - egov-location
        - egov-mdms-service
