@@ -13,8 +13,8 @@ initContainers:
 
 # Ingress Configs
 ingress:
-  zuul: true
-  enabled: true
+  zuul: false
+  enabled: false
   context: "filestore"
 
 # Container Configs
@@ -30,7 +30,7 @@ tracing-enabled: true
 is-bucket-fixed: "true"
 fixed-bucketname: "egov-rainmaker"
 heap: "-Xmx384m -Xms256m"
-file-storage-mount-path: "/filestore"
+file-storage-mount-path: "/uat/filestore"
 is-nfs-enabled: false
 is-s3-enabled: true
 
