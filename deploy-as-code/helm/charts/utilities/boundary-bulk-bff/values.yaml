@@ -107,7 +107,7 @@ env: |
   - name: DB_PORT
     value: "5432"
   - name: DB_SCHEMA
-    value: "public"
+    value: "assam"
   - name: LOCALE
     value: {{ .Values.defaultLocale | default "en_IN" }} 
   - name: LOCALIZATION_MODULE
