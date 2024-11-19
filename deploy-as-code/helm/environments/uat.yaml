@@ -322,7 +322,7 @@ workbench-ui:
       <link rel=stylesheet href=https://naljal-uat-s3.s3.ap-south-1.amazonaws.com/naljal-workbench-login.css>';"
       
 property-services:
- replicas: 4
+ replicas: 6
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
@@ -334,7 +334,7 @@ boundary-service:
     egov-mdms-create-endpoint: "/mdms-v2/v2/_create"
 
 mdms-v2:
- replicas: 4
+ replicas: 6
  memory_limits: 512Mi
  heap: "-Xmx512m -Xms512m"
 
