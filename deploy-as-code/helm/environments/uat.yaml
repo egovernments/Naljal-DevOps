@@ -336,10 +336,10 @@ boundary-service:
 mdms-v2:
  replicas: 6
  memory_limits: 1024Mi
- heap: "-Xmx512m -Xms512m"
+ heap: "-Xmx768m -Xms768m"
 
 egov-filestore:
-  memory_limits: 512Mi
+  memory_limits: 768Mi
   heap: "-Xmx512m -Xms512m"
   volume: /opt/eGov/filestore
   is-bucket-fixed: "true"
@@ -652,10 +652,11 @@ cert-manager:
 gateway:
   contextUnique: true
   namespace: uat
-  replicas: 1
+  replicas: 3
   custom-filter-property: "false"
   tracing-enabled: "true"
-  heap: "-Xmx704m -Xms512m"
+  memory_limits: 1Gi
+  heap: "-Xmx768m -Xms768m"
   server-tomcat-max-threads: "350"
   server-tomcat-max-connections: "1500"
   egov-open-endpoints-whitelist: "/uat/egov-user-event/v1/events/_search,/uat/user/oauth/token,/uat/user-otp/v1/_send,/uat/otp/v1/_validate,/uat/user/citizen/_create,/uat/localization/messages,/uat/localization/messages/v1/_search,/uat/user/password/nologin/_update,/uat/pgr/servicedefinition/v1/_search,/uat/pgr/servicecategories/v1/_search,/uat/pgr/v1/otp/_send,/uat/pgr-master/receivingmode/v1/_search,/uat/tenant/v1/tenant/_search,/uat/egov-location/boundarys,/uat/egov-location/boundarys/boundariesByBndryTypeNameAndHierarchyTypeName,/uat/pgr-master/service/v1/_search,/uat/egov-location/boundarys/getLocationByLocationName,/uat/pgr-master/OTPConfig/_search,/uat/pgr-master/serviceGroup/v1/_search,/uat/egov-location/boundarys/isshapefileexist,/uat/pgr/services/v1/_search,/uat/hr-masters/hrconfigurations/_search,/uat/collection-services/receipts/_view,/uat/pgr-master/service/v2/_search,/uat/pgr-master/servicedefinition/v1/_search,/uat/citizen-services,/uat/citizen-services/v1/requests/receipt/_create,/uat/citizen-services/v1/pgresponse,/uat/citizen-services/v1/requests/anonymous/_search,/uat/egov-mdms-service/v1/_search,/uat/egov-mdms-service/v1/_get,/uat/egov-mdms-service/v1/_reload,/uat/egov-mdms-service/v1/_reloadobj,/uat/egov-location/boundarys/getshapefile,/uat/egov-indexer/index-operations/_index,/uat/egov-indexer/index-operations/_reload,/uat/egov-mdms-service-test/v1/_search,/uat/egov-mdms-create/v1/_update,/uat/egov-mdms-create/v1/_create,/uat/egov-mdms-service-test/v1/_reload,/uat/filestore/v1/files/url,/uat/eus,/uat/adapter-master-data/department/v1/_search,/uat/ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search,/uat/ifix-department-entity/departmentEntity/v1/_search,/uat/adapter-master-data/project/v1/_create,/uat/adapter-master-data/project/v1/_search,/uat/egov-location/location/v11/boundarys/_search,/uat/mdms-v2/v1/_search,/uat/mdms-v2/schema/v1/_search,/uat/mdms-v2/v1/_get,/uat/filestore/v1/files"
