@@ -335,7 +335,7 @@ boundary-service:
 
 mdms-v2:
  replicas: 10
- memory_limits: 512Mi
+ memory_limits: 1024Mi
  heap: "-Xmx512m -Xms512m"
 
 egov-filestore:
