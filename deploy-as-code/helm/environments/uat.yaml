@@ -391,7 +391,7 @@ egov-notification-sms:
   sms-disabled-tenants-list: "pb.testing"
 
 egov-user:
-  replicas: 1
+  replicas: 3
   heap: "-Xmx256m -Xms256m"
   memory_limits: 512Mi
   otp-validation: "true"
