@@ -417,7 +417,7 @@ ws-calculator:
   egov-url-shortener-endpoint: "/eus/shortener"
   penalty-applicable-in-days: 10
   penalty-start-threshold-time: "1680285630000"
-  is-penalty-feature-enable: true
+  is-penalty-feature-enable: false
   is-save-demand-audit-enabled: true
   egov-save-demand-audit-from-wscal: "save-ws-demand-change-audit"
 
