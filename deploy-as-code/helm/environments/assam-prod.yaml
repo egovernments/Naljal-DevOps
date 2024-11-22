@@ -268,9 +268,9 @@ property-services:
  egov-url-shortener-endpoint: "/eus/shortener"
 
 mdms-v2:
- replicas: 2
- memory_limits: 512Mi
- heap: "-Xmx512m -Xms512m"
+ replicas: 3
+ memory_limits: 1500Mi
+ heap: "-Xmx1200m -Xms768m"
 
 egov-url-shortening:
   replicas: 2
@@ -330,7 +330,7 @@ egov-notification-sms:
   sms.mobile.prefix: 91
 
 egov-user:
-  replicas: 2
+  replicas: 3
   heap: "-Xmx256m -Xms256m"
   memory_limits: 512Mi
   otp-validation: "true"
@@ -360,7 +360,7 @@ billing-service:
 ws-services:
   wcid-format: "WS/[CITY.CODE]/[fy:yyyy-yy]/[SEQ_EGOV_COMMON]"
   is-external-workflow-enabled: "true"
-  replicas: 2
+  replicas: 3
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-pending-collection-enabled: false
@@ -436,9 +436,9 @@ egov-mdms-service:
   java-args: -Dspring.profiles.active=monitoring
 
 egov-indexer:
-  replicas: 2
-  heap: "-Xmx512m -Xms512m"
-  memory_limits: "768Mi"
+  replicas: 3
+  heap: "-Xmx768m -Xms768m"
+  memory_limits: "1Gi"
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
@@ -454,7 +454,7 @@ egov-enc-service:
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
 
 egov-persister:
-  replicas: 2
+  replicas: 3
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   images:
