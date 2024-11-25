@@ -9,7 +9,7 @@ cron:
 # Container Configs
 image:
   repository: "api-cronjob"
-  tag: "v1"
+  tag: "ISNE-291-naljalcustomisation"
 
 command: 
   - "python3"
