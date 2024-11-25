@@ -4,7 +4,7 @@ labels:
   group: "rollout-dashboard-cronjob-indexer"
 
 cron:
-  schedule: "*/5 * * * *"
+  schedule: "*/30 * * * *"
 
 # Container Configs
 image:
