@@ -34,5 +34,14 @@ extraVolumeMounts: |
     
 # Additional Container Envs
 env: |
+    {{- if index .Values "public-path" }}
   - name: PUBLIC_PATH
-    value: "/uat/mgramseva-web/"    
+    value: {{ index .Values "public-path" | quote }}
+  {{- end }} 
+
+
+
+
+
+
+
