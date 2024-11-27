@@ -94,7 +94,7 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-config
-        key: egov-services-fqdn-name
+        key: egov-services-fqdn-name-sms
   - name: EGOV_BILLING_SERVICE_HOST
     valueFrom:
       configMapKeyRef:
