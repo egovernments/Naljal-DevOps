@@ -855,7 +855,7 @@ kafka-kraft:
 
 ### Kafka Connect <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 kafka-connect:
-  replicas: 1
+  replicas: 2
   image:
     tag: "s3-7.5.2"
 
