@@ -520,7 +520,7 @@ egov-mdms-service:
   java-args: -Dspring.profiles.active=monitoring
 
 egov-indexer:
-  replicas: 1
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   initContainers:
