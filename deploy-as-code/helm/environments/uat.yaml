@@ -363,7 +363,8 @@ egov-idgen:
   mdms-service-search-uri: "mdms-v2/v1/_search"
 
 egov-notification-sms:
-  egov-notification-sms:
+  heap: "-Xmx256m -Xms256m"
+  memory_limits: 512Mi
   sms-provider-url: "https://smsgw.sms.gov.in/failsafe/MLink"
   sms.provider.url: "https://smsgw.sms.gov.in/failsafe/MLink"
   sms.provider.class: "Console"
