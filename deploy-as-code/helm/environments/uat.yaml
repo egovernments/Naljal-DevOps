@@ -740,7 +740,7 @@ egov-workflow-v2:
 egov-hrms:
   java-args: -Dspring.profiles.active=monitoring
   memory_limits: "512Mi"
-  employee-applink: "https://egov-demo.egovernments.org/employee/user/login"
+  employee-applink: "https://naljalseva.jjm.gov.in/uat/mgramseva/login"
   sms-user-creation-enabled: true
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
 
