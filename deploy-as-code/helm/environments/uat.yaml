@@ -772,31 +772,6 @@ jaeger:
       {
         "service_strategies": [
           {
-            "service": "tl-services",
-            "type": "probabilistic",
-            "param": 0.5
-          },
-          {
-            "service": "tl-calculator",
-            "type": "probabilistic",
-            "param": 0.5
-          },
-          {
-            "service": "report-service",
-            "type": "probabilistic",
-            "param": 0.5
-          },
-          {
-            "service": "pt-services-v2",
-            "type": "probabilistic",
-            "param": 0.5
-          },
-          {
-            "service": "pt-calculator-v2",
-            "type": "probabilistic",
-            "param": 0.5
-          },
-          {
             "service": "collection-services",
             "type": "probabilistic",
             "param": 0.2
@@ -807,17 +782,27 @@ jaeger:
             "param": 0.2
           },
           {
-            "service": "egov-data-uploader",
-            "type": "probabilistic",
-            "param": 0.2
-          },
-          {
             "service": "egov-hrms",
             "type": "probabilistic",
             "param": 0.5
           },
           {
-            "service": "rainmaker-pgr",
+            "service": "ws-services",
+            "type": "probabilistic",
+            "param": 0.5
+          },
+          {
+            "service": "ws-calculator",
+            "type": "probabilistic",
+            "param": 0.5
+          },
+          {
+            "service": "ws-calculator",
+            "type": "probabilistic",
+            "param": 0.5
+          },
+          {
+            "service": "egov-indexer",
             "type": "probabilistic",
             "param": 0.5
           }
