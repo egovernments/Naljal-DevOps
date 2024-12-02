@@ -34,9 +34,9 @@ extraVolumeMounts: |
     
 # Additional Container Envs
 env: |
-  {{- if index .Values "public-path" }}
-  - name: PUBLIC_PATH
-    value: {{ index .Values "public-path" | quote }}
+  {{- if index .Values "react-app-public-path" }}
+  - name: REACT_APP_PUBLIC_PATH
+    value: {{ index .Values "react-app-public-path" | quote }}
   {{- end }} 
 
 
