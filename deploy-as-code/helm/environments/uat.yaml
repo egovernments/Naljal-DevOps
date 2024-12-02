@@ -959,3 +959,16 @@ pgadmin:
   persistence:
     enabled: true
     dataDirSize: "1Gi"
+
+egov-penalty-schedular:
+  java-enable-debug: "true"
+  egov-mdms-host: "http://localhost:8094"
+  egov-mdms-search-endpoint: "/uat/mdms-v2/v1/_search"
+  mdms-event-tenantId: "pb"
+  egov-wscalculator-host: "http://localhost:8083"
+  egov-wscalculator-url: "/uat/ws-calculator/waterCalculator/_addPenalty"
+  egov-penalty-enabled: "true"
+  egov-penalty-enabled-division-code-list: "DIV1038"
+  user-system-role: "EMPLOYEE"
+  cron:
+    schedule: "*/60 * * * *"
