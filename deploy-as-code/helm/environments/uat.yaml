@@ -971,4 +971,4 @@ egov-penalty-schedular:
   egov-penalty-enabled-block-code-list: "DIV1038"
   user-system-role: "EMPLOYEE"
   cron:
-    schedule: "5 * * * *"
+    schedule: "*/5 * * * *"
