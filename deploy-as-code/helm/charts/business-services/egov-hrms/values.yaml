@@ -8,7 +8,7 @@ ingress:
   enabled: true
   zuul: true
   context: "egov-hrms"
-  additionalAnnotations:
+  additionalAnnotations: |
     nginx.ingress.kubernetes.io/proxy-body-size: "20m"
 
 # Init Containers Configs
