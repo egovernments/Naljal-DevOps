@@ -1,0 +1,111 @@
+version: v2.6
+modules:
+    - name: backbone
+      services:
+        - kafka-kraft
+        - kafka-connect:s3-7.5.2
+        - elasticsearch-data
+        - elasticsearch-master
+        - kibana
+    - name: authn-authz
+      services:
+        - redis
+        - ingress-nginx
+        - cert-manager      
+    - name: core
+      dependencies:
+        - "backbone"
+        - "authn-authz"
+        - "frontend"
+      services:
+        - naljal/egov-accesscontrol:master-lts-c1274b9a69-9
+        - naljal/egov-enc-service:master-lts-9447910200-6
+        - naljal/egov-filestore:master-lts-9447910200-5
+        - naljal/egov-idgen:master-lts-e94a6ef8d7-24
+        - naljal/egov-indexer:master-lts-ff67609afb-9
+        - naljal/egov-localization:master-lts-9447910200-4
+        - naljal/egov-location:master-lts-9fe776c779-11
+        - naljal/egov-mdms-service:master-lts-9447910200-6
+        - naljal/egov-notification-mail:master-lts-9447910200-4
+        - naljal/egov-notification-sms:master-lts-e7bb426c9c-23
+        - naljal/egov-otp:master-lts-9447910200-4
+        - naljal/egov-persister:master-lts-9447910200-4
+        - naljal/egov-pg-service:master-lts-99969a4f17-31
+        - naljal/egov-searcher:searcher-error-01b03cf85d-6
+        - naljal/egov-url-shortening:v2.9.0-b82b3a09ad-8
+        - naljal/egov-user:master-lts-249bf72cb1-11
+        - naljal/user-otp:master-lts-9447910200-5
+        - naljal/egov-workflow-v2:workflow-fix-c32b754dd2-16
+        - naljal/pdf-service:pdf-fix-7452942dc9-16
+        - naljal/playground:mongo-v2
+        - naljal/gateway:gateway-fix-1a4307f21d-13
+        - naljal/mdms-v2:develop-lts-538e6b7362-7
+    - name: business
+      dependencies:
+        - "core"
+      services:
+        - naljal/collection-services:master-lts-272458e82e-7
+        - naljal/billing-service:master-lts-f24a22976e-6
+        - naljal/egf-instrument:master-lts-7cd953f426-10
+        - naljal/egf-master:master-lts-4526ef753f-10
+        - naljal/egov-apportion-service:master-lts-21b0c60e26-5
+        - naljal/egov-hrms:master-lts-2b2355159e-13
+    - name: utilities
+      dependencies:
+        - "core"
+      services:
+        - naljal/egov-pdf:master-lts-11ff43cdd1-1
+    - name: frontend            
+      dependencies:
+        - "business"
+      services:
+        - naljal/mgramseva-web:Assam-06c2c6eec8-71
+        - naljal/frontend-mgramseva:master-lts-assam-ce464e98c0-127
+        - naljal/workbench-ui:master-lts-assam-315188448b-21  
+    - name: m_property-tax    #PT
+      dependencies:
+        - "core"
+        - "business"
+      services:
+        - naljal/property-services:master-lts-837d6b9e1d-9
+    - name: m_sewerage        #Sewerage
+      dependencies:
+        - "core"
+        - "business"
+      services:
+        - egovio/sw-calculator:v1.3.2-96b24b0d72-15
+        - egovio/sw-services:v1.4.2-96b24b0d72-31 
+    - name: m_water-service   #Water
+      dependencies:
+          - "core"
+          - "business"
+      services:
+        - naljal/ws-calculator:master-lts-3bc5e50ec3-29
+        - naljal/ws-services:master-lts-0f965a34ce-70
+    - name: m_dss   #dss
+      dependencies:        
+          - "frontend"
+          - "core"
+          - "business"
+      services:
+        - naljal/dashboard-analytics:master-lts-3f186411bb-4
+        - naljal/dashboard-ingest:master-lts-92cd9435b6-7
+    - name: m_fsm   #fsm
+      dependencies:
+          - "core"
+          - "business"
+      services:
+        - naljal/vendor:master-lts-bbafa27474-9
+    - name: m_echallan   #eChallan
+      dependencies:
+          - "core"
+          - "business"
+      services:
+        - naljal/echallan-calculator:master-lts-47ad5c5ea3-3
+        - naljal/echallan-services:master-lts-ff67609afb-6
+    - name: Other             #Other Services
+      dependencies:
+        - "core"
+        - "business"
+      services:
+        - naljal/egov-user-event:master-lts-8039eb5990-5
