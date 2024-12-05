@@ -708,6 +708,9 @@ finance-collections-voucher-consumer:
 
 user-otp:
   logging-level: "DEBUG"
+  memory_limits: 512Mi
+egov-otp:
+  memory_limits: 512Mi
 
 # rainmaker-pgr >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 rainmaker-pgr:
