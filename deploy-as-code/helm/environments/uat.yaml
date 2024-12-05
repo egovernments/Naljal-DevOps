@@ -166,6 +166,8 @@ cluster-configs:
                 tracer-errors-provideexceptionindetails: "true"
                 egov-bnd-freedownload-tenants: "pg.testing"
                 egov-bnd-live-citizen-tenants: "pg.testing"
+                uuid: "bfb0438d-6918-4635-9806-c933ce4bb05d"
+                mobileNumber: "9098666007"
 
         egov-service-host:
             namespace: [ uat, monitoring ]
@@ -276,10 +278,6 @@ cluster-configs:
                 birth-death-services: "http://birth-death-services.uat:8080/"
                 egov-pdf: "http://egov-pdf.uat:8080/"
                 mdms-v2: "http://mdms-v2:8080/uat/"
-
-        jmx-exporter-config:
-          namespace: [ uat ]
-
 employee:
   dashboard-url: "https://dashboard-pbuat.egovernments.org/s/w---s/app/kibana#/dashboard/4e687470-f3c7-11e8-8d09-b151e2b1cf8e?embed=true&_g=(refreshInterval%3A(pause%3A!f%2Cvalue%3A300000)%2Ctime%3A(from%3Anow-15m%2Cmode%3Aquick%2Cto%3Anow))"
   custom-js-injection: |
@@ -311,7 +309,7 @@ frontend-mgramseva:
     sub_filter.conf: "sub_filter  '<head>' '<head>';"
 
 mgramseva-web:
-  public-path: "/uat/mgramseva-web/"  
+  react-app-public-path: "/uat/mgramseva-web/"
   custom-js-injection: |
     sub_filter.conf: "
       sub_filter  '<head>' '<head>
@@ -339,8 +337,8 @@ property-services:
  egov-url-shortener-endpoint: "/eus/shortener"
 
 boundary-service:
-    egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
-    egov-mdms-create-endpoint: "/mdms-v2/v2/_create"
+    egov-mdms-search-endpoint: "mdms-v2/v1/_search"
+    egov-mdms-create-endpoint: "mdms-v2/v2/_create"
 
 mdms-v2:
  replicas: 6
@@ -710,6 +708,9 @@ finance-collections-voucher-consumer:
 
 user-otp:
   logging-level: "DEBUG"
+  memory_limits: 512Mi
+egov-otp:
+  memory_limits: 512Mi
 
 # rainmaker-pgr >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 rainmaker-pgr:
@@ -950,6 +951,19 @@ pgadmin:
   persistence:
     enabled: true
     dataDirSize: "1Gi"
+
+egov-penalty-schedular:
+  java-enable-debug: "true"
+  egov-mdms-host: "http://localhost:8094"
+  egov-mdms-search-endpoint: "/uat/mdms-v2/v1/_search"
+  mdms-event-tenantId: "as"
+  egov-wscalculator-host: "http://localhost:8083"
+  egov-wscalculator-url: "/uat/ws-calculator/waterCalculator/_addPenalty"
+  egov-penalty-enabled: "true"
+  egov-penalty-enabled-block-code-list: "1189"
+  user-system-role: "EMPLOYEE"
+  cron:
+    schedule: "*/30 * * * *"
 
 kafka-ui:
   yamlApplicationConfig:
