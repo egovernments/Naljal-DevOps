@@ -33,7 +33,14 @@ cluster-configs:
 
     egov-service-host:    
       name: egov-service-host
-      namespace: [naljal] 
+      namespace: [naljal]
+
+    jmx-exporter-config:
+      name: jmx-exporter-config
+      namespace: [naljal]
+      config: |
+        rules:
+          - pattern: ".*"
 
   secrets:
     db: 

@@ -276,6 +276,10 @@ cluster-configs:
                 birth-death-services: "http://birth-death-services.uat:8080/"
                 egov-pdf: "http://egov-pdf.uat:8080/"
                 mdms-v2: "http://mdms-v2:8080/uat/"
+
+        jmx-exporter-config:
+          namespace: [ uat ]
+
 employee:
   dashboard-url: "https://dashboard-pbuat.egovernments.org/s/w---s/app/kibana#/dashboard/4e687470-f3c7-11e8-8d09-b151e2b1cf8e?embed=true&_g=(refreshInterval%3A(pause%3A!f%2Cvalue%3A300000)%2Ctime%3A(from%3Anow-15m%2Cmode%3Aquick%2Cto%3Anow))"
   custom-js-injection: |
@@ -931,19 +935,6 @@ oauth2-proxy:
       github_team = "naljal-uat"
       upstreams = [ "file:///dev/null" ]
 
-grafana:
-  grafana.ini:
-    server:
-      root_url: "%(protocol)s://%(domain)s/uat/monitoring"
-      serve_from_sub_path: true
-  namespace: monitoring
-  dashboardsFolder: /work-dir/config-naljal/configs/monitoring-dashboards
-  initContainers:
-    gitSync:
-      enabled: true
-      repo: "git@github.com:ddws-org/config-naljal"
-      branch: "master"
-
 pgadmin:
   replicas: 1
   dbUrl: "naljal-prod-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com"
@@ -959,3 +950,131 @@ pgadmin:
   persistence:
     enabled: true
     dataDirSize: "1Gi"
+
+kafka-ui:
+  yamlApplicationConfig:
+    kafka:
+      clusters:
+        - name: naljal-uat
+          bootstrapServers: kafka-kraft-controller-headless.kafka-kraft:9092
+          readonly: true
+
+### Grafana >>>>>>>>>>>>>>>>>>>>
+grafana:
+  github:
+    allowed_organizations: ["ddws-org"]
+    role_attribute_path: contains(groups[*], '@ddws-org/naljal-uat') && 'Editor' || 'Viewer'
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+### Prometheus & Alertmanager >>>>>>>>>>>>>>>>>>>>
+prometheus:
+  alertmanager:
+    enabled: false
+  externalLabels:
+    cluster: naljal-uat
+  additionalScrapeConfigs:
+    - job_name: 'nginx-ingress-metrics'
+      static_configs:
+        - targets: [ 'nginx-ingress-controller-metrics.egov:10254' ]
+    - job_name: 'blackbox'
+      metrics_path: /probe
+      params:
+        module: [ http_2xx ]
+      static_configs:
+        - targets:
+            - https://naljalseva.jjm.gov.in/uat
+            - https://naljalseva.jjm.gov.in/uat/kibana
+            - https://naljalseva.jjm.gov.in/uat/pgadmin
+      relabel_configs:
+        - source_labels: [ __address__ ]
+          target_label: __param_target
+        - source_labels: [ __param_target ]
+          target_label: instance
+        - target_label: __address__
+          replacement: prometheus-blackbox-exporter:9115
+    - job_name: 'blackbox_exporter'
+      static_configs:
+        - targets: [ 'prometheus-blackbox-exporter:9115' ]
+    - job_name: 'java-services'
+      kubernetes_sd_configs:
+        - role: pod
+      relabel_configs:
+        # Keep only pods with the label `app-type=java`
+        - source_labels: [ __meta_kubernetes_pod_label_app_type ]
+          action: keep
+          regex: java
+        # Extract the Pod IP and set it as the scrape target
+        - source_labels: [ __meta_kubernetes_pod_ip ]
+          action: replace
+          target_label: __address__
+          replacement: ${1}:9404
+        # Override the default metrics path if needed
+        - action: replace
+          target_label: __metrics_path__
+          replacement: /metrics
+        - source_labels: [ __meta_kubernetes_namespace ]
+          target_label: namespace
+        - source_labels: [ __meta_kubernetes_pod_name ]
+          target_label: pod
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+### loki-stack >>>>>>>>>>>>>>>>>>>>
+loki:
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 30Gi
+  serviceAccount:
+    annotations: {}
+  additionalConfigs:
+    schema_config:
+      configs:
+        - from: 2020-10-24
+          store: boltdb-shipper
+          object_store: filesystem
+          schema: v11
+          index:
+            prefix: index_
+            period: 24h
+    storage_config:
+      boltdb_shipper:
+        active_index_directory: /data/loki/index
+        cache_location: /data/loki/index_cache
+        shared_store: filesystem
+        cache_ttl: 24h
+      filesystem:
+        directory: /data/loki/chunks
+    compactor:
+      working_directory: /data/loki/boltdb-shipper-compactor
+      shared_store: filesystem
+      retention_enabled: true
+      compaction_interval: 168h
+    table_manager:
+      retention_deletes_enabled: true
+      retention_period: 168h  # 7 days
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+### jupyter-hub >>>>>>>>>>>>>>>>>>>>
+jupyterhub:
+  hub:
+    config:
+      Authenticator:
+        admin_users:
+          - naljal-uat-admin
+      NativeAuthenticator:
+        minimum_password_length: 8
+        check_common_password: false
+        allowed_failed_logins: 5
+        seconds_before_next_try: 300
+      JupyterHub:
+        admin_access: true
+  ingress:
+    enabled: true
+    hosts:
+      - naljalseva.jjm.gov.in
+    tls:
+      - hosts:
+          - naljalseva.jjm.gov.in
+        secretName: naljalseva.jjm.gov.in-tls-certs
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
