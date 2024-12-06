@@ -105,6 +105,10 @@ cluster-configs:
       chatbot:
         namespace: assam
         name: chatbot
+
+      egov-penalty-schedular:
+        namespace: uat
+        name: egov-penalty-schedular
       
       covid-chatbot:
         namespace: assam
