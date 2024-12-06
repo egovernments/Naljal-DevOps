@@ -83,6 +83,10 @@ cluster-configs:
         namespace: naljal
         name: egov-user-chatbot
 
+      egov-penalty-schedular:
+        namespace: uat
+        name: egov-penalty-schedular
+
       oauth2-proxy:
         namespace: naljal
         name: oauth2-proxy   

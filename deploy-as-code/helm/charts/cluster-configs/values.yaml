@@ -151,6 +151,10 @@ cluster-configs:
       namespace: jenkins
       name: postgres
 
+    egov-penalty-schedular:
+      namespace: uat
+      name: egov-penalty-schedular
+
     elasticsearch:
       namespace: [ es-cluster, es-cluster-infra, uat ]
       name: elasticsearch-credential
