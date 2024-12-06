@@ -964,7 +964,7 @@ egov-penalty-schedular:
   egov-wscalculator-host: "http://localhost:8083"
   egov-wscalculator-url: "/ws-calculator/waterCalculator/_addPenalty"
   egov-penalty-enabled: "true"
-  egov-penalty-enabled-block-code-list: "1189"
+  egov-penalty-enabled-block-code-list: "2595"
   user-system-role: "EMPLOYEE"
   cron:
     schedule: "*/30 * * * *"
