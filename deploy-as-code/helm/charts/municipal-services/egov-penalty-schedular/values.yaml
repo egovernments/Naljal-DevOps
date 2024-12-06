@@ -30,13 +30,13 @@ env: |
         key: ws-calculator
   - name: USER_SYSTEM_UUID    
     valueFrom:
-      configMapKeyRef:
-        name: egov-config
+      secretKeyRef:
+        name: egov-penalty-schedular
         key: uuid
   - name: USER_SYSTEM_MOBILENUMBER    
     valueFrom:
-      configMapKeyRef:
-        name: egov-config
+      secretKeyRef:
+        name: egov-penalty-schedular
         key: mobileNumber
   - name: USER_SYSTEM_ROLE
     value: {{ index .Values "user-system-role" | quote }}
