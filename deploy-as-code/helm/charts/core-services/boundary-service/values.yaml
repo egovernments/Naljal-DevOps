@@ -2,7 +2,6 @@
 labels:
   app: "boundary-service"
   group: "core"
-  app-type: "java"
 
 # Ingress Configs
 ingress:
