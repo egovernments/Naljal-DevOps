@@ -170,8 +170,8 @@ cluster-configs:
         egov-service-host:
             namespace: [ uat, monitoring ]
             data:
-                boundary-bulk-bff: "http://boundary-bulk-bff.uat:8080/"
-                boundary-service: "http://boundary-service.uat:8080/"
+                boundary-bulk-bff: "http://boundary-bulk-bff.uat:8080/uat/"
+                boundary-service: "http://boundary-service.uat:8080/uat/"
                 asset-services: "http://asset-services:8080/"
                 asset-services-maha: "http://asset-services-maha:8080/"
                 billing-service: "http://billing-service:8080/uat/"
