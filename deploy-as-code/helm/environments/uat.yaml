@@ -37,6 +37,8 @@ global:
        - oauth2-proxy
        - egov-accesscontrol
        - workbench-ui
+       - boundary-service
+       - boundary-bulk-bff
 
 
 cluster-configs:
