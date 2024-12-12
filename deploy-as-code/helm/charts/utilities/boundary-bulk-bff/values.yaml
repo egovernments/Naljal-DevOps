@@ -30,7 +30,6 @@ replicas: "1"
 # Additional Container Envs
 env: |
   {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
-    value: /boundary-service
   - name: SERVER_CONTEXTPATH
     value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
   - name: SERVER_SERVLET_CONTEXT_PATH
