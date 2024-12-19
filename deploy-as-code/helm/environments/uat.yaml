@@ -343,6 +343,7 @@ property-services:
 boundary-service:
     egov-mdms-search-endpoint: "mdms-v2/v1/_search"
     egov-mdms-create-endpoint: "mdms-v2/v2/_create"
+    egov-boundary-relationship-search-endpoint: "/uat/boundary-service/boundary-relationships/_search"
 
 mdms-v2:
  replicas: 6
