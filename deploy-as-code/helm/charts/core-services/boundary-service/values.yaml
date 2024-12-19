@@ -90,7 +90,7 @@ env: |
     value: {{ index .Values "egov-mdms-search-endpoint" | quote }}
   - name: EGOV_MDMS_CREATE_ENDPOINT
     value: {{ index .Values "egov-mdms-create-endpoint" | quote }}
-  - name: EGOV_BOUNDARY_RELATIONSHIP_SEARCH_ENDPOINT
+  - name: BOUNDARY_SERVICE_URI
     value: {{ index .Values "egov-boundary-relationship-search-endpoint" | quote }}
   - name: EGOV_LOCALIZATION_HOST
     valueFrom:
