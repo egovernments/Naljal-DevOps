@@ -1,5 +1,5 @@
 global:
-   domain: naljalseva.jjm.gov.in ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
+   domain: <domain_name> ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
    setup: fullsetup
    namespace: <state-name>
    containerRegistry: naljal
@@ -137,11 +137,10 @@ cluster-configs:
         egov-config:
             namespace: [ <state-name>, monitoring ]
             data:
-                db-host: naljal-uat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432 ## Add db-host name eg: egov-demo.database.azure.com
-                db-name: naljaluatdb ## Add db-name
-                db-url: jdbc:postgresql://naljal-uat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/naljaluatdb?currentSchema=<state-name> ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
-                db-schema: "<state-name>"
-                domain: naljalseva.jjm.gov.in ## Add your Domain Name    
+                db-host: <db_host_name> ## Add db-host name eg: egov-demo.database.azure.com
+                db-name: <db_name> ## Add db-name
+                db-url: jdbc:postgresql://<db_host_name>/<db_name> ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
+                domain:  <domain_name> ## Add your Domain Name    
                 egov-services-fqdn-name: https://naljalseva.jjm.gov.in/ ## Add your Domain Name
                 state-level-tenant-id: "<Tenant ID>"
                 egov-state-level-tenant-id: "<Tenant ID>" 
