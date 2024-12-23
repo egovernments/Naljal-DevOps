@@ -26,12 +26,13 @@ variable "availability_zones" {
 
 variable "kubernetes_version" {
   description = "kubernetes version"
-  default = "1.27"
+  default = "1.30"
 }
 
-variable "instance_type" {
-  description = "eGov recommended below instance type as a default"
-  default = "r5ad.large"
+variable "instance_types" {
+  description = "Arry of instance types for SPOT instances"
+  default = ["r5ad.large"]
+  
 }
 
 variable "override_instance_types" {
@@ -40,9 +41,19 @@ variable "override_instance_types" {
   
 }
 
-variable "number_of_worker_nodes" {
-  description = "eGov recommended below worker node counts as default"
-  default = "4" #REPLACE IF NEEDED
+variable "min_worker_nodes" {
+  description = "eGov recommended below worker node counts as default for min nodes"
+  default = "1" #REPLACE IF NEEDED
+}
+
+variable "desired_worker_nodes" {
+  description = "eGov recommended below worker node counts as default for desired nodes"
+  default = "3" #REPLACE IF NEEDED
+}
+
+variable "max_worker_nodes" {
+  description = "eGov recommended below worker node counts as default for max nodes"
+  default = "5" #REPLACE IF NEEDED
 }
 
 variable "ssh_key_name" {
@@ -67,6 +78,11 @@ variable "db_password" {}
 variable "public_key" {
   default = <public_ssh_key>
   description = "ssh key"
+}
+variable "enable_karpenter" {
+  description = "Enable the karpenter."
+  type        = bool
+  default     = false
 }
 
 ## change ssh key_name eg. digit-quickstart_your-name
