@@ -533,9 +533,9 @@ egov-mdms-service:
   java-args: -Dspring.profiles.active=monitoring
 
 egov-indexer:
-  replicas: 2
-  heap: "-Xmx512m -Xms512m"
-  memory_limits: "768Mi"
+  replicas: 3
+  heap: "-Xmx768m -Xms768m"
+  memory_limits: "1Gi"
   initContainers:
     gitSync:
       repo: "git@github.com:ddws-org/config-naljal"
