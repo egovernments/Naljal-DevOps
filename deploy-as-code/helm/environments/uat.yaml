@@ -444,8 +444,9 @@ chatbot:
   user-service-chatbot-citizen-passwrord: "123456"
 
 billing-service:
-  replicas: 1
-  memory_limits: 512Mi
+  replicas: 3
+  heap: "-Xmx512m -Xms512m"
+  memory_limits: "768Mi"
   demand.updateurl: '{"WS":"http://ws-calculator.uat:8080/uat/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
@@ -493,8 +494,8 @@ echallan-services:
 
 ws-calculator:
   replicas: 3
-  heap: "-Xmx512m -Xms512m"
-  memory_limits: "768Mi"
+  heap: "-Xmx768m -Xms768m"
+  memory_limits: "1024Mi"
   sms-demand-enabled: true
   sms-payment-link-enabled: false
   sms-bill-download-enable: true
