@@ -273,8 +273,8 @@ jobs:
               # Verify installation
             helmfile --version        
       - name: digit deployment
-        run: helmfile -f digit-helmfile.yaml apply --include-needs=true
-        working-directory: deploy-as-code                 
+        run: helmfile -f naljal-helmfile.yaml apply --include-needs=true
+        working-directory: deploy-as-code/helm                 
       # - name: digit deployment
       #   run: go run digit_installer.go
       #   working-directory: deploy-as-code/deployer 
