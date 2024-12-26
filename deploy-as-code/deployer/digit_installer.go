@@ -79,7 +79,7 @@ func main() {
 
 	//prodList, _ := file.Readdirnames(0) // 0 to read all files and folders
 
-	var product string = "Health"
+	var product string = "NALJAL"
 	if product != "" {
 		/*files, err := ioutil.ReadDir(releaseChartDir + product)
 		if err != nil {
@@ -93,7 +93,7 @@ func main() {
 		//var version string = ""
 		//version, _ = sel(versionfiles, "Which version of the product would like to install, Select below")
 		//if version != "" {
-		argFile := releaseChartDir + product + "/dependancy_chart-" + "health-demo-v1.4" + ".yaml"
+		argFile := releaseChartDir + product + "/dependancy_chart-" + "naljal-v2.6" + ".yaml"
 
 		// Decode the yaml file and assigning the values to a map
 		chartFile, err := ioutil.ReadFile(argFile)
