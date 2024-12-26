@@ -2,9 +2,8 @@
 # This is a YAML-formatted file.
 # Declare name/value pairs to be passed into your templates.
 global:
-    containerRegistry: naljal
+    containerRegistry: egovio
 
-namespace: naljal
 replicas: 1
 httpPort: 8080
 appType: ""
@@ -15,6 +14,7 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/use-regex: "true" 
+   # nginx.ingress.kubernetes.io/limit-rpm: "300"
   waf: 
     enabled: true
     annotations:
@@ -84,11 +84,7 @@ healthChecks:
     enabled: false
     livenessProbe: |
         httpGet:
-        {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
-            path: "/{{ .Values.global.context.path }}{{ .Values.healthChecks.livenessProbePath }}"
-        {{- else }}
             path: "{{ .Values.healthChecks.livenessProbePath }}"
-        {{- end }}
             port: {{ .Values.httpPort }}
         initialDelaySeconds: 30
         timeoutSeconds: 3
@@ -97,11 +93,7 @@ healthChecks:
         failureThreshold: 5
     readinessProbe: |
         httpGet:
-        {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
-            path: "/{{ .Values.global.context.path }}{{ .Values.healthChecks.readinessProbePath }}"
-        {{- else }}
             path: "{{ .Values.healthChecks.readinessProbePath }}"
-        {{- end }}
             port: {{ .Values.httpPort }}
         initialDelaySeconds: 30
         timeoutSeconds: 3
@@ -117,7 +109,7 @@ lifecycle:
             - -c
             - "sleep 10"
 
-memory_limits: "256Mi"
+memory_limits: "512Mi"
 resources: |
   {{- if eq .Values.appType "java-spring" -}}
   requests:
@@ -214,7 +206,23 @@ extraEnv:
         valueFrom:
           configMapKeyRef:
             name: egov-config
-            key: spring-jpa-show-sql           
+            key: spring-jpa-show-sql  
+      - name: STATE_LEVEL_TENANTID_LENGTH
+        value: "1"            
+      - name: IS_ENVIRONMENT_CENTRAL_INSTANCE
+        value: "false"
+      - name: STATE_SCHEMA_INDEX_POSITION_TENANTID
+        value: "0"
+      - name: KAFKA_TOPIC_AUDIT
+      {{- if index .Values "kafka.topic.audit" }}
+        value: {{ index .Values "kafka.topic.audit" | quote }}
+      {{- else }}
+        value: "enc-user-audit-data"
+      {{- end }}           
+        
+            
+            
+            
   jaeger: |             
       - name: JAEGER_SERVICE_NAME
         value: {{ template "common.name" . }}
@@ -261,7 +269,7 @@ serviceMonitor:
   # interval: 2m  
 
 cron:
-  namespace: naljal
+  namespace: egov
   concurrencyPolicy: Forbid
   restartPolicy: OnFailure
   httpPort: 8080
@@ -273,3 +281,7 @@ cron:
 
   ## Add additional mounts
   extraVolumeMounts: |
+
+vpa:
+  enabled: false  
+  updateMode: "Off"

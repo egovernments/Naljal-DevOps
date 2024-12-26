@@ -15,6 +15,7 @@ initContainers: {}
 # Container Configs
 image:
   repository: "user-otp"
+  tag: DIGIT-2.9-LTS-07f47790b8-9
 healthChecks:
   enabled: true
   livenessProbePath: "/user-otp/health"
@@ -22,22 +23,11 @@ healthChecks:
 replicas: "1"
 appType: "java-spring"
 tracing-enabled: true
-heap: "-Xmx384m -Xms256m"
+heap: "-Xmx192m -Xms192m"
 java-args: ""
 
 # Additional Container Envs
 env: |
-  {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
-  - name: SERVER_CONTEXTPATH
-    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
-  - name: SERVER_SERVLET_CONTEXT_PATH
-    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
-  {{- else }}
-  - name: SERVER_CONTEXTPATH
-    value: /{{ .Values.ingress.context }}
-  - name: SERVER_SERVLET_CONTEXT_PATH
-    value: /{{ .Values.ingress.context }}
-  {{- end }}
   - name: SERVER_PORT
     value: "8080"
   - name: OTP_HOST

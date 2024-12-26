@@ -254,10 +254,30 @@ jobs:
           sudo apt install -y gnupg
           wget https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux
           chmod +x sops-v3.7.1.linux
-          sudo mv sops-v3.7.1.linux /usr/local/bin/sops            
+          sudo mv sops-v3.7.1.linux /usr/local/bin/sops
+      - name: Install Helmfile
+        run: |
+            HELMFILE_VERSION="v0.140.0"
+  
+              # Download Helmfile
+            curl -L "https://github.com/roboll/helmfile/releases/download/${HELMFILE_VERSION}/helmfile_linux_amd64" -o helmfile
+  
+              # Make the Helmfile binary executable
+            chmod +x helmfile
+  
+              # Move Helmfile to a location in your PATH
+            sudo mv helmfile /usr/local/bin/helmfile
+  
+            helm plugin install https://github.com/databus23/helm-diff
+  
+              # Verify installation
+            helmfile --version        
       - name: digit deployment
-        run: go run digit_installer.go
-        working-directory: deploy-as-code/deployer 
+        run: helmfile -f digit-helmfile.yaml apply --include-needs=true
+        working-directory: deploy-as-code                 
+      # - name: digit deployment
+      #   run: go run digit_installer.go
+      #   working-directory: deploy-as-code/deployer 
       - name: Displaying the Loadbalancer ID
         run: |
           LB_ID=$(kubectl get svc nginx-ingress-controller -n egov -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')

@@ -16,14 +16,16 @@ initContainers:
     schemaTable: "egov_localization_schema"
     image:
       repository: "egov-localization-db"
+      tag: DIGIT-2.9-LTS-237578ce80-10
 
 # Container Configs
 image:
   repository: "egov-localization"
+  tag: DIGIT-2.9-LTS-237578ce80-10
 replicas: "1"
 appType: "java-spring"
 tracing-enabled: true
-heap: "-Xmx384m -Xms256m"
+heap: "-Xmx256m -Xms256m"
 memory_limits: 512Mi
 healthChecks:
   enabled: true
@@ -32,17 +34,6 @@ healthChecks:
 
 # Additional Container Envs
 env: |
-  {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
-  - name: SERVER_CONTEXT_PATH
-    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
-  - name: SERVER_SERVLET_CONTEXT_PATH
-    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
-  {{- else }}
-  - name: SERVER_CONTEXT_PATH
-    value: /{{ .Values.ingress.context }}
-  - name: SERVER_SERVLET_CONTEXT_PATH
-    value: /{{ .Values.ingress.context }}
-  {{- end }}
   - name: SERVER_PORT
     value: "8080"
   - name: JAVA_OPTS

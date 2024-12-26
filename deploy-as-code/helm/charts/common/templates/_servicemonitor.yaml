@@ -4,15 +4,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ template "common.name" . }}
-  {{- if .Values.global.namespace }}
-  {{- if or (eq .Values.namespace "backbone") (eq .Values.namespace "cert-manager") (eq .Values.namespace "es-cluster") (eq .Values.namespace "es-cluster-infra") (eq .Values.namespace "kafka-cluster") (eq .Values.namespace "kafka-kraft") (eq .Values.namespace "monitoring") (eq .Values.namespace "playground") }}
-  namespace: {{ .Values.namespace }}
-  {{- else }}
-  namespace: {{ .Values.global.namespace }}
-  {{- end }}
-  {{- else }}
-  namespace: {{ .Values.namespace }}
-  {{- end }} 
+  namespace: {{ .Values.namespace }} 
   labels:
 {{- include "common.labels" . | nindent 4 }}  
 spec:

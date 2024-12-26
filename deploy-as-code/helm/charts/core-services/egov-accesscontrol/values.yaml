@@ -15,6 +15,7 @@ initContainers: {}
 # Container Configs
 image:
   repository: "egov-accesscontrol"
+  tag: DIGIT-2.9-LTS-237578ce80-10
 replicas: "1"
 healthChecks:
   enabled: true
@@ -22,23 +23,11 @@ healthChecks:
   readinessProbePath: "/access/health"
 appType: "java-spring"
 tracing-enabled: true
-heap: "-Xmx384m -Xms256m"
-memory_limits: 512Mi
+heap: "-Xmx192m -Xms192m"
 java-args: ""
 
 # Additional Container Envs
 env: |
-  {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
-  - name: SERVER_CONTEXTPATH
-    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
-  - name: SERVER_SERVLET_CONTEXT_PATH
-    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
-  {{- else }}
-  - name: SERVER_CONTEXTPATH
-    value: /{{ .Values.ingress.context }}
-  - name: SERVER_SERVLET_CONTEXT_PATH
-    value: /{{ .Values.ingress.context }}
-  {{- end }}
   - name: SERVER_PORT
     value: "8080"
   - name: JAVA_OPTS

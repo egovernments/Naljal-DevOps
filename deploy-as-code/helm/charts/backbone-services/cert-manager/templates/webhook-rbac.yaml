@@ -3,11 +3,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: {{ template "webhook.fullname" . }}:dynamic-serving
-  {{- if .Values.global.namespace }}
-  namespace: {{ .Values.global.namespace }}
-  {{- else }}
-  namespace: {{ .Values.namespace }}
-  {{- end }}
+  namespace: {{ .Release.Namespace }}
   labels:
     app: {{ include "webhook.name" . }}
     app.kubernetes.io/name: {{ include "webhook.name" . }}
@@ -30,7 +26,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: {{ template "webhook.fullname" . }}:dynamic-serving
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Release.Namespace }}
   labels:
     app: {{ include "webhook.name" . }}
     app.kubernetes.io/name: {{ include "webhook.name" . }}
@@ -45,7 +41,7 @@ subjects:
 - apiGroup: ""
   kind: ServiceAccount
   name: {{ template "webhook.serviceAccountName" . }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Release.Namespace }}
 
 ---
 
@@ -83,5 +79,5 @@ subjects:
 - apiGroup: ""
   kind: ServiceAccount
   name: {{ template "webhook.serviceAccountName" . }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Release.Namespace }}
 {{- end }}

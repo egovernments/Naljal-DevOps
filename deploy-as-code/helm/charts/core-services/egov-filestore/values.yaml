@@ -10,16 +10,17 @@ initContainers:
     schemaTable: "egov_filestore_schema"
     image:
       repository: "egov-filestore-db"
+      tag: DIGIT-2.9-LTS-237578ce80-14 
 
 # Ingress Configs
 ingress:
   zuul: true
-  enabled: true
   context: "filestore"
 
 # Container Configs
 image:
   repository: "egov-filestore"
+  tag: DIGIT-2.9-LTS-237578ce80-14 
 replicas: "1"
 healthChecks:
   enabled: true
@@ -28,8 +29,8 @@ healthChecks:
 appType: "java-spring"
 tracing-enabled: true
 is-bucket-fixed: "true"
-fixed-bucketname: "egov-rainmaker"
-heap: "-Xmx384m -Xms256m"
+fixed-bucketname: "unified-dev-bucket-s3"
+heap: "-Xmx192m -Xms192m"
 file-storage-mount-path: "/filestore"
 is-nfs-enabled: false
 is-s3-enabled: true
@@ -39,17 +40,6 @@ persistence:
 
 # Additional Container Envs
 env: |
-  {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
-  - name: SERVER_CONTEXTPATH
-    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
-  - name: SERVER_SERVLET_CONTEXT_PATH
-    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
-  {{- else }}
-  - name: SERVER_CONTEXTPATH
-    value: /{{ .Values.ingress.context }}
-  - name: SERVER_SERVLET_CONTEXT_PATH
-    value: /{{ .Values.ingress.context }}
-  {{- end }}
   - name: SERVER_PORT
     value: "8080"
   - name: SECURITY_BASIC_ENABLED
