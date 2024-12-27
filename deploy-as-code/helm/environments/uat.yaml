@@ -334,7 +334,7 @@ egov-user-event:
       
 property-services:
  replicas: 3
- memory_limits: 512Mi
+ memory_limits: 1024Mi
  heap: "-Xmx768m -Xms768m"
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
  egov-shortener-url: "eus/shortener"
@@ -405,8 +405,8 @@ egov-notification-sms:
 
 egov-user:
   replicas: 3
-  heap: "-Xmx256m -Xms256m"
-  memory_limits: 512Mi
+  heap: "-Xmx512m -Xms512m"
+  memory_limits: 768Mi
   otp-validation: "true"
   citizen-otp-enabled: "true"
   employee-otp-enabled: "false"
