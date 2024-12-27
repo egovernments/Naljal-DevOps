@@ -8,8 +8,8 @@ templates:
     # Use "Debug" to make missing files errors invisible at the default log level(--log-level=INFO)
     missingFileHandler: Warn
     values:
-      - ../environments/env-secrets.yaml
-      - ../environments/env.yaml
+      - ../environments/egov-demo-secrets.yaml
+      - ../environments/egov-demo.yaml
 
 releases:
   - name: egov-accesscontrol # Replace with your desired namespace
