@@ -446,7 +446,7 @@ chatbot:
 billing-service:
   replicas: 3
   heap: "-Xmx968m -Xms968m"
-  memory_limits: "1468Mi"
+  memory_limits: "1248Mi"
   demand.updateurl: '{"WS":"http://ws-calculator.uat:8080/uat/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
@@ -456,7 +456,7 @@ ws-services:
   is-external-workflow-enabled: "true"
   replicas: 3
   heap: "-Xmx968m -Xms968m"
-  memory_limits: "1468Mi"
+  memory_limits: "1248Mi"
   sms-pending-collection-enabled: false
   sms-todays-collection-enabled: false
   sms-edit-water-connection-notification-enabled: false
