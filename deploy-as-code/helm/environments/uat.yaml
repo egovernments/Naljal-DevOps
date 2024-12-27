@@ -495,7 +495,7 @@ echallan-services:
 ws-calculator:
   replicas: 3
   heap: "-Xmx968m -Xms968m"
-  memory_limits: "1468Mi"
+  memory_limits: "1248Mi"
   sms-demand-enabled: true
   sms-payment-link-enabled: false
   sms-bill-download-enable: true
