@@ -29,6 +29,13 @@ replicas: "1"
 
 # Additional Container Envs
 env: |
+  {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
+  - name: CONTEXT_PATH
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
+  {{- else }}
+  - name: CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  {{- end }}
   - name: KAFKA_BROKER_HOST
     valueFrom:
       configMapKeyRef:

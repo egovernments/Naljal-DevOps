@@ -44,8 +44,6 @@ env: |
   {{- else }}
   - name: SERVER_CONTEXT_PATH
     value: /{{ .Values.ingress.context }}
-  - name: SERVER_CONTEXT_PATH
-    value: /{{ .Values.ingress.context }}
   - name: SERVER_SERVLET_CONTEXT_PATH
     value: /{{ .Values.ingress.context }}
   {{- end }}

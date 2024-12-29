@@ -38,8 +38,17 @@ kafka-topics-update-boundary-relationship: "update-boundary-relationship"
 
 # Additional Container Envs
 env: |
-  - name: SERVER_CONTEXT_PATH
-    value: /boundary-service
+  {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
+  - name: SERVER_CONTEXTPATH
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
+  {{- else }}
+  - name: SERVER_CONTEXTPATH
+    value: /{{ .Values.ingress.context }}
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: /{{ .Values.ingress.context }}
+  {{- end }}
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: boundary-service
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER
@@ -81,6 +90,8 @@ env: |
     value: {{ index .Values "egov-mdms-search-endpoint" | quote }}
   - name: EGOV_MDMS_CREATE_ENDPOINT
     value: {{ index .Values "egov-mdms-create-endpoint" | quote }}
+  - name: BOUNDARY_SERVICE_URI
+    value: {{ index .Values "egov-boundary-relationship-search-endpoint" | quote }}
   - name: EGOV_LOCALIZATION_HOST
     valueFrom:
       configMapKeyRef:
