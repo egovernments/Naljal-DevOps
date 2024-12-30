@@ -30,7 +30,7 @@ tracing-enabled: true
 is-bucket-fixed: "true"
 fixed-bucketname: "egov-rainmaker"
 heap: "-Xmx384m -Xms256m"
-file-storage-mount-path: "/filestore"
+file-storage-mount-path: "/assam/filestore"
 is-nfs-enabled: false
 is-s3-enabled: true
 

@@ -6,7 +6,6 @@ labels:
 # Ingress Configs
 ingress:
   enabled: true
-  zuul: true
   context: "mdms-v2"
 
 initContainers:
