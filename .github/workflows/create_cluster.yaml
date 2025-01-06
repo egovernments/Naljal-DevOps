@@ -45,6 +45,9 @@ jobs:
       - name: Updating different files based on parameters provided in input.yaml
         run: go run init.go
         working-directory: infra-as-code/terraform/scripts
+      - name: display environment file
+        run: cat env.yaml
+        working-directory: deploy-as-code/helm/charts/environments  
       - name: Archive infra-as-code folder
         run: tar -czf infra-as-code.tar.gz infra-as-code/
       - name: Archive config-as-code folder
