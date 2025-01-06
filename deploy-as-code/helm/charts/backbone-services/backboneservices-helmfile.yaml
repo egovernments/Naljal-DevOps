@@ -8,8 +8,8 @@ templates:
     missingFileHandler: Warn
 
 values:
-  - ../environments/egov-demo-secrets.yaml
-  - ../environments/egov-demo.yaml
+  - ../environments/env-secrets.yaml
+  - ../environments/env.yaml
 
 releases:
 - name: cert-manager
