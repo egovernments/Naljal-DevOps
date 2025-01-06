@@ -52,6 +52,8 @@ jobs:
         run: tar -czf infra-as-code.tar.gz infra-as-code/
       - name: Archive config-as-code folder
         run: tar -czf config-as-code.tar.gz config-as-code/
+      - name: Archive deploy-as-code folder
+        run: tar -czf deploy-as-code.tar.gz deploy-as-code/  
       - name: Upload infra-as-code folder as artifact
         uses: actions/upload-artifact@v3
         with:
@@ -62,6 +64,11 @@ jobs:
         with:
           name: config-as-code-artifact
           path: config-as-code.tar.gz
+      - name: Upload deploy-as-code folder as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: deploy-as-code-artifact
+          path: deploy-as-code.tar.gz    
       # - name: Install AWS IAM Authenticator
       #   run: |
       #     curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/aws-iam-authenticator
@@ -116,10 +123,17 @@ jobs:
         with:
           name: config-as-code-artifact
           path: .
+      - name: Download deploy-as-code folder from artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: deploy-as-code-artifact
+          path: .    
       - name: Extract infra-as-code folder
         run: tar -xzf infra-as-code.tar.gz
       - name: Extract config-as-code folder
         run: tar -xzf config-as-code.tar.gz 
+      - name: Extract deploy-as-code folder
+        run: tar -xzf deploy-as-code.tar.gz  
       - name: Convert YAML to ENV
         uses: dcarbone/yaml-to-env-action@main
         with:
@@ -187,6 +201,8 @@ jobs:
         run: tar -czf infra-as-code.tar.gz infra-as-code/
       - name: Archive config-as-code folder
         run: tar -czf config-as-code.tar.gz config-as-code/
+      - name: Archive deploy-as-code folder
+        run: tar -czf deploy-as-code.tar.gz deploy-as-code/  
       - name: Upload infra-as-code folder as artifact
         uses: actions/upload-artifact@v3
         with:
@@ -196,7 +212,12 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: config-as-code-artifact
-          path: config-as-code.tar.gz      
+          path: config-as-code.tar.gz
+      - name: Upload deploy-as-code folder as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: deploy-as-code-artifact
+          path: deploy-as-code.tar.gz          
 
   DIGIT-deployment:
     if: ${{ github.event_name == 'push' }}
@@ -221,10 +242,17 @@ jobs:
         with:
           name: config-as-code-artifact
           path: .
+      - name: Download deploy-as-code folder from artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: deploy-as-code-artifact
+          path: .    
       - name: Extract infra-as-code folder
         run: tar -xzf infra-as-code.tar.gz
       - name: Extract config-as-code folder
         run: tar -xzf config-as-code.tar.gz 
+      - name: Extract deploy-as-code folder
+        run: tar -xzf deploy-as-code.tar.gz  
       - name: Convert YAML to ENV
         uses: dcarbone/yaml-to-env-action@main
         with:
