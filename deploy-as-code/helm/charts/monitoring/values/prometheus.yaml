@@ -6,6 +6,10 @@
 ##
 nameOverride: ""
 
+prometheus:
+  alertmanager:
+    enabled: false
+
 ## Override the deployment namespace
 ##
 namespaceOverride: ""
@@ -13,7 +17,7 @@ namespaceOverride: ""
 ## Provide a k8s version to auto dashboard import script example: kubeTargetVersionOverride: 1.26.6
 ##
 kubeTargetVersionOverride: ""
-
+   
 ## Allow kubeVersion to be overridden while creating the ingress
 ##
 kubeVersionOverride: ""
