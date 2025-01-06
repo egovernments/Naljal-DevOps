@@ -23,6 +23,9 @@ func main() {
 
 	validateInputs(data)
 
+	// Update env.yaml specifically for domain_name
+	updateEnvYaml("../../../deploy-as-code/helm/charts/environments/env.yaml", data)
+
 	// Read the variables.tf file
 	replaceInFile("../sample-aws/variables.tf", data, false)
 	fmt.Println("variables.tf file updated successfully!")
@@ -33,15 +36,11 @@ func main() {
 	replaceInFile("../sample-aws/main.tf", data, false)
 	fmt.Println("main.tf file updated successfully!")
 
-	replaceInFile("../../../deploy-as-code/helm/charts/environments/env.yaml", data, true)
-	fmt.Println("env yaml file updated successfully!")
-
 	replaceInFile("../../../deploy-as-code/helm/charts/environments/env-secrets.yaml", data, true)
 	fmt.Println("env secrets yaml file updated successfully!")
 }
 
 func validateInputs(data map[string]interface{}) {
-
 	for key, value := range data {
 		placeholder := fmt.Sprintf("<%s>", key) // Include angle brackets in the placeholder
 		replacement := fmt.Sprintf("%v", value)
@@ -53,9 +52,7 @@ func validateInputs(data map[string]interface{}) {
 		if placeholder == "<cluster_name>" {
 			isValidClusterName(replacement)
 		}
-
 	}
-
 }
 
 func replaceInFile(filepath string, data map[string]interface{}, stripQuotes bool) {
@@ -73,7 +70,32 @@ func replaceInFile(filepath string, data map[string]interface{}, stripQuotes boo
 	if err != nil {
 		log.Fatalf("Failed to write file: %v", err)
 	}
+}
 
+// Function to update env.yaml
+func updateEnvYaml(filepath string, data map[string]interface{}) {
+	// Read env.yaml
+	content, err := ioutil.ReadFile(filepath)
+	if err != nil {
+		log.Fatalf("Failed to read env.yaml: %v", err)
+	}
+
+	// Check if "domain_name" exists in the input data
+	domainName, ok := data["domain_name"]
+	if !ok {
+		log.Fatalf("domain_name not found in input.yaml")
+	}
+
+	// Replace <domain_name> in the YAML file
+	updatedContent := strings.ReplaceAll(string(content), "<domain_name>", strings.Trim(domainName.(string), `"`))
+
+	// Write the updated YAML content back to the file
+	err = ioutil.WriteFile(filepath, []byte(updatedContent), 0644)
+	if err != nil {
+		log.Fatalf("Failed to write updated env.yaml: %v", err)
+	}
+
+	fmt.Println("env.yaml updated successfully!")
 }
 
 // Function to parse the YAML content
@@ -127,11 +149,9 @@ func replaceVariableValues(content string, data map[string]interface{}, stripQuo
 }
 
 func isValidDBName(dbName string) error {
-
 	dbName = strings.TrimSpace(dbName)
 	dbName = dbName[1 : len(dbName)-1]
 
-	//fmt.Println("Validating DB name")
 	// Check if the DB name starts with a letter
 	matched, _ := regexp.MatchString("^[a-zA-Z]", dbName)
 	if !matched {
@@ -153,7 +173,7 @@ func isValidClusterName(input string) error {
 	input = input[1 : len(input)-1]
 	matched, _ := regexp.MatchString(pattern, input)
 	if !matched {
-		log.Fatalf(" Cluster name can have only lowercase alphanumeric characters and hyphens")
+		log.Fatalf("Cluster name can have only lowercase alphanumeric characters and hyphens")
 	}
 	return nil
 }
