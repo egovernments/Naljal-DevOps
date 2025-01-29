@@ -1,5 +1,5 @@
 ---
-elasticsearchHosts: "https://elasticsearch-master:9200"
+elasticsearchHosts: "http://elasticsearch-master:9200"
 elasticsearchCertificateSecret: elasticsearch-master-certs
 elasticsearchCertificateAuthoritiesFile: ca.crt
 elasticsearchCredentialSecret: elasticsearch-master-credentials
@@ -61,8 +61,8 @@ protocol: http
 
 serverHost: "0.0.0.0"
 
-healthCheckPath: "/assam/kibana/app/kibana"
-serverBasePath: /assam/kibana
+healthCheckPath: "/uat/kibana/app/kibana"
+serverBasePath: /uat/kibana
 
 # Allows you to add any config files in /usr/share/kibana/config/
 # such as kibana.yml
@@ -157,7 +157,7 @@ ingress:
     nginx.ingress.kubernetes.io/lua-resty-waf-process-multipart-body: "false"
     nginx.ingress.kubernetes.io/lua-resty-waf-score-threshold: "10"
     nginx.ingress.kubernetes.io/use-regex: "true"
-  context: assam/kibana
+  context: uat/kibana
   # hosts:
   #   - host: digit-go.digit.org
   #     paths:
@@ -180,7 +180,7 @@ tolerations: []
 affinity: {}
 
 nameOverride: ""
-fullnameOverride: ""
+fullnameOverride: "kibana"
 
 lifecycle: {}
 # preStop:
