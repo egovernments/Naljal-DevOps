@@ -5,7 +5,7 @@
 
 variable "cluster_name" {
   description = "Name of the Kubernetes cluster"
-  default = "assam-prod" #REPLACE
+  default = "<cluster_name>" #REPLACE
 }
 
 variable "vpc_cidr_block" {
@@ -31,7 +31,7 @@ variable "kubernetes_version" {
 
 variable "instance_types" {
   description = "Arry of instance types for SPOT instances"
-  default = ["r5ad.xlarge"]
+  default = ["r5ad.large"]
   
 }
 
@@ -42,7 +42,7 @@ variable "min_worker_nodes" {
 
 variable "desired_worker_nodes" {
   description = "eGov recommended below worker node counts as default for desired nodes"
-  default = "2" #REPLACE IF NEEDED
+  default = "3" #REPLACE IF NEEDED
 }
 
 variable "max_worker_nodes" {
@@ -53,17 +53,31 @@ variable "max_worker_nodes" {
 
 variable "db_name" {
   description = "RDS DB name. Make sure there are no hyphens or other special characters in the DB name. Else, DB creation will fail"
-  default = "assamproddb" #REPLACE
+  default = "<db_name>" #REPLACE
 }
 
-variable "db_username" {#assamprod37427
+variable "db_username" {
   description = "RDS database user name"
-  default = "assamprod" #REPLACE
+  default = "<db_uname>" #REPLACE
 }
 
 variable "iam_user_arn" {
   description = "Provide the IAM user arn which you are using to create infrastructure"
-  default = "arn:aws:iam::432205181273:user/assam-prod" #REPLACE 
+  default = "<iam_user_arn>" #Example: arn:aws:iam::4332145635273:user/demo
+}
+
+variable "ami_id" {
+  description = "Provide the AMI ID that supports your eks version"
+  default = {
+    id   = "ami-0d1008f82aca87cb9"
+    name = "amazon-eks-node-1.30-v20241024"
+  }
+}
+
+variable "enable_karpenter" {
+  description = "Enable the karpenter."
+  type        = bool
+  default     = false
 }
 
 #DO NOT fill in here. This will be asked at runtime
