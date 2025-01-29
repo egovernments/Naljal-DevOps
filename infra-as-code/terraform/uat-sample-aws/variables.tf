@@ -82,5 +82,4 @@ variable "enable_karpenter" {
 
 #DO NOT fill in here. This will be asked at runtime
 variable "db_password" {}
-#naljalUAT123
 
