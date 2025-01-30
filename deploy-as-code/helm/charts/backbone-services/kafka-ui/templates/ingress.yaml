@@ -26,7 +26,11 @@ spec:
             name: {{ include "kafka-ui.fullname" . }}
             port:
               number: {{ .Values.service.port }}
+        {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
+        path: /{{ .Values.global.context.path }}/{{ .Values.ingress.context }}
+        {{- else }}
         path: /{{ .Values.ingress.context }}
+        {{- end }}
         pathType: ImplementationSpecific
   tls:
 {{- if .Values.ingress.tls }}

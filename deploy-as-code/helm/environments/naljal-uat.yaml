@@ -325,7 +325,7 @@ egov-user-event:
  heap: "-Xmx256m -Xms256m"      
       
 property-services:
- replicas: 10
+ replicas: 2
  memory_limits: 1024Mi
  heap: "-Xmx512m -Xms512m"
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
@@ -443,7 +443,7 @@ billing-service:
 ws-services:
   wcid-format: "WS/[CITY.CODE]/[fy:yyyy-yy]/[SEQ_EGOV_COMMON]"
   is-external-workflow-enabled: "true"
-  replicas: 8
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-pending-collection-enabled: false
@@ -482,7 +482,7 @@ echallan-services:
   egov.url.shortner.endpoint: "/eus/shortener"
 
 ws-calculator:
-  replicas: 3
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   sms-demand-enabled: true
@@ -829,7 +829,7 @@ redis:
   namespace: backbone
   replicas: 1
   images:
-    - egovio/redis:3.2
+    - egovio/redis:7.2.4
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 playground:
@@ -987,3 +987,20 @@ egov-penalty-schedular:
   user-system-role: "EMPLOYEE"
   cron:
     schedule: "*/30 * * * *"
+
+kafka-ui:
+  ingress:
+    context: uat/kafka-ui
+  envs:
+    secret: {}
+    config:
+      SERVER_SERVLET_CONTEXT_PATH: "/uat/kafka-ui"
+  env:
+    - name: SERVER_SERVLET_CONTEXT_PATH
+      value: /uat/kafka-ui
+  yamlApplicationConfig:
+    kafka:
+      clusters:
+      - name: naljal-uat
+        bootstrapServers: kafka-kraft-controller-headless.backbone:9092
+        readonly: true
