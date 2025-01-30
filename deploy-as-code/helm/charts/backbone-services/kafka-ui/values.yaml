@@ -11,8 +11,6 @@ ingress:
   waf:
     enabled: false
   annotations:
-    nginx.ingress.kubernetes.io/auth-signin:  https://$host/oauth2/start?rd=$escaped_request_uri
-    nginx.ingress.kubernetes.io/auth-url:     https://$host/oauth2/auth
     kubernetes.io/ingress.class:              nginx
 
 livenessProbe:
@@ -63,10 +61,10 @@ yamlApplicationConfigConfigMap:
   # keyName: config.yml
   # name: configMapName
 existingSecret: ""
-envs:
-  secret: {}
-  config:
-    SERVER_SERVLET_CONTEXT_PATH: "/kafka-ui"
+# envs:
+#   secret: {}
+#   config:
+#     SERVER_SERVLET_CONTEXT_PATH: "/kafka-ui"
 
 networkPolicy:
   enabled: false
@@ -176,9 +174,9 @@ tolerations: []
 
 affinity: {}
 
-env:
-  - name: SERVER_SERVLET_CONTEXT_PATH
-    value: /kafka-ui
+# env:
+#   - name: SERVER_SERVLET_CONTEXT_PATH
+#     value: /kafka-ui
 
 initContainers: {}
 
