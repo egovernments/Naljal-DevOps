@@ -198,7 +198,7 @@ cluster-configs:
                 egov-location: "http://egov-location:8080/uat/"
                 egov-filestore: "http://egov-filestore:8080/uat/"
                 egov-localization: "http://egov-localization:8080/uat/"
-                egov-idgen: "http://egov-idgen:8080/"
+                egov-idgen: "http://egov-idgen:8080/uat"
                 egov-otp: "http://egov-otp:8080/"
                 egov-common-workflows: "http://egov-common-workflows:8080/"
                 egov-mdms-service: "http://mdms-v2:8080/uat/"
