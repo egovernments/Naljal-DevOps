@@ -61,8 +61,8 @@ protocol: http
 
 serverHost: "0.0.0.0"
 
-healthCheckPath: "/uat/kibana/app/kibana"
-serverBasePath: /uat/kibana
+healthCheckPath: "/assam/kibana/app/kibana"
+serverBasePath: /assam/kibana
 
 # Allows you to add any config files in /usr/share/kibana/config/
 # such as kibana.yml
@@ -157,7 +157,7 @@ ingress:
     nginx.ingress.kubernetes.io/lua-resty-waf-process-multipart-body: "false"
     nginx.ingress.kubernetes.io/lua-resty-waf-score-threshold: "10"
     nginx.ingress.kubernetes.io/use-regex: "true"
-  context: uat/kibana
+  context: assam/kibana
   # hosts:
   #   - host: digit-go.digit.org
   #     paths:
