@@ -354,6 +354,7 @@ egov-filestore:
   allowed-file-formats: "jpg,jpeg,png,doc,docx,pdf,odt,ods,text,dxf,xls,xlsx"
   filestore-url-validity: 3600
   fixed-bucketname: naljal-uat-filestore
+  file-storage-mount-path: "/uat/filestore"
 
 egov-idgen:
   replicas: 2
