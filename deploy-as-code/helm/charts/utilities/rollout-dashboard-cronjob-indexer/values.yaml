@@ -32,10 +32,7 @@ env: |
         name: egov-config
         key: db-name
   - name: DB_SCHEMA
-    valueFrom:
-      configMapKeyRef:
-        name: egov-config
-        key: db-schema
+    value: "public"
   - name: DB_PWD
     valueFrom:
       secretKeyRef:
