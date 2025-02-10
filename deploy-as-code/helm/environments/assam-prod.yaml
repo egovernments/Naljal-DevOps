@@ -1,5 +1,5 @@
 global:
-   domain: assam-prod.digit.org ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
+   domain: njs.jjmbrain.in ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
    setup: fullsetup
    namespace: assam
    containerRegistry: egovio
@@ -157,9 +157,9 @@ cluster-configs:
                 db-name: assamproddb ## Add db-name
                 db-url: jdbc:postgresql://assam-prod-db.cf2s2ieu09x9.ap-south-1.rds.amazonaws.com:5432/assamproddb ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
                 # db-schema: "assam"
-                domain: assam-prod.digit.org ## Add your Domain Name    
-                egov-services-fqdn-name: https://assam-prod.digit.org/ ## Add your Domain Name
-                egov-services-fqdn-name-sms: https://assam-prod.digit.org/assam/
+                domain: njs.jjmbrain.in ## Add your Domain Name    
+                egov-services-fqdn-name: https://njs.jjmbrain.in/ ## Add your Domain Name
+                egov-services-fqdn-name-sms: https://njs.jjmbrain.in/assam/
                 state-level-tenant-id: "as"
                 egov-state-level-tenant-id: "as" 
                 s3-assets-bucket: "assam-s3"
