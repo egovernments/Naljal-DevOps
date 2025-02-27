@@ -1,10 +1,10 @@
 environments:
-  demo:
+  assam-prod:
     values:
       - namespace: monitoring
       - ../../environments/assam-prod.yaml
+    secrets:
       - ../../environments/assam-prod-secrets.yaml
-
 ---
 
 repositories:
@@ -63,10 +63,10 @@ releases:
   chart: jaegertracing/jaeger
   version: 0.35.0
   values:
-    - ./values/jaeger.yaml
+  - ./values/jaeger.yaml
   set:
-    - name: query.ingress.hosts[0]
-      value: "{{ .Values.global.domain }}"
+  - name: query.ingress.hosts[0]
+    value: "{{ .Values.global.domain }}"
 
 - name: grafana
   installed: true
@@ -74,19 +74,23 @@ releases:
   chart: grafana/grafana
   version: 7.3.0
   values:
-    - ./values/grafana.yaml
-    - grafana.ini:
-        auth.github:
-          allowed_organizations: {{ .Values.grafana.github.allowed_organizations }}
-          role_attribute_path: {{ .Values.grafana.github.role_attribute_path }}
-    - envRenderSecret:
-        GF_AUTH_GITHUB_CLIENT_ID: {{ index .Values "cluster-configs" "secrets" "grafana" "clientID" }}
-        GF_AUTH_GITHUB_CLIENT_SECRET: {{ index .Values "cluster-configs" "secrets" "grafana" "clientSecret" }}
+  - ./values/grafana.yaml
+  - grafana.ini:
+      auth.github:
+        allowed_organizations: {{ .Values.grafana.github.allowed_organizations }}
+        role_attribute_path: {{ .Values.grafana.github.role_attribute_path }}
+  - envRenderSecret:
+      GF_AUTH_GITHUB_CLIENT_ID: {{ index .Values "cluster-configs" "secrets" "grafana" "clientID" }}
+      GF_AUTH_GITHUB_CLIENT_SECRET: {{ index .Values "cluster-configs" "secrets" "grafana" "clientSecret" }}
+  - ingress:
+      path: {{ .Values.grafana.ingress.path }}
   set:
-    - name: ingress.hosts[0]
-      value: "{{ .Values.global.domain }}"
-    - name: ingress.tls[0].hosts[0]
-      value: "{{ .Values.global.domain }}"
+  - name: ingress.hosts[0]
+    value: "{{ .Values.global.domain }}"
+  - name: ingress.tls[0].hosts[0]
+    value: "{{ .Values.global.domain }}"
+  - name: ingress.tls[0].secretName
+    value: "{{ .Values.global.domain }}-tls-certs"
 
 - name: blackbox
   installed: true
