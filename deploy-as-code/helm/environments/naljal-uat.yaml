@@ -37,6 +37,7 @@ global:
        - oauth2-proxy
        - egov-accesscontrol
        - workbench-ui
+       - naljal-custom-service
 
 
 cluster-configs:
