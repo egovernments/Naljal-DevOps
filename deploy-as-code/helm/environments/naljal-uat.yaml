@@ -38,6 +38,7 @@ global:
        - egov-accesscontrol
        - workbench-ui
        - naljal-custom-service
+       - boundary-service
 
 
 cluster-configs:
