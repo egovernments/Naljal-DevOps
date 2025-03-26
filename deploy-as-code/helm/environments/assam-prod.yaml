@@ -237,7 +237,7 @@ cluster-configs:
                 egov-common-masters: "http://egov-common-masters:8080/"
                 boundary-bulk-bff: "http://boundary-bulk-bff.uat:8080/assam/"
                 boundary-service: "http://boundary-service.uat:8080/assam/"
-                naljal-custom-service: "http://naljal-custom-service.assam:8080/assam/
+                naljal-custom-service: "http://naljal-custom-service.assam:8080/assam/"
 
 
 digit-ui:
