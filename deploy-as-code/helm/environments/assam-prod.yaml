@@ -40,6 +40,7 @@ global:
        - mdms-v2
        - boundary-service
        - boundary-bulk-bff
+       - naljal-custom-service
 
 
 cluster-configs:
